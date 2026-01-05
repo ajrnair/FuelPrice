@@ -1,0 +1,218 @@
+[
+  {
+    "state": "Andhra Pradesh",
+    "petrol": "102.84",
+    "diesel": "94.28",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Arunachal Pradesh",
+    "petrol": "99.45",
+    "diesel": "91.32",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Assam",
+    "petrol": "102.18",
+    "diesel": "93.56",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Bihar",
+    "petrol": "107.23",
+    "diesel": "95.87",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Chhattisgarh",
+    "petrol": "108.45",
+    "diesel": "96.92",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Delhi",
+    "petrol": "94.72",
+    "diesel": "87.62",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Goa",
+    "petrol": "98.56",
+    "diesel": "89.78",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Gujarat",
+    "petrol": "96.32",
+    "diesel": "89.45",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Haryana",
+    "petrol": "96.78",
+    "diesel": "89.94",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Himachal Pradesh",
+    "petrol": "99.87",
+    "diesel": "91.23",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Jharkhand",
+    "petrol": "104.56",
+    "diesel": "94.32",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Karnataka",
+    "petrol": "102.92",
+    "diesel": "88.94",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Kerala",
+    "petrol": "107.71",
+    "diesel": "96.78",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Madhya Pradesh",
+    "petrol": "112.65",
+    "diesel": "97.23",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Maharashtra",
+    "petrol": "106.31",
+    "diesel": "94.27",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Manipur",
+    "petrol": "105.34",
+    "diesel": "95.67",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Meghalaya",
+    "petrol": "103.89",
+    "diesel": "93.45",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Mizoram",
+    "petrol": "101.23",
+    "diesel": "92.78",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Nagaland",
+    "petrol": "102.45",
+    "diesel": "93.12",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Odisha",
+    "petrol": "103.78",
+    "diesel": "95.45",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Punjab",
+    "petrol": "101.32",
+    "diesel": "92.84",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Rajasthan",
+    "petrol": "110.23",
+    "diesel": "95.67",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Sikkim",
+    "petrol": "100.45",
+    "diesel": "91.89",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Tamil Nadu",
+    "petrol": "102.63",
+    "diesel": "94.24",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Telangana",
+    "petrol": "109.66",
+    "diesel": "97.82",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Tripura",
+    "petrol": "100.78",
+    "diesel": "92.34",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Uttar Pradesh",
+    "petrol": "96.57",
+    "diesel": "89.45",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Uttarakhand",
+    "petrol": "97.23",
+    "diesel": "89.89",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "West Bengal",
+    "petrol": "106.03",
+    "diesel": "92.76",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Andaman and Nicobar Islands",
+    "petrol": "98.45",
+    "diesel": "90.23",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Chandigarh",
+    "petrol": "94.95",
+    "diesel": "87.90",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
+    "petrol": "93.87",
+    "diesel": "86.78",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Jammu and Kashmir",
+    "petrol": "101.23",
+    "diesel": "92.45",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Ladakh",
+    "petrol": "100.78",
+    "diesel": "91.89",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Lakshadweep",
+    "petrol": "97.89",
+    "diesel": "89.67",
+    "updated": "2026-01-05"
+  },
+  {
+    "state": "Puducherry",
+    "petrol": "99.12",
+    "diesel": "90.45",
+    "updated": "2026-01-05"
+  }
+]
