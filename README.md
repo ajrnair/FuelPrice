@@ -33,10 +33,12 @@ Compare fuel prices between any two states:
 - Real-time filtering
 - Find your location instantly
 
-### 📈 Statistics Dashboard
-- **Average Prices**: National average for both fuels
-- **Best Deals**: Find states with cheapest rates
-- **Quick Overview**: At-a-glance statistics
+### 📈 City Diesel Comparison
+- **Bangalore**: Karnataka diesel prices
+- **Kochi**: Kerala diesel prices
+- **Coimbatore**: Tamil Nadu diesel prices
+- **Goa**: Goa diesel prices
+- Perfect for South India road trippers!
 - **Last Updated**: Always know data freshness
 
 ## 🚀 Quick Start
@@ -68,25 +70,50 @@ Simply drag and drop the folder or connect your GitHub repo!
 
 ## 🔧 Data Updates
 
-The website reads from `data.json`. To update prices:
+### ⚡ Automated Daily Updates (Recommended)
 
-### Manual Update
-Edit `data.json` directly with new prices.
+The repository includes **GitHub Actions** that automatically update fuel prices **every day at 6:30 AM IST**!
 
-### Automated Scraping
+**How it works:**
+- Scraper runs automatically via GitHub Actions
+- Fetches real-time prices from multiple sources:
+  - **NDTV** (primary source)
+  - **GoodReturns** (fallback)
+  - **MyPetrolPrice** (secondary fallback)
+- Updates `data.json` with latest prices
+- Commits changes automatically
+- GitHub Pages auto-deploys the updated site
+
+**To enable:** Just push the code to GitHub - the workflow runs automatically!
+
+**Manual trigger:** Go to Actions tab → "Update Fuel Prices" → "Run workflow"
+
+### 🔄 Manual Scraping
+
+Run the scraper manually anytime:
+
 ```bash
 # Install dependencies
 pip install -r requirements.txt
 
-# Run scraper
+# Run full scraper (all states)
 python3 scraper.py
+
+# Run quick test (4 states only)
+python3 test_scraper.py
 ```
 
-**Note**: The scraper is a template. You'll need to integrate with a real fuel price API or scraping source. Possible sources:
-- Indian Oil Corporation API
-- State petroleum department websites
-- Aggregator services like goodreturns.in
-- Government petroleum data portals
+### ✏️ Manual Data Edit
+
+You can also edit `data.json` directly with custom prices.
+
+### 📊 Data Sources
+
+The scraper uses multiple sources with automatic failover:
+1. **NDTV Fuel Prices** - City-specific prices (e.g., https://www.ndtv.com/fuel-prices/diesel-price-in-ernakulam-city)
+2. **GoodReturns** - State-wise aggregated data
+3. **MyPetrolPrice** - Alternative city data
+4. **Fallback estimation** - If all sources fail, uses reasonable estimates
 
 ## 📱 Low Bandwidth Optimization
 
