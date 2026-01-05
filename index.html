@@ -13,15 +13,18 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --success: #10b981;
-            --danger: #ef4444;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #0f172a;
-            --text-light: #64748b;
-            --border: #e2e8f0;
+            --primary: #5b7c99;
+            --primary-dark: #4a6479;
+            --accent: #7c9885;
+            --accent-warm: #b89968;
+            --bg: #f5f5f0;
+            --card-bg: #fafaf8;
+            --text: #2d3436;
+            --text-light: #7c8288;
+            --border: #e8e8e3;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.08);
         }
 
         body {
@@ -40,10 +43,11 @@
 
         header {
             text-align: center;
-            padding: 2rem 1rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 3rem 1rem 2.5rem;
+            background: linear-gradient(135deg, #5b7c99 0%, #7c9885 100%);
             color: white;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 3px solid rgba(255,255,255,0.1);
         }
 
         h1 {
@@ -66,10 +70,17 @@
 
         .stat-card {
             background: var(--card-bg);
-            padding: 1.25rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
             text-align: center;
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         .stat-label {
@@ -93,9 +104,16 @@
 
         .tool-card {
             background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1.75rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         .tool-title {
@@ -106,40 +124,54 @@
 
         input, select {
             width: 100%;
-            padding: 0.625rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
             font-size: 0.95rem;
             margin-bottom: 0.75rem;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         input:focus, select:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(91, 124, 153, 0.1);
         }
 
         button {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 0.625rem 1.25rem;
-            border-radius: 4px;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             width: 100%;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: var(--shadow-sm);
         }
 
         button:hover {
             background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        button:active {
+            transform: translateY(0);
         }
 
         .result {
             margin-top: 1rem;
-            padding: 1rem;
-            background: var(--bg);
-            border-radius: 4px;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, rgba(91, 124, 153, 0.08) 0%, rgba(124, 152, 133, 0.08) 100%);
+            border-radius: 10px;
             font-weight: 600;
+            border: 1px solid rgba(91, 124, 153, 0.15);
+            color: var(--text);
         }
 
         .search-box {
@@ -148,6 +180,19 @@
 
         .search-box input {
             margin-bottom: 0;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            background: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
         }
 
         .price-grid {
@@ -157,13 +202,20 @@
 
         .price-card {
             background: var(--card-bg);
-            padding: 1rem;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1.25rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
             display: grid;
             grid-template-columns: 1fr auto auto;
-            gap: 1rem;
+            gap: 1.25rem;
             align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
 
         .state-name {
@@ -229,23 +281,23 @@
     </header>
 
     <div class="container">
-        <!-- Statistics -->
+        <!-- City Diesel Comparison -->
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-label">Avg Petrol Price</div>
-                <div class="stat-value" id="avgPetrol">--</div>
+                <div class="stat-label">Bangalore Diesel</div>
+                <div class="stat-value" id="bangaloreDiesel">--</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Avg Diesel Price</div>
-                <div class="stat-value" id="avgDiesel">--</div>
+                <div class="stat-label">Kochi Diesel</div>
+                <div class="stat-value" id="kochiDiesel">--</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Cheapest Petrol</div>
-                <div class="stat-value" id="cheapestPetrol">--</div>
+                <div class="stat-label">Coimbatore Diesel</div>
+                <div class="stat-value" id="coimbatoreDiesel">--</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Cheapest Diesel</div>
-                <div class="stat-value" id="cheapestDiesel">--</div>
+                <div class="stat-label">Goa Diesel</div>
+                <div class="stat-value" id="goaDiesel">--</div>
             </div>
         </div>
 
@@ -280,6 +332,7 @@
         </div>
 
         <!-- Search and Filter -->
+        <h2 class="section-header">All States & UTs</h2>
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="🔍 Search states or UTs..." onkeyup="filterStates()">
         </div>
@@ -340,16 +393,33 @@
         function calculateStats() {
             if (fuelData.length === 0) return;
 
-            const avgPetrol = (fuelData.reduce((sum, item) => sum + parseFloat(item.petrol), 0) / fuelData.length).toFixed(2);
-            const avgDiesel = (fuelData.reduce((sum, item) => sum + parseFloat(item.diesel), 0) / fuelData.length).toFixed(2);
+            // City to state mapping
+            const cities = {
+                'Bangalore': 'Karnataka',
+                'Kochi': 'Kerala',
+                'Coimbatore': 'Tamil Nadu',
+                'Goa': 'Goa'
+            };
 
-            const cheapestPetrolState = fuelData.reduce((min, item) => parseFloat(item.petrol) < parseFloat(min.petrol) ? item : min);
-            const cheapestDieselState = fuelData.reduce((min, item) => parseFloat(item.diesel) < parseFloat(min.diesel) ? item : min);
+            // Get diesel prices for specific cities
+            const bangaloreData = fuelData.find(item => item.state === cities['Bangalore']);
+            const kochiData = fuelData.find(item => item.state === cities['Kochi']);
+            const coimbatoreData = fuelData.find(item => item.state === cities['Coimbatore']);
+            const goaData = fuelData.find(item => item.state === cities['Goa']);
 
-            document.getElementById('avgPetrol').textContent = '₹' + avgPetrol;
-            document.getElementById('avgDiesel').textContent = '₹' + avgDiesel;
-            document.getElementById('cheapestPetrol').innerHTML = `₹${cheapestPetrolState.petrol}<br><small style="font-size:0.6em;font-weight:400;">${cheapestPetrolState.state}</small>`;
-            document.getElementById('cheapestDiesel').innerHTML = `₹${cheapestDieselState.diesel}<br><small style="font-size:0.6em;font-weight:400;">${cheapestDieselState.state}</small>`;
+            // Update the display
+            if (bangaloreData) {
+                document.getElementById('bangaloreDiesel').textContent = '₹' + bangaloreData.diesel;
+            }
+            if (kochiData) {
+                document.getElementById('kochiDiesel').textContent = '₹' + kochiData.diesel;
+            }
+            if (coimbatoreData) {
+                document.getElementById('coimbatoreDiesel').textContent = '₹' + coimbatoreData.diesel;
+            }
+            if (goaData) {
+                document.getElementById('goaDiesel').textContent = '₹' + goaData.diesel;
+            }
         }
 
         function populateDropdowns() {
