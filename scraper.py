@@ -131,28 +131,55 @@ def fetch_from_goodreturns(state):
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
 
-        url = "https://www.goodreturns.in/petrol-price.html"
-        response = requests.get(url, headers=headers, timeout=10)
+        # Try both petrol and diesel price pages
+        petrol_url = "https://www.goodreturns.in/petrol-price.html"
+        diesel_url = "https://www.goodreturns.in/diesel-price.html"
 
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.content, 'html.parser')
+        petrol_price = None
+        diesel_price = None
 
-            # Look for state in the table
-            rows = soup.find_all('tr')
-            for row in rows:
-                cells = row.find_all('td')
-                if len(cells) >= 3:
-                    state_name = cells[0].get_text().strip()
-                    if state.lower() in state_name.lower():
-                        petrol = re.search(r'[\d.]+', cells[1].get_text())
-                        diesel = re.search(r'[\d.]+', cells[2].get_text())
+        # Fetch petrol prices
+        try:
+            response = requests.get(petrol_url, headers=headers, timeout=10)
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.content, 'html.parser')
+                rows = soup.find_all('tr')
+                for row in rows:
+                    cells = row.find_all('td')
+                    if len(cells) >= 2:
+                        state_name = cells[0].get_text().strip()
+                        if state.lower() in state_name.lower() or state_name.lower() in state.lower():
+                            price_match = re.search(r'([\d.]+)', cells[1].get_text())
+                            if price_match and float(price_match.group(1)) > 50:  # Sanity check
+                                petrol_price = price_match.group(1)
+                                break
+        except:
+            pass
 
-                        if petrol and diesel:
-                            return {
-                                'petrol': petrol.group(),
-                                'diesel': diesel.group(),
-                                'source': 'goodreturns'
-                            }
+        # Fetch diesel prices
+        try:
+            response = requests.get(diesel_url, headers=headers, timeout=10)
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.content, 'html.parser')
+                rows = soup.find_all('tr')
+                for row in rows:
+                    cells = row.find_all('td')
+                    if len(cells) >= 2:
+                        state_name = cells[0].get_text().strip()
+                        if state.lower() in state_name.lower() or state_name.lower() in state.lower():
+                            price_match = re.search(r'([\d.]+)', cells[1].get_text())
+                            if price_match and float(price_match.group(1)) > 50:  # Sanity check
+                                diesel_price = price_match.group(1)
+                                break
+        except:
+            pass
+
+        if petrol_price and diesel_price:
+            return {
+                'petrol': petrol_price,
+                'diesel': diesel_price,
+                'source': 'goodreturns'
+            }
     except Exception as e:
         print(f"GoodReturns fetch failed for {state}: {e}")
 
