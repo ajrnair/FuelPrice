@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Current Petrol and Diesel prices across all Indian states and Union Territories. Track fuel costs for your road trips.">
+    <title>Fuel Prices India - Live Petrol & Diesel Rates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #5b7c99;
+            --primary-dark: #4a6479;
+            --accent: #7c9885;
+            --accent-warm: #b89968;
+            --bg: #f5f5f0;
+            --card-bg: #fafaf8;
+            --text: #2d3436;
+            --text-light: #7c8288;
+            --border: #e8e8e3;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 1rem 2.5rem;
+            background: linear-gradient(135deg, #5b7c99 0%, #7c9885 100%);
+            color: white;
+            margin-bottom: 2.5rem;
+            border-bottom: 3px solid rgba(255,255,255,0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            padding: 1.75rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tool-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(91, 124, 153, 0.1);
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, rgba(91, 124, 153, 0.08) 0%, rgba(124, 152, 133, 0.08) 100%);
+            border-radius: 10px;
+            font-weight: 600;
+            border: 1px solid rgba(91, 124, 153, 0.15);
+            color: var(--text);
+        }
+
+        .search-box {
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box input {
+            margin-bottom: 0;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            background: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .price-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            padding: 1.25rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1.25rem;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .state-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .price-info {
+            text-align: right;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .price-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .update-time {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .price-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .price-info {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚗 Fuel Prices India</h1>
+            <p class="subtitle">Live Petrol & Diesel rates across all states and UTs</p>
+            <p class="update-time">Updated: <span id="lastUpdate">Loading...</span></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- City Diesel Comparison -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-label">Bangalore Diesel</div>
+                <div class="stat-value" id="bangaloreDiesel">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Kochi Diesel</div>
+                <div class="stat-value" id="kochiDiesel">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Coimbatore Diesel</div>
+                <div class="stat-value" id="coimbatoreDiesel">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Goa Diesel</div>
+                <div class="stat-value" id="goaDiesel">--</div>
+            </div>
+        </div>
+
+        <!-- Road Tripper Tools -->
+        <div class="tools">
+            <div class="tool-card">
+                <div class="tool-title">🛣️ Route Fuel Calculator</div>
+                <input type="number" id="distance" placeholder="Distance (km)" min="0">
+                <input type="number" id="mileage" placeholder="Vehicle mileage (km/l)" min="0" step="0.1">
+                <select id="fuelType">
+                    <option value="petrol">Petrol</option>
+                    <option value="diesel">Diesel</option>
+                </select>
+                <select id="routeState">
+                    <option value="">Select State</option>
+                </select>
+                <button onclick="calculateFuelCost()">Calculate Cost</button>
+                <div id="fuelCostResult" class="result hidden"></div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-title">💰 Price Comparison</div>
+                <select id="compareState1">
+                    <option value="">Select State 1</option>
+                </select>
+                <select id="compareState2">
+                    <option value="">Select State 2</option>
+                </select>
+                <button onclick="comparePrices()">Compare</button>
+                <div id="compareResult" class="result hidden"></div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <h2 class="section-header">All States & UTs</h2>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search states or UTs..." onkeyup="filterStates()">
+        </div>
+
+        <!-- Prices Grid -->
+        <div class="price-grid" id="priceGrid">
+            <!-- Will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Data updated daily from official sources • Prices in ₹ per litre</p>
+        <p>Built for Indian road trippers 🇮🇳</p>
+    </footer>
+
+    <script>
+        let fuelData = [];
+
+        // Load fuel price data
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                fuelData = await response.json();
+                displayData();
+                calculateStats();
+                populateDropdowns();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('priceGrid').innerHTML = '<p style="text-align:center;padding:2rem;">Unable to load fuel prices. Please try again later.</p>';
+            }
+        }
+
+        function displayData() {
+            const grid = document.getElementById('priceGrid');
+            grid.innerHTML = fuelData.map(item => `
+                <div class="price-card">
+                    <div class="state-name">${item.state}</div>
+                    <div class="price-info">
+                        <div class="price-label">Petrol</div>
+                        <div class="price-value">₹${item.petrol}</div>
+                    </div>
+                    <div class="price-info">
+                        <div class="price-label">Diesel</div>
+                        <div class="price-value">₹${item.diesel}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            if (fuelData.length > 0 && fuelData[0].updated) {
+                document.getElementById('lastUpdate').textContent = new Date(fuelData[0].updated).toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            }
+        }
+
+        function calculateStats() {
+            if (fuelData.length === 0) return;
+
+            // City to state mapping
+            const cities = {
+                'Bangalore': 'Karnataka',
+                'Kochi': 'Kerala',
+                'Coimbatore': 'Tamil Nadu',
+                'Goa': 'Goa'
+            };
+
+            // Get diesel prices for specific cities
+            const bangaloreData = fuelData.find(item => item.state === cities['Bangalore']);
+            const kochiData = fuelData.find(item => item.state === cities['Kochi']);
+            const coimbatoreData = fuelData.find(item => item.state === cities['Coimbatore']);
+            const goaData = fuelData.find(item => item.state === cities['Goa']);
+
+            // Update the display
+            if (bangaloreData) {
+                document.getElementById('bangaloreDiesel').textContent = '₹' + bangaloreData.diesel;
+            }
+            if (kochiData) {
+                document.getElementById('kochiDiesel').textContent = '₹' + kochiData.diesel;
+            }
+            if (coimbatoreData) {
+                document.getElementById('coimbatoreDiesel').textContent = '₹' + coimbatoreData.diesel;
+            }
+            if (goaData) {
+                document.getElementById('goaDiesel').textContent = '₹' + goaData.diesel;
+            }
+        }
+
+        function populateDropdowns() {
+            const options = fuelData.map(item => `<option value="${item.state}">${item.state}</option>`).join('');
+            document.getElementById('routeState').innerHTML += options;
+            document.getElementById('compareState1').innerHTML += options;
+            document.getElementById('compareState2').innerHTML += options;
+        }
+
+        function calculateFuelCost() {
+            const distance = parseFloat(document.getElementById('distance').value);
+            const mileage = parseFloat(document.getElementById('mileage').value);
+            const fuelType = document.getElementById('fuelType').value;
+            const state = document.getElementById('routeState').value;
+
+            if (!distance || !mileage || !state) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            const stateData = fuelData.find(item => item.state === state);
+            const fuelPrice = parseFloat(stateData[fuelType]);
+            const fuelNeeded = distance / mileage;
+            const totalCost = fuelNeeded * fuelPrice;
+
+            const resultDiv = document.getElementById('fuelCostResult');
+            resultDiv.innerHTML = `
+                <strong>Trip Cost: ₹${totalCost.toFixed(2)}</strong><br>
+                <small>Fuel needed: ${fuelNeeded.toFixed(2)}L @ ₹${fuelPrice}/L</small>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+
+        function comparePrices() {
+            const state1 = document.getElementById('compareState1').value;
+            const state2 = document.getElementById('compareState2').value;
+
+            if (!state1 || !state2) {
+                alert('Please select both states');
+                return;
+            }
+
+            const data1 = fuelData.find(item => item.state === state1);
+            const data2 = fuelData.find(item => item.state === state2);
+
+            const petrolDiff = (parseFloat(data1.petrol) - parseFloat(data2.petrol)).toFixed(2);
+            const dieselDiff = (parseFloat(data1.diesel) - parseFloat(data2.diesel)).toFixed(2);
+
+            const resultDiv = document.getElementById('compareResult');
+            resultDiv.innerHTML = `
+                <strong>Petrol:</strong> ${petrolDiff > 0 ? state2 : state1} is ₹${Math.abs(petrolDiff)} cheaper<br>
+                <strong>Diesel:</strong> ${dieselDiff > 0 ? state2 : state1} is ₹${Math.abs(dieselDiff)} cheaper
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+
+        function filterStates() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.price-card');
+
+            cards.forEach(card => {
+                const stateName = card.querySelector('.state-name').textContent.toLowerCase();
+                card.style.display = stateName.includes(searchTerm) ? 'grid' : 'none';
+            });
+        }
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
