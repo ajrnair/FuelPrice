@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive visualization of the Republic of India's complete government structure - Ministries, Departments, Bodies, Budget & more">
+    <title>Machinery of Government - India</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --primary: #5b7c99; --primary-dark: #4a6479; --accent: #7c9885;
+            --accent-warm: #b89968; --bg: #f5f5f0; --card-bg: #fafaf8;
+            --text: #2d3436; --text-light: #7c8288; --border: #e8e8e3;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.08);
+            --cabinet: #5b7c99; --mos: #7c9885; --statutory: #9b7cb8;
+            --autonomous: #b89968; --psu: #c97c6b; --constitutional: #6b9bc9;
+            --judiciary: #c9956b; --legislature: #6bc997;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a2e; --card-bg: #222240; --text: #e0e0e0;
+                --text-light: #a0a0b0; --border: #333355;
+                --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+                --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+                --shadow-lg: 0 10px 15px rgba(0,0,0,0.4);
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        header {
+            background: linear-gradient(135deg, #5b7c99 0%, #7c9885 100%);
+            color: white; padding: 2rem 1rem 1.5rem; text-align: center;
+            position: relative;
+        }
+        header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+        header p { opacity: 0.85; font-size: 0.95rem; }
+        .nav-link {
+            position: absolute; top: 1rem; left: 1rem; color: white;
+            text-decoration: none; font-size: 0.85rem; opacity: 0.8;
+            display: flex; align-items: center; gap: 0.3rem;
+        }
+        .nav-link:hover { opacity: 1; }
+        .last-updated {
+            position: absolute; top: 1rem; right: 1rem; font-size: 0.75rem; opacity: 0.7;
+        }
+        .leaders {
+            display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .leader-badge {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.15); border-radius: 20px;
+            padding: 0.3rem 0.8rem; font-size: 0.8rem;
+        }
+        .leader-badge .role { opacity: 0.7; }
+        .controls {
+            max-width: 1400px; margin: 0 auto; padding: 1rem;
+            position: sticky; top: 0; z-index: 100; background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+        .controls-row {
+            display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;
+            margin-bottom: 0.6rem;
+        }
+        .search-box {
+            flex: 1; min-width: 200px; padding: 0.6rem 1rem; border: 1px solid var(--border);
+            border-radius: 8px; font-size: 0.9rem; background: var(--card-bg);
+            color: var(--text); outline: none; transition: border-color 0.3s;
+        }
+        .search-box:focus { border-color: var(--primary); }
+        .view-toggle {
+            display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+        }
+        .view-btn {
+            padding: 0.5rem 1rem; border: none; background: var(--card-bg);
+            color: var(--text); cursor: pointer; font-size: 0.85rem;
+            transition: all 0.2s; border-right: 1px solid var(--border);
+        }
+        .view-btn:last-child { border-right: none; }
+        .view-btn.active { background: var(--primary); color: white; }
+        .view-btn:hover:not(.active) { background: var(--border); }
+        .sort-select {
+            padding: 0.5rem 0.8rem; border: 1px solid var(--border); border-radius: 8px;
+            background: var(--card-bg); color: var(--text); font-size: 0.85rem; cursor: pointer;
+        }
+        .filters {
+            display: flex; gap: 0.4rem; flex-wrap: wrap;
+        }
+        .filter-chip {
+            padding: 0.3rem 0.8rem; border-radius: 16px; border: 1px solid var(--border);
+            background: var(--card-bg); color: var(--text-light); font-size: 0.78rem;
+            cursor: pointer; transition: all 0.2s; white-space: nowrap;
+        }
+        .filter-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .filter-chip:hover:not(.active) { border-color: var(--primary); color: var(--text); }
+        .stats-bar {
+            display: flex; gap: 1.2rem; font-size: 0.78rem; color: var(--text-light);
+            margin-top: 0.5rem; flex-wrap: wrap;
+        }
+        .stat-item strong { color: var(--text); }
+        .container { max-width: 1400px; margin: 0 auto; padding: 1rem; }
+
+        /* Cards View */
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1rem;
+        }
+        .ministry-card {
+            background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);
+            padding: 1.2rem; cursor: pointer; transition: all 0.3s;
+            box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+        }
+        .ministry-card:hover {
+            transform: translateY(-2px); box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        .ministry-card .type-indicator {
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        }
+        .ministry-card .card-header {
+            display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.8rem;
+        }
+        .minister-avatar {
+            width: 42px; height: 42px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-weight: 600;
+            font-size: 0.85rem; color: white; flex-shrink: 0;
+        }
+        .card-title { font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
+        .card-minister { font-size: 0.8rem; color: var(--text-light); margin-top: 0.15rem; }
+        .card-meta {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 0.6rem; font-size: 0.8rem;
+        }
+        .budget-bar-container {
+            flex: 1; margin-right: 1rem;
+        }
+        .budget-label { color: var(--text-light); margin-bottom: 0.2rem; font-size: 0.75rem; }
+        .budget-bar {
+            height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;
+        }
+        .budget-bar-fill {
+            height: 100%; border-radius: 3px; transition: width 0.5s ease;
+        }
+        .dept-badge {
+            background: var(--border); padding: 0.2rem 0.6rem; border-radius: 10px;
+            font-size: 0.75rem; white-space: nowrap; color: var(--text-light);
+        }
+        .card-expanded {
+            margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);
+            display: none;
+        }
+        .card-expanded.show { display: block; }
+        .dept-list { list-style: none; padding: 0; }
+        .dept-list li {
+            padding: 0.3rem 0; font-size: 0.82rem; color: var(--text-light);
+            border-bottom: 1px solid var(--border);
+        }
+        .dept-list li:last-child { border-bottom: none; }
+
+        /* Tree View */
+        .tree-view { overflow-x: auto; padding: 1rem 0; }
+        .tree-node {
+            position: relative; padding-left: 1.5rem;
+        }
+        .tree-node::before {
+            content: ""; position: absolute; left: 0.5rem; top: 0;
+            bottom: 0; width: 1px; background: var(--border);
+        }
+        .tree-node:last-child::before { bottom: 50%; }
+        .tree-item {
+            display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0;
+            cursor: pointer; position: relative;
+        }
+        .tree-item::before {
+            content: ""; position: absolute; left: -1rem; top: 50%;
+            width: 1rem; height: 1px; background: var(--border);
+        }
+        .tree-label {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;
+            background: var(--card-bg); border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .tree-label:hover { border-color: var(--primary); background: white; }
+        .tree-toggle {
+            width: 18px; height: 18px; border-radius: 50%;
+            background: var(--border); display: flex; align-items: center;
+            justify-content: center; font-size: 0.7rem; flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .tree-toggle.expanded { transform: rotate(90deg); }
+        .tree-children { display: none; }
+        .tree-children.show { display: block; }
+        .tree-type-badge {
+            font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 8px;
+            color: white; font-weight: 500;
+        }
+        .tree-count {
+            font-size: 0.7rem; color: var(--text-light); margin-left: 0.3rem;
+        }
+
+        /* Budget Treemap */
+        .treemap-container { margin-top: 0.5rem; }
+        .treemap-header {
+            display: flex; justify-content: space-between; align-items: baseline;
+            margin-bottom: 1rem;
+        }
+        .treemap-total { font-size: 1.4rem; font-weight: 700; }
+        .treemap-subtitle { font-size: 0.85rem; color: var(--text-light); }
+        .treemap {
+            display: flex; flex-wrap: wrap; gap: 3px; border-radius: 12px;
+            overflow: hidden; background: var(--border); padding: 3px;
+            min-height: 500px;
+        }
+        .treemap-cell {
+            border-radius: 6px; padding: 0.6rem; cursor: pointer;
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: all 0.2s; position: relative; overflow: hidden;
+            min-height: 60px;
+        }
+        .treemap-cell:hover { opacity: 0.85; transform: scale(1.01); z-index: 2; }
+        .treemap-cell-name {
+            font-size: 0.75rem; font-weight: 600; color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3); line-height: 1.2;
+        }
+        .treemap-cell-value {
+            font-size: 0.7rem; color: rgba(255,255,255,0.85);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        .treemap-tooltip {
+            position: fixed; background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.8rem;
+            box-shadow: var(--shadow-lg); pointer-events: none; z-index: 1000;
+            display: none;
+        }
+
+        /* Detail Panel */
+        .detail-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.3);
+            z-index: 500; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        .detail-overlay.show { opacity: 1; pointer-events: all; }
+        .detail-panel {
+            position: fixed; top: 0; right: -480px; bottom: 0; width: 480px;
+            max-width: 90vw; background: var(--card-bg); z-index: 501;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15); transition: right 0.3s ease;
+            overflow-y: auto; padding: 1.5rem;
+        }
+        .detail-panel.show { right: 0; }
+        .detail-close {
+            position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px;
+            border-radius: 50%; border: 1px solid var(--border); background: var(--card-bg);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: var(--text-light); transition: all 0.2s;
+        }
+        .detail-close:hover { background: var(--border); color: var(--text); }
+        .breadcrumb {
+            display: flex; gap: 0.3rem; align-items: center; font-size: 0.78rem;
+            color: var(--text-light); margin-bottom: 1rem; flex-wrap: wrap;
+        }
+        .breadcrumb a { color: var(--primary); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb-sep { color: var(--border); }
+        .detail-type {
+            display: inline-block; padding: 0.2rem 0.6rem; border-radius: 10px;
+            font-size: 0.72rem; color: white; font-weight: 500; margin-bottom: 0.6rem;
+        }
+        .detail-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .detail-section { margin-top: 1.2rem; }
+        .detail-section h3 {
+            font-size: 0.85rem; color: var(--text-light); text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 0.5rem;
+        }
+        .detail-field {
+            display: flex; justify-content: space-between; padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border); font-size: 0.85rem;
+        }
+        .detail-field-label { color: var(--text-light); }
+        .detail-field-value { font-weight: 500; text-align: right; }
+        .detail-list { list-style: none; padding: 0; }
+        .detail-list li {
+            padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.85rem;
+            margin-bottom: 0.3rem; background: var(--bg); cursor: pointer;
+            transition: background 0.2s;
+        }
+        .detail-list li:hover { background: var(--border); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.3rem; }
+            .leaders { gap: 0.8rem; }
+            .leader-badge { font-size: 0.72rem; padding: 0.2rem 0.5rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .controls-row { flex-direction: column; }
+            .search-box { min-width: 100%; }
+            .detail-panel { width: 100%; max-width: 100%; right: -100%; }
+            .treemap { min-height: 400px; }
+        }
+
+        @media print {
+            .controls, .detail-overlay, .detail-panel { display: none !important; }
+            .ministry-card { break-inside: avoid; }
+        }
+
+        .fade-in { animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .hidden { display: none !important; }
+        .no-results {
+            text-align: center; padding: 3rem; color: var(--text-light);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="nav-link">&#8592; Fuel Prices</a>
+        <span class="last-updated" id="lastUpdated"></span>
+        <h1>Machinery of Government &mdash; India</h1>
+        <p>Interactive visualization of the Republic of India&rsquo;s government structure</p>
+        <div class="leaders" id="leaders"></div>
+    </header>
+
+    <div class="controls">
+        <div class="controls-row">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search ministries, bodies, PSUs, ministers...">
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="cards">Cards</button>
+                <button class="view-btn" data-view="tree">Tree</button>
+                <button class="view-btn" data-view="budget">Budget</button>
+            </div>
+            <select class="sort-select" id="sortSelect">
+                <option value="name">Sort: Name</option>
+                <option value="budget-desc">Sort: Budget (High)</option>
+                <option value="budget-asc">Sort: Budget (Low)</option>
+                <option value="depts">Sort: Departments</option>
+            </select>
+        </div>
+        <div class="filters" id="filters"></div>
+        <div class="stats-bar" id="statsBar"></div>
+    </div>
+
+    <div class="container">
+        <div id="cardsView" class="view-content"></div>
+        <div id="treeView" class="view-content hidden"></div>
+        <div id="budgetView" class="view-content hidden"></div>
+    </div>
+
+    <div class="detail-overlay" id="detailOverlay"></div>
+    <div class="detail-panel" id="detailPanel">
+        <button class="detail-close" id="detailClose">&times;</button>
+        <div id="detailContent"></div>
+    </div>
+
+    <div class="treemap-tooltip" id="treemapTooltip"></div>
+    <script>
+    (function() {
+        let GOV = null;
+        let currentView = 'cards';
+        let currentFilter = 'all';
+        let searchTerm = '';
+        let sortBy = 'name';
+
+        const COLORS = {
+            cabinet: '#5b7c99', mos_independent: '#7c9885', mos: '#6b9c7c',
+            statutory: '#9b7cb8', autonomous: '#b89968', psu: '#c97c6b',
+            constitutional: '#6b9bc9', judiciary: '#c9956b', legislature: '#6bc997',
+            Maharatna: '#c0392b', Navratna: '#e67e22', 'Miniratna-I': '#27ae60',
+            'Maharatna-equivalent': '#8e44ad', 'Public Sector': '#7f8c8d'
+        };
+
+        const FILTER_CONFIG = [
+            {id:'all', label:'All'},
+            {id:'ministries', label:'Ministries'},
+            {id:'departments', label:'Departments'},
+            {id:'constitutional', label:'Constitutional'},
+            {id:'statutory', label:'Statutory'},
+            {id:'autonomous', label:'Autonomous'},
+            {id:'psus', label:'PSUs'},
+            {id:'legislature', label:'Legislature'},
+            {id:'judiciary', label:'Judiciary'}
+        ];
+
+        async function init() {
+            try {
+                const resp = await fetch('government-data.json');
+                GOV = await resp.json();
+                renderLeaders();
+                renderFilters();
+                renderStats();
+                parseHash();
+                bindEvents();
+                document.getElementById('lastUpdated').textContent = 'Updated: ' + GOV.metadata.lastUpdated;
+            } catch(e) {
+                document.querySelector('.container').innerHTML = '<div class="no-results">Failed to load data: ' + e.message + '</div>';
+            }
+        }
+
+        function renderLeaders() {
+            const el = document.getElementById('leaders');
+            const e = GOV.executive;
+            el.innerHTML = `
+                <div class="leader-badge"><span class="role">President</span> ${e.president.name}</div>
+                <div class="leader-badge"><span class="role">PM</span> ${e.primeMinister.name}</div>
+                <div class="leader-badge"><span class="role">VP</span> ${e.vicePresident.name}</div>
+            `;
+        }
+
+        function renderFilters() {
+            const el = document.getElementById('filters');
+            el.innerHTML = FILTER_CONFIG.map(f =>
+                `<button class="filter-chip ${f.id === 'all' ? 'active' : ''}" data-filter="${f.id}">${f.label}</button>`
+            ).join('');
+        }
+
+        function renderStats() {
+            const el = document.getElementById('statsBar');
+            const totalDepts = GOV.ministries.reduce((s, m) => s + m.departments.length, 0);
+            el.innerHTML = `
+                <span class="stat-item"><strong>${GOV.ministries.length}</strong> Ministries</span>
+                <span class="stat-item"><strong>${totalDepts}</strong> Departments</span>
+                <span class="stat-item"><strong>${GOV.constitutionalBodies.length}</strong> Constitutional Bodies</span>
+                <span class="stat-item"><strong>${GOV.statutoryBodies.length}</strong> Statutory Bodies</span>
+                <span class="stat-item"><strong>${GOV.autonomousBodies.length}</strong> Autonomous Bodies</span>
+                <span class="stat-item"><strong>${GOV.publicSectorUnits.length}</strong> PSUs</span>
+            `;
+        }
+
+        function bindEvents() {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', () => switchView(btn.dataset.view));
+            });
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    currentFilter = chip.dataset.filter;
+                    renderCurrentView();
+                    updateHash();
+                });
+            });
+            document.getElementById('searchBox').addEventListener('input', e => {
+                searchTerm = e.target.value.toLowerCase();
+                renderCurrentView();
+            });
+            document.getElementById('sortSelect').addEventListener('change', e => {
+                sortBy = e.target.value;
+                renderCurrentView();
+            });
+            document.getElementById('detailOverlay').addEventListener('click', closeDetail);
+            document.getElementById('detailClose').addEventListener('click', closeDetail);
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeDetail();
+            });
+        }
+
+        function switchView(view) {
+            currentView = view;
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+            document.querySelectorAll('.view-content').forEach(v => v.classList.add('hidden'));
+            document.getElementById(view + 'View').classList.remove('hidden');
+            document.getElementById('sortSelect').classList.toggle('hidden', view !== 'cards');
+            renderCurrentView();
+            updateHash();
+        }
+
+        function renderCurrentView() {
+            if (currentView === 'cards') renderCards();
+            else if (currentView === 'tree') renderTree();
+            else if (currentView === 'budget') renderBudget();
+        }
+
+        function getInitials(name) {
+            return name.split(' ').map(w => w[0]).filter(Boolean).slice(0, 2).join('').toUpperCase();
+        }
+
+        function formatBudget(crore) {
+            if (crore >= 100000) return '₹' + (crore / 100000).toFixed(1) + 'L Cr';
+            if (crore >= 1000) return '₹' + (crore / 1000).toFixed(1) + 'K Cr';
+            return '₹' + crore + ' Cr';
+        }
+
+        function matchesSearch(item) {
+            if (!searchTerm) return true;
+            const fields = [item.name, item.minister, item.id, ...(item.departments || [])].filter(Boolean);
+            return fields.some(f => f.toLowerCase().includes(searchTerm));
+        }
+
+        function getAllItems() {
+            let items = [];
+            if (currentFilter === 'all' || currentFilter === 'ministries') {
+                items.push(...GOV.ministries.map(m => ({...m, entityType: 'ministry'})));
+            }
+            if (currentFilter === 'all' || currentFilter === 'constitutional') {
+                items.push(...GOV.constitutionalBodies.map(b => ({...b, entityType: 'constitutional'})));
+            }
+            if (currentFilter === 'all' || currentFilter === 'statutory') {
+                items.push(...GOV.statutoryBodies.map(b => ({...b, entityType: 'statutory'})));
+            }
+            if (currentFilter === 'all' || currentFilter === 'autonomous') {
+                items.push(...GOV.autonomousBodies.map(b => ({...b, entityType: 'autonomous'})));
+            }
+            if (currentFilter === 'all' || currentFilter === 'psus') {
+                items.push(...GOV.publicSectorUnits.map(p => ({...p, entityType: 'psu'})));
+            }
+            return items.filter(matchesSearch);
+        }
+
+        function sortItems(items) {
+            const sorted = [...items];
+            switch(sortBy) {
+                case 'name': sorted.sort((a,b) => a.name.localeCompare(b.name)); break;
+                case 'budget-desc': sorted.sort((a,b) => (b.budget||0) - (a.budget||0)); break;
+                case 'budget-asc': sorted.sort((a,b) => (a.budget||0) - (b.budget||0)); break;
+                case 'depts': sorted.sort((a,b) => (b.departments||[]).length - (a.departments||[]).length); break;
+            }
+            return sorted;
+        }
+
+        // CARDS VIEW
+        function renderCards() {
+            const container = document.getElementById('cardsView');
+            let items = sortItems(getAllItems());
+
+            if (!items.length) {
+                container.innerHTML = '<div class="no-results">No results found</div>';
+                return;
+            }
+
+            const frag = document.createDocumentFragment();
+            const grid = document.createElement('div');
+            grid.className = 'cards-grid fade-in';
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'ministry-card';
+
+                const color = COLORS[item.type] || COLORS[item.entityType] || COLORS[item.category] || '#888';
+                const initials = getInitials(item.minister || item.head || item.name);
+                const budgetHtml = item.budget ? `
+                    <div class="budget-bar-container">
+                        <div class="budget-label">${formatBudget(item.budget)}</div>
+                        <div class="budget-bar">
+                            <div class="budget-bar-fill" style="width:${Math.min(100, (item.budget/621940)*100)}%;background:${color}"></div>
+                        </div>
+                    </div>` : '';
+                const deptCount = item.departments ? item.departments.length : 0;
+                const deptBadge = deptCount ? `<span class="dept-badge">${deptCount} dept${deptCount>1?'s':''}</span>` : '';
+                const subtitle = item.minister ? item.minister : (item.head || item.category || item.mandate || '');
+                const typeLabel = item.entityType === 'ministry' ? (item.type === 'mos_independent' ? 'MoS (I/C)' : 'Cabinet') :
+                    item.entityType.charAt(0).toUpperCase() + item.entityType.slice(1);
+
+                card.innerHTML = `
+                    <div class="type-indicator" style="background:${color}"></div>
+                    <div class="card-header">
+                        <div class="minister-avatar" style="background:${color}">${initials}</div>
+                        <div>
+                            <div class="card-title">${item.name}</div>
+                            <div class="card-minister">${subtitle} &middot; <span style="color:${color}">${typeLabel}</span></div>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        ${budgetHtml}
+                        ${deptBadge}
+                    </div>
+                    <div class="card-expanded" id="expanded-${item.id}">
+                        ${item.departments ? '<h4 style="font-size:0.8rem;margin-bottom:0.4rem;color:var(--text-light)">Departments</h4><ul class="dept-list">' +
+                            item.departments.map(d => `<li>${d}</li>`).join('') + '</ul>' : ''}
+                        ${item.act ? `<div style="font-size:0.78rem;color:var(--text-light);margin-top:0.5rem">Established under: ${item.act}</div>` : ''}
+                        ${item.est ? `<div style="font-size:0.78rem;color:var(--text-light)">Est. ${item.est}</div>` : ''}
+                        ${item.revenue ? `<div style="font-size:0.78rem;color:var(--text-light)">Revenue: ${item.revenue}</div>` : ''}
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    const exp = card.querySelector('.card-expanded');
+                    exp.classList.toggle('show');
+                });
+                card.addEventListener('dblclick', () => openDetail(item));
+                grid.appendChild(card);
+            });
+
+            frag.appendChild(grid);
+            container.innerHTML = '';
+            container.appendChild(frag);
+        }
+
+        // TREE VIEW
+        function renderTree() {
+            const container = document.getElementById('treeView');
+            const html = `<div class="tree-view fade-in">
+                <div style="padding-left:0">
+                    ${treeNode('Republic of India', 'constitutional', true, [
+                        treeNode('Executive', 'cabinet', true, [
+                            treeNode(GOV.executive.president.name + ' (President)', 'constitutional', false),
+                            treeNode(GOV.executive.primeMinister.name + ' (Prime Minister)', 'cabinet', true,
+                                GOV.ministries.filter(m => matchesSearch(m)).map(m =>
+                                    treeNode(m.name, m.type === 'mos_independent' ? 'mos' : 'cabinet', false,
+                                        m.departments.map(d => treeNode(d, 'autonomous', false)),
+                                        m.minister, m.departments.length + ' depts'
+                                    )
+                                ),
+                                '', GOV.ministries.length + ' ministries'
+                            ),
+                            treeNode('Constitutional Bodies', 'constitutional', false,
+                                GOV.constitutionalBodies.filter(matchesSearch).map(b =>
+                                    treeNode(b.name, 'constitutional', false, [], b.head)
+                                ),
+                                '', GOV.constitutionalBodies.length + ' bodies'
+                            )
+                        ]),
+                        treeNode('Legislature', 'legislature', true, [
+                            treeNode('Parliament of India', 'legislature', true, [
+                                treeNode('Lok Sabha (543 seats)', 'legislature', false, [], 'Speaker: ' + GOV.legislature.parliament.houses[0].speaker),
+                                treeNode('Rajya Sabha (245 seats)', 'legislature', false, [], 'Chairman: ' + GOV.legislature.parliament.houses[1].chairman)
+                            ])
+                        ]),
+                        treeNode('Judiciary', 'judiciary', true, [
+                            treeNode('Supreme Court of India', 'judiciary', true, [
+                                treeNode('CJI: ' + GOV.judiciary.supremeCourt.chiefJustice, 'judiciary', false),
+                                treeNode(GOV.judiciary.highCourts.length + ' High Courts', 'judiciary', false,
+                                    GOV.judiciary.highCourts.map(hc =>
+                                        treeNode(hc.name, 'judiciary', false, [], hc.jurisdiction)
+                                    ),
+                                    '', GOV.judiciary.highCourts.length + ' courts'
+                                ),
+                                treeNode('Tribunals', 'judiciary', false,
+                                    GOV.judiciary.tribunals.map(t =>
+                                        treeNode(t.name, 'judiciary', false, [], t.purpose)
+                                    ),
+                                    '', GOV.judiciary.tribunals.length + ' tribunals'
+                                )
+                            ])
+                        ]),
+                        treeNode('Statutory Bodies', 'statutory', false,
+                            GOV.statutoryBodies.filter(matchesSearch).map(b =>
+                                treeNode(b.name, 'statutory', false, [], b.mandate)
+                            ),
+                            '', GOV.statutoryBodies.length + ' bodies'
+                        ),
+                        treeNode('PSUs', 'psu', false,
+                            ['Maharatna','Navratna','Miniratna-I','Maharatna-equivalent','Public Sector'].map(cat => {
+                                const catPsus = GOV.publicSectorUnits.filter(p => p.category === cat && matchesSearch(p));
+                                return catPsus.length ? treeNode(cat + ' (' + catPsus.length + ')', 'psu', false,
+                                    catPsus.map(p => treeNode(p.name, 'psu', false, [], p.sector))
+                                ) : '';
+                            }).filter(Boolean),
+                            '', GOV.publicSectorUnits.length + ' units'
+                        )
+                    ])}
+                </div>
+            </div>`;
+            container.innerHTML = html;
+            container.querySelectorAll('.tree-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const toggle = item.querySelector('.tree-toggle');
+                    const children = item.parentElement.querySelector(':scope > .tree-children');
+                    if (toggle && children) {
+                        toggle.classList.toggle('expanded');
+                        children.classList.toggle('show');
+                    }
+                });
+            });
+            // Auto-expand first two levels
+            container.querySelectorAll('.tree-toggle.auto-expand').forEach(t => {
+                t.classList.add('expanded');
+                const children = t.closest('.tree-item').parentElement.querySelector(':scope > .tree-children');
+                if (children) children.classList.add('show');
+            });
+        }
+
+        function treeNode(label, type, autoExpand, children, subtitle, count) {
+            const hasChildren = children && children.length > 0;
+            const color = COLORS[type] || '#888';
+            return `<div class="tree-node">
+                <div class="tree-item">
+                    ${hasChildren ? `<span class="tree-toggle ${autoExpand?'auto-expand':''}">&#9654;</span>` : '<span style="width:18px;display:inline-block"></span>'}
+                    <span class="tree-label">
+                        <span class="tree-type-badge" style="background:${color}">${type.charAt(0).toUpperCase()}</span>
+                        ${label}
+                        ${count ? `<span class="tree-count">(${count})</span>` : ''}
+                    </span>
+                </div>
+                ${subtitle ? `<div style="margin-left:2.5rem;font-size:0.75rem;color:var(--text-light)">${subtitle}</div>` : ''}
+                ${hasChildren ? `<div class="tree-children">${children.join('')}</div>` : ''}
+            </div>`;
+        }
+
+        // BUDGET TREEMAP
+        function renderBudget() {
+            const container = document.getElementById('budgetView');
+            const ministries = GOV.ministries.filter(m => m.budget > 0).sort((a,b) => b.budget - a.budget);
+            const totalBudget = ministries.reduce((s,m) => s + m.budget, 0);
+
+            const treemapColors = [
+                '#2c3e50','#c0392b','#e74c3c','#9b59b6','#8e44ad','#2980b9',
+                '#3498db','#1abc9c','#16a085','#27ae60','#2ecc71','#f39c12',
+                '#e67e22','#d35400','#e74c3c','#95a5a6','#7f8c8d','#34495e'
+            ];
+
+            // Calculate layout
+            const items = ministries.map((m,i) => ({
+                ...m, pct: (m.budget / totalBudget * 100),
+                color: treemapColors[i % treemapColors.length]
+            }));
+
+            let cellsHtml = items.map(item => {
+                const area = Math.max(item.pct, 1.5);
+                const showLabel = item.pct > 2;
+                return `<div class="treemap-cell" data-id="${item.id}"
+                    style="flex-basis:${area}%;flex-grow:${area};background:${item.color};min-width:${Math.max(50, area*3)}px"
+                    data-name="${item.name}" data-budget="${item.budget}" data-pct="${item.pct.toFixed(1)}">
+                    ${showLabel ? `<div class="treemap-cell-name">${item.name.replace('Ministry of ','')}</div>
+                    <div class="treemap-cell-value">${formatBudget(item.budget)} (${item.pct.toFixed(1)}%)</div>` : ''}
+                </div>`;
+            }).join('');
+
+            container.innerHTML = `<div class="treemap-container fade-in">
+                <div class="treemap-header">
+                    <div>
+                        <div class="treemap-total">Union Budget ${GOV.budget.year}</div>
+                        <div class="treemap-subtitle">Total Expenditure: ₹${(GOV.budget.totalExpenditure/100000).toFixed(1)} Lakh Crore</div>
+                    </div>
+                </div>
+                <div class="treemap">${cellsHtml}</div>
+            </div>`;
+
+            // Tooltip
+            const tooltip = document.getElementById('treemapTooltip');
+            container.querySelectorAll('.treemap-cell').forEach(cell => {
+                cell.addEventListener('mouseenter', e => {
+                    tooltip.style.display = 'block';
+                    tooltip.innerHTML = `<strong>${cell.dataset.name}</strong><br>${formatBudget(parseInt(cell.dataset.budget))} (${cell.dataset.pct}% of total)`;
+                });
+                cell.addEventListener('mousemove', e => {
+                    tooltip.style.left = (e.clientX + 12) + 'px';
+                    tooltip.style.top = (e.clientY + 12) + 'px';
+                });
+                cell.addEventListener('mouseleave', () => {
+                    tooltip.style.display = 'none';
+                });
+                cell.addEventListener('click', () => {
+                    const m = GOV.ministries.find(m => m.id === cell.dataset.id);
+                    if (m) openDetail({...m, entityType: 'ministry'});
+                });
+            });
+        }
+
+        // DETAIL PANEL
+        function openDetail(item) {
+            const panel = document.getElementById('detailPanel');
+            const overlay = document.getElementById('detailOverlay');
+            const content = document.getElementById('detailContent');
+            const color = COLORS[item.type] || COLORS[item.entityType] || COLORS[item.category] || '#888';
+            const typeLabel = item.entityType || item.type || item.category || 'Entity';
+
+            let html = `
+                <div class="breadcrumb">
+                    <a href="#" onclick="return false">India</a>
+                    <span class="breadcrumb-sep">›</span>
+                    <span>${item.name}</span>
+                </div>
+                <span class="detail-type" style="background:${color}">${typeLabel}</span>
+                <div class="detail-title">${item.name}</div>
+            `;
+
+            // Fields
+            const fields = [];
+            if (item.minister) fields.push(['Minister', item.minister]);
+            if (item.head) fields.push(['Head', item.head]);
+            if (item.budget) fields.push(['Budget 2025-26', formatBudget(item.budget)]);
+            if (item.est) fields.push(['Established', item.est]);
+            if (item.act) fields.push(['Governing Act', item.act]);
+            if (item.mandate) fields.push(['Mandate', item.mandate]);
+            if (item.category) fields.push(['Category', item.category]);
+            if (item.sector) fields.push(['Sector', item.sector]);
+            if (item.revenue) fields.push(['Revenue', item.revenue]);
+            if (item.location) fields.push(['Location', item.location]);
+            if (item.jurisdiction) fields.push(['Jurisdiction', item.jurisdiction]);
+            if (item.article) fields.push(['Constitutional Provision', item.article]);
+
+            if (fields.length) {
+                html += '<div class="detail-section"><h3>Details</h3>';
+                fields.forEach(([k,v]) => {
+                    html += `<div class="detail-field"><span class="detail-field-label">${k}</span><span class="detail-field-value">${v}</span></div>`;
+                });
+                html += '</div>';
+            }
+
+            if (item.departments && item.departments.length) {
+                html += `<div class="detail-section"><h3>Departments (${item.departments.length})</h3><ul class="detail-list">`;
+                item.departments.forEach(d => { html += `<li>${d}</li>`; });
+                html += '</ul></div>';
+            }
+
+            // Related bodies
+            if (item.entityType === 'ministry' && item.id) {
+                const related = [
+                    ...GOV.statutoryBodies.filter(b => b.ministry === item.id),
+                    ...GOV.autonomousBodies.filter(b => b.ministry === item.id),
+                    ...GOV.publicSectorUnits.filter(p => p.ministry === item.id)
+                ];
+                if (related.length) {
+                    html += `<div class="detail-section"><h3>Related Bodies & PSUs (${related.length})</h3><ul class="detail-list">`;
+                    related.forEach(r => {
+                        const rType = GOV.statutoryBodies.includes(r) ? 'Statutory' :
+                            GOV.autonomousBodies.includes(r) ? 'Autonomous' : 'PSU';
+                        html += `<li>${r.name} <span style="font-size:0.7rem;color:var(--text-light)">${rType}</span></li>`;
+                    });
+                    html += '</ul></div>';
+                }
+            }
+
+            content.innerHTML = html;
+            panel.classList.add('show');
+            overlay.classList.add('show');
+        }
+
+        function closeDetail() {
+            document.getElementById('detailPanel').classList.remove('show');
+            document.getElementById('detailOverlay').classList.remove('show');
+        }
+
+        // HASH ROUTING
+        function updateHash() {
+            const parts = ['view=' + currentView];
+            if (currentFilter !== 'all') parts.push('filter=' + currentFilter);
+            window.location.hash = parts.join('&');
+        }
+
+        function parseHash() {
+            const hash = window.location.hash.slice(1);
+            const params = {};
+            hash.split('&').forEach(p => {
+                const [k,v] = p.split('=');
+                if (k && v) params[k] = v;
+            });
+            if (params.view) switchView(params.view);
+            else renderCurrentView();
+            if (params.filter) {
+                currentFilter = params.filter;
+                document.querySelectorAll('.filter-chip').forEach(c =>
+                    c.classList.toggle('active', c.dataset.filter === params.filter));
+                renderCurrentView();
+            }
+        }
+
+        window.addEventListener('hashchange', parseHash);
+        document.addEventListener('DOMContentLoaded', init);
+    })();
+    </script>
+</body>
+</html>
