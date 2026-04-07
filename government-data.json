@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "Machinery of Government - India",
-    "lastUpdated": "2025-04-01",
-    "version": "2.0",
+    "lastUpdated": "2026-04-07",
+    "version": "2.1",
     "description": "Interactive network graph of India's government structure",
     "sources": [
       "india.gov.in",
@@ -46,6 +46,10 @@
         },
         "Chairman RS": {
           "color": "#4a6741",
+          "ring": 1
+        },
+        "MoS": {
+          "color": "#e67e22",
           "ring": 1
         }
       }
@@ -157,9 +161,9 @@
       "category": "OFFICIALS",
       "subtype": "Vice President",
       "ring": 1,
-      "holder": "Jagdeep Dhankhar",
-      "since": "2022",
-      "description": "Ex-officio Chairman of Rajya Sabha"
+      "holder": "Vacant",
+      "since": "2024",
+      "description": "Ex-officio Chairman of Rajya Sabha. Post vacant since Aug 2024 (Jagdeep Dhankhar resigned)."
     },
     {
       "id": "min-shivraj-singh-chouhan",
@@ -483,7 +487,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 122528,
-      "groupColor": "#e6194b"
+      "groupColor": "#e6194b",
+      "budgetDetail": {
+        "revenue": 100473,
+        "capital": 22055,
+        "sector": "Agriculture & Rural",
+        "pctOfTotal": 4.45
+      }
     },
     {
       "id": "dept-department-of-agriculture-farmers-welfare",
@@ -519,7 +529,13 @@
       "subtype": "Ministry (MoS I/C)",
       "ring": 2,
       "budget": 3712,
-      "groupColor": "#3cb44b"
+      "groupColor": "#3cb44b",
+      "budgetDetail": {
+        "revenue": 3267,
+        "capital": 445,
+        "sector": "Health & Social Welfare",
+        "pctOfTotal": 0.13
+      }
     },
     {
       "id": "ministry-chemicals",
@@ -528,7 +544,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 178351,
-      "groupColor": "#4363d8"
+      "groupColor": "#4363d8",
+      "budgetDetail": {
+        "revenue": 107011,
+        "capital": 71340,
+        "sector": "Industry & Manufacturing",
+        "pctOfTotal": 6.48
+      }
     },
     {
       "id": "dept-department-of-chemicals-petrochemicals",
@@ -564,7 +586,13 @@
       "subtype": "Ministry (MoS I/C)",
       "ring": 2,
       "budget": 2666,
-      "groupColor": "#f58231"
+      "groupColor": "#f58231",
+      "budgetDetail": {
+        "revenue": 933,
+        "capital": 1733,
+        "sector": "Infrastructure & Transport",
+        "pctOfTotal": 0.1
+      }
     },
     {
       "id": "ministry-coal",
@@ -573,7 +601,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 821,
-      "groupColor": "#911eb4"
+      "groupColor": "#911eb4",
+      "budgetDetail": {
+        "revenue": 369,
+        "capital": 452,
+        "sector": "Energy & Resources",
+        "pctOfTotal": 0.03
+      }
     },
     {
       "id": "ministry-commerce",
@@ -582,7 +616,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 12456,
-      "groupColor": "#42d4f4"
+      "groupColor": "#42d4f4",
+      "budgetDetail": {
+        "revenue": 11210,
+        "capital": 1246,
+        "sector": "Finance & Economic",
+        "pctOfTotal": 0.45
+      }
     },
     {
       "id": "dept-department-of-commerce",
@@ -609,7 +649,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 12000,
-      "groupColor": "#f032e6"
+      "groupColor": "#f032e6",
+      "budgetDetail": {
+        "revenue": 4200,
+        "capital": 7800,
+        "sector": "Infrastructure & Transport",
+        "pctOfTotal": 0.44
+      }
     },
     {
       "id": "dept-department-of-telecommunications",
@@ -636,7 +682,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 217684,
-      "groupColor": "#bfef45"
+      "groupColor": "#bfef45",
+      "budgetDetail": {
+        "revenue": 178501,
+        "capital": 39183,
+        "sector": "Agriculture & Rural",
+        "pctOfTotal": 7.91
+      }
     },
     {
       "id": "dept-department-of-consumer-affairs",
@@ -663,7 +715,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 1308,
-      "groupColor": "#fabed4"
+      "groupColor": "#fabed4",
+      "budgetDetail": {
+        "revenue": 1073,
+        "capital": 235,
+        "sector": "Agriculture & Rural",
+        "pctOfTotal": 0.05
+      }
     },
     {
       "id": "ministry-corporate-affairs",
@@ -672,7 +730,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 898,
-      "groupColor": "#469990"
+      "groupColor": "#469990",
+      "budgetDetail": {
+        "revenue": 808,
+        "capital": 90,
+        "sector": "Finance & Economic",
+        "pctOfTotal": 0.03
+      }
     },
     {
       "id": "ministry-culture",
@@ -681,7 +745,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 3680,
-      "groupColor": "#dcbeff"
+      "groupColor": "#dcbeff",
+      "budgetDetail": {
+        "revenue": 3128,
+        "capital": 552,
+        "sector": "Environment & Culture",
+        "pctOfTotal": 0.13
+      }
     },
     {
       "id": "ministry-defence",
@@ -690,7 +760,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 621940,
-      "groupColor": "#9A6324"
+      "groupColor": "#9A6324",
+      "budgetDetail": {
+        "revenue": 422919,
+        "capital": 199021,
+        "sector": "Defence & Security",
+        "pctOfTotal": 22.59
+      }
     },
     {
       "id": "dept-department-of-defence",
@@ -744,7 +820,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 5892,
-      "groupColor": "#fffac8"
+      "groupColor": "#fffac8",
+      "budgetDetail": {
+        "revenue": 5421,
+        "capital": 471,
+        "sector": "Governance & Administration",
+        "pctOfTotal": 0.21
+      }
     },
     {
       "id": "ministry-earth-sciences",
@@ -753,7 +835,13 @@
       "subtype": "Ministry (MoS I/C)",
       "ring": 2,
       "budget": 3410,
-      "groupColor": "#800000"
+      "groupColor": "#800000",
+      "budgetDetail": {
+        "revenue": 2898,
+        "capital": 512,
+        "sector": "Education & Research",
+        "pctOfTotal": 0.12
+      }
     },
     {
       "id": "ministry-education",
@@ -762,7 +850,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 120628,
-      "groupColor": "#aaffc3"
+      "groupColor": "#aaffc3",
+      "budgetDetail": {
+        "revenue": 102534,
+        "capital": 18094,
+        "sector": "Education & Research",
+        "pctOfTotal": 4.38
+      }
     },
     {
       "id": "dept-department-of-school-education-literacy",
@@ -789,7 +883,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 21936,
-      "groupColor": "#808000"
+      "groupColor": "#808000",
+      "budgetDetail": {
+        "revenue": 18646,
+        "capital": 3290,
+        "sector": "Education & Research",
+        "pctOfTotal": 0.8
+      }
     },
     {
       "id": "ministry-environment",
@@ -798,7 +898,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 3418,
-      "groupColor": "#ffd8b1"
+      "groupColor": "#ffd8b1",
+      "budgetDetail": {
+        "revenue": 2905,
+        "capital": 513,
+        "sector": "Environment & Culture",
+        "pctOfTotal": 0.12
+      }
     },
     {
       "id": "ministry-external-affairs",
@@ -807,7 +913,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 22154,
-      "groupColor": "#000075"
+      "groupColor": "#000075",
+      "budgetDetail": {
+        "revenue": 20382,
+        "capital": 1772,
+        "sector": "Governance & Administration",
+        "pctOfTotal": 0.8
+      }
     },
     {
       "id": "ministry-finance",
@@ -816,7 +928,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 47820,
-      "groupColor": "#a9a9a9"
+      "groupColor": "#a9a9a9",
+      "budgetDetail": {
+        "revenue": 43038,
+        "capital": 4782,
+        "sector": "Finance & Economic",
+        "pctOfTotal": 1.74
+      }
     },
     {
       "id": "dept-department-of-economic-affairs",
@@ -870,7 +988,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 2702,
-      "groupColor": "#e6beff"
+      "groupColor": "#e6beff",
+      "budgetDetail": {
+        "revenue": 2216,
+        "capital": 486,
+        "sector": "Agriculture & Rural",
+        "pctOfTotal": 0.1
+      }
     },
     {
       "id": "dept-department-of-fisheries",
@@ -888,7 +1012,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 3974,
-      "groupColor": "#1abc9c"
+      "groupColor": "#1abc9c",
+      "budgetDetail": {
+        "revenue": 3259,
+        "capital": 715,
+        "sector": "Agriculture & Rural",
+        "pctOfTotal": 0.14
+      }
     },
     {
       "id": "ministry-health",
@@ -897,7 +1027,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 99858,
-      "groupColor": "#e74c3c"
+      "groupColor": "#e74c3c",
+      "budgetDetail": {
+        "revenue": 87875,
+        "capital": 11983,
+        "sector": "Health & Social Welfare",
+        "pctOfTotal": 3.63
+      }
     },
     {
       "id": "dept-department-of-health-family-welfare",
@@ -924,7 +1060,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 4788,
-      "groupColor": "#3498db"
+      "groupColor": "#3498db",
+      "budgetDetail": {
+        "revenue": 2873,
+        "capital": 1915,
+        "sector": "Industry & Manufacturing",
+        "pctOfTotal": 0.17
+      }
     },
     {
       "id": "ministry-home-affairs",
@@ -933,7 +1075,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 219643,
-      "groupColor": "#9b59b6"
+      "groupColor": "#9b59b6",
+      "budgetDetail": {
+        "revenue": 149357,
+        "capital": 70286,
+        "sector": "Defence & Security",
+        "pctOfTotal": 7.98
+      }
     },
     {
       "id": "dept-department-of-internal-security",
@@ -996,7 +1144,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 86735,
-      "groupColor": "#f39c12"
+      "groupColor": "#f39c12",
+      "budgetDetail": {
+        "revenue": 30357,
+        "capital": 56378,
+        "sector": "Infrastructure & Transport",
+        "pctOfTotal": 3.15
+      }
     },
     {
       "id": "ministry-information-broadcasting",
@@ -1005,7 +1159,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 4550,
-      "groupColor": "#2ecc71"
+      "groupColor": "#2ecc71",
+      "budgetDetail": {
+        "revenue": 4186,
+        "capital": 364,
+        "sector": "Governance & Administration",
+        "pctOfTotal": 0.17
+      }
     },
     {
       "id": "ministry-jal-shakti",
@@ -1014,7 +1174,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 28862,
-      "groupColor": "#e67e22"
+      "groupColor": "#e67e22",
+      "budgetDetail": {
+        "revenue": 23667,
+        "capital": 5195,
+        "sector": "Agriculture & Rural",
+        "pctOfTotal": 1.05
+      }
     },
     {
       "id": "dept-department-of-water-resources-river-development-ganga-rejuvenation",
@@ -1041,7 +1207,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 13436,
-      "groupColor": "#1f77b4"
+      "groupColor": "#1f77b4",
+      "budgetDetail": {
+        "revenue": 11824,
+        "capital": 1612,
+        "sector": "Health & Social Welfare",
+        "pctOfTotal": 0.49
+      }
     },
     {
       "id": "ministry-law",
@@ -1050,7 +1222,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 2121,
-      "groupColor": "#ff7f0e"
+      "groupColor": "#ff7f0e",
+      "budgetDetail": {
+        "revenue": 1951,
+        "capital": 170,
+        "sector": "Governance & Administration",
+        "pctOfTotal": 0.08
+      }
     },
     {
       "id": "dept-department-of-legal-affairs",
@@ -1086,7 +1264,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 5740,
-      "groupColor": "#2ca02c"
+      "groupColor": "#2ca02c",
+      "budgetDetail": {
+        "revenue": 3444,
+        "capital": 2296,
+        "sector": "Industry & Manufacturing",
+        "pctOfTotal": 0.21
+      }
     },
     {
       "id": "ministry-mines",
@@ -1095,7 +1279,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 3573,
-      "groupColor": "#d62728"
+      "groupColor": "#d62728",
+      "budgetDetail": {
+        "revenue": 1608,
+        "capital": 1965,
+        "sector": "Energy & Resources",
+        "pctOfTotal": 0.13
+      }
     },
     {
       "id": "ministry-minority-affairs",
@@ -1104,7 +1294,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 3536,
-      "groupColor": "#9467bd"
+      "groupColor": "#9467bd",
+      "budgetDetail": {
+        "revenue": 3112,
+        "capital": 424,
+        "sector": "Health & Social Welfare",
+        "pctOfTotal": 0.13
+      }
     },
     {
       "id": "ministry-new-renewable-energy",
@@ -1113,7 +1309,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 20953,
-      "groupColor": "#8c564b"
+      "groupColor": "#8c564b",
+      "budgetDetail": {
+        "revenue": 9429,
+        "capital": 11524,
+        "sector": "Energy & Resources",
+        "pctOfTotal": 0.76
+      }
     },
     {
       "id": "ministry-panchayati-raj",
@@ -1122,7 +1324,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 9524,
-      "groupColor": "#e377c2"
+      "groupColor": "#e377c2",
+      "budgetDetail": {
+        "revenue": 7810,
+        "capital": 1714,
+        "sector": "Agriculture & Rural",
+        "pctOfTotal": 0.35
+      }
     },
     {
       "id": "ministry-parliamentary-affairs",
@@ -1131,7 +1339,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 148,
-      "groupColor": "#7f7f7f"
+      "groupColor": "#7f7f7f",
+      "budgetDetail": {
+        "revenue": 136,
+        "capital": 12,
+        "sector": "Governance & Administration",
+        "pctOfTotal": 0.01
+      }
     },
     {
       "id": "ministry-personnel",
@@ -1140,7 +1354,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 2179,
-      "groupColor": "#bcbd22"
+      "groupColor": "#bcbd22",
+      "budgetDetail": {
+        "revenue": 2005,
+        "capital": 174,
+        "sector": "Governance & Administration",
+        "pctOfTotal": 0.08
+      }
     },
     {
       "id": "dept-department-of-personnel-training-dopt",
@@ -1176,7 +1396,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 14646,
-      "groupColor": "#17becf"
+      "groupColor": "#17becf",
+      "budgetDetail": {
+        "revenue": 6591,
+        "capital": 8055,
+        "sector": "Energy & Resources",
+        "pctOfTotal": 0.53
+      }
     },
     {
       "id": "ministry-planning",
@@ -1185,7 +1411,13 @@
       "subtype": "Ministry (MoS I/C)",
       "ring": 2,
       "budget": 250,
-      "groupColor": "#aec7e8"
+      "groupColor": "#aec7e8",
+      "budgetDetail": {
+        "revenue": 225,
+        "capital": 25,
+        "sector": "Finance & Economic",
+        "pctOfTotal": 0.01
+      }
     },
     {
       "id": "ministry-ports-shipping",
@@ -1194,7 +1426,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 2744,
-      "groupColor": "#ffbb78"
+      "groupColor": "#ffbb78",
+      "budgetDetail": {
+        "revenue": 960,
+        "capital": 1784,
+        "sector": "Infrastructure & Transport",
+        "pctOfTotal": 0.1
+      }
     },
     {
       "id": "ministry-power",
@@ -1203,7 +1441,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 20502,
-      "groupColor": "#98df8a"
+      "groupColor": "#98df8a",
+      "budgetDetail": {
+        "revenue": 9226,
+        "capital": 11276,
+        "sector": "Energy & Resources",
+        "pctOfTotal": 0.74
+      }
     },
     {
       "id": "ministry-railways",
@@ -1212,7 +1456,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 252000,
-      "groupColor": "#ff9896"
+      "groupColor": "#ff9896",
+      "budgetDetail": {
+        "revenue": 88200,
+        "capital": 163800,
+        "sector": "Infrastructure & Transport",
+        "pctOfTotal": 9.15
+      }
     },
     {
       "id": "dept-ministry-of-railways-railway-board",
@@ -1230,7 +1480,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 278000,
-      "groupColor": "#c5b0d5"
+      "groupColor": "#c5b0d5",
+      "budgetDetail": {
+        "revenue": 97300,
+        "capital": 180700,
+        "sector": "Infrastructure & Transport",
+        "pctOfTotal": 10.1
+      }
     },
     {
       "id": "ministry-rural-development",
@@ -1239,7 +1495,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 178000,
-      "groupColor": "#c49c94"
+      "groupColor": "#c49c94",
+      "budgetDetail": {
+        "revenue": 145960,
+        "capital": 32040,
+        "sector": "Agriculture & Rural",
+        "pctOfTotal": 6.46
+      }
     },
     {
       "id": "dept-department-of-rural-development",
@@ -1266,7 +1528,13 @@
       "subtype": "Ministry (MoS I/C)",
       "ring": 2,
       "budget": 16727,
-      "groupColor": "#f7b6d2"
+      "groupColor": "#f7b6d2",
+      "budgetDetail": {
+        "revenue": 14218,
+        "capital": 2509,
+        "sector": "Education & Research",
+        "pctOfTotal": 0.61
+      }
     },
     {
       "id": "dept-department-of-science-technology",
@@ -1302,7 +1570,13 @@
       "subtype": "Ministry (MoS I/C)",
       "ring": 2,
       "budget": 2499,
-      "groupColor": "#c7c7c7"
+      "groupColor": "#c7c7c7",
+      "budgetDetail": {
+        "revenue": 2124,
+        "capital": 375,
+        "sector": "Education & Research",
+        "pctOfTotal": 0.09
+      }
     },
     {
       "id": "ministry-social-justice",
@@ -1311,7 +1585,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 16150,
-      "groupColor": "#dbdb8d"
+      "groupColor": "#dbdb8d",
+      "budgetDetail": {
+        "revenue": 14212,
+        "capital": 1938,
+        "sector": "Health & Social Welfare",
+        "pctOfTotal": 0.59
+      }
     },
     {
       "id": "dept-department-of-social-justice-empowerment",
@@ -1338,7 +1618,13 @@
       "subtype": "Ministry (MoS I/C)",
       "ring": 2,
       "budget": 5818,
-      "groupColor": "#9edae5"
+      "groupColor": "#9edae5",
+      "budgetDetail": {
+        "revenue": 5236,
+        "capital": 582,
+        "sector": "Finance & Economic",
+        "pctOfTotal": 0.21
+      }
     },
     {
       "id": "ministry-steel",
@@ -1347,7 +1633,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 100,
-      "groupColor": "#393b79"
+      "groupColor": "#393b79",
+      "budgetDetail": {
+        "revenue": 45,
+        "capital": 55,
+        "sector": "Energy & Resources",
+        "pctOfTotal": 0.0
+      }
     },
     {
       "id": "ministry-textiles",
@@ -1356,7 +1648,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 4417,
-      "groupColor": "#637939"
+      "groupColor": "#637939",
+      "budgetDetail": {
+        "revenue": 2650,
+        "capital": 1767,
+        "sector": "Industry & Manufacturing",
+        "pctOfTotal": 0.16
+      }
     },
     {
       "id": "ministry-tourism",
@@ -1365,7 +1663,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 3221,
-      "groupColor": "#8c6d31"
+      "groupColor": "#8c6d31",
+      "budgetDetail": {
+        "revenue": 2738,
+        "capital": 483,
+        "sector": "Environment & Culture",
+        "pctOfTotal": 0.12
+      }
     },
     {
       "id": "ministry-tribal-affairs",
@@ -1374,7 +1678,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 13000,
-      "groupColor": "#843c39"
+      "groupColor": "#843c39",
+      "budgetDetail": {
+        "revenue": 11440,
+        "capital": 1560,
+        "sector": "Health & Social Welfare",
+        "pctOfTotal": 0.47
+      }
     },
     {
       "id": "ministry-women-child",
@@ -1383,7 +1693,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 26092,
-      "groupColor": "#7b4173"
+      "groupColor": "#7b4173",
+      "budgetDetail": {
+        "revenue": 22961,
+        "capital": 3131,
+        "sector": "Health & Social Welfare",
+        "pctOfTotal": 0.95
+      }
     },
     {
       "id": "ministry-youth-sports",
@@ -1392,7 +1708,13 @@
       "subtype": "Ministry (Cabinet)",
       "ring": 2,
       "budget": 3794,
-      "groupColor": "#5254a3"
+      "groupColor": "#5254a3",
+      "budgetDetail": {
+        "revenue": 3339,
+        "capital": 455,
+        "sector": "Health & Social Welfare",
+        "pctOfTotal": 0.14
+      }
     },
     {
       "id": "dept-department-of-youth-affairs",
@@ -3259,9 +3581,9 @@
       "category": "OFFICIALS",
       "subtype": "Chairman RS",
       "ring": 1,
-      "holder": "Jagdeep Dhankhar",
-      "since": "2022",
-      "description": "Ex-officio Vice President"
+      "holder": "Vacant",
+      "since": "2024",
+      "description": "Chairman of Rajya Sabha (VP ex-officio). Post vacant since Aug 2024."
     },
     {
       "id": "supreme-court",
@@ -3598,6 +3920,543 @@
       "ring": 4,
       "est": 1988,
       "purpose": "Consumer disputes"
+    },
+    {
+      "id": "mos-pankaj-chaudhary",
+      "name": "Pankaj Chaudhary",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Pankaj Chaudhary",
+      "description": "Minister of State",
+      "ministries": [
+        "finance"
+      ]
+    },
+    {
+      "id": "mos-bandi-sanjay-kumar",
+      "name": "Bandi Sanjay Kumar",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Bandi Sanjay Kumar",
+      "description": "Minister of State",
+      "ministries": [
+        "home-affairs"
+      ]
+    },
+    {
+      "id": "mos-nityanand-rai",
+      "name": "Nityanand Rai",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Nityanand Rai",
+      "description": "Minister of State",
+      "ministries": [
+        "home-affairs"
+      ]
+    },
+    {
+      "id": "mos-sanjay-seth",
+      "name": "Sanjay Seth",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Sanjay Seth",
+      "description": "Minister of State",
+      "ministries": [
+        "defence"
+      ]
+    },
+    {
+      "id": "mos-ajay-bhatt",
+      "name": "Ajay Bhatt",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Ajay Bhatt",
+      "description": "Minister of State",
+      "ministries": [
+        "defence",
+        "tourism"
+      ]
+    },
+    {
+      "id": "mos-jitin-prasada",
+      "name": "Jitin Prasada",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Jitin Prasada",
+      "description": "Minister of State",
+      "ministries": [
+        "commerce",
+        "electronics-it"
+      ]
+    },
+    {
+      "id": "mos-sukanta-majumdar",
+      "name": "Sukanta Majumdar",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Sukanta Majumdar",
+      "description": "Minister of State",
+      "ministries": [
+        "education",
+        "electronics-it"
+      ]
+    },
+    {
+      "id": "mos-rajkumar-ranjan-singh",
+      "name": "Rajkumar Ranjan Singh",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Rajkumar Ranjan Singh",
+      "description": "Minister of State",
+      "ministries": [
+        "external-affairs",
+        "education"
+      ]
+    },
+    {
+      "id": "mos-kirti-vardhan-singh",
+      "name": "Kirti Vardhan Singh",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Kirti Vardhan Singh",
+      "description": "Minister of State",
+      "ministries": [
+        "external-affairs"
+      ]
+    },
+    {
+      "id": "mos-anupriya-patel",
+      "name": "Anupriya Patel",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Anupriya Patel",
+      "description": "Minister of State",
+      "ministries": [
+        "health",
+        "chemicals"
+      ]
+    },
+    {
+      "id": "mos-s-p-singh-baghel",
+      "name": "S P Singh Baghel",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "S P Singh Baghel",
+      "description": "Minister of State",
+      "ministries": [
+        "health",
+        "fisheries"
+      ]
+    },
+    {
+      "id": "mos-harsh-malhotra",
+      "name": "Harsh Malhotra",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Harsh Malhotra",
+      "description": "Minister of State",
+      "ministries": [
+        "corporate-affairs",
+        "road-transport"
+      ]
+    },
+    {
+      "id": "mos-ajay-tamta",
+      "name": "Ajay Tamta",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Ajay Tamta",
+      "description": "Minister of State",
+      "ministries": [
+        "road-transport"
+      ]
+    },
+    {
+      "id": "mos-v-somanna",
+      "name": "V Somanna",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "V Somanna",
+      "description": "Minister of State",
+      "ministries": [
+        "jal-shakti",
+        "railways"
+      ]
+    },
+    {
+      "id": "mos-ravneet-singh-bittu",
+      "name": "Ravneet Singh Bittu",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Ravneet Singh Bittu",
+      "description": "Minister of State",
+      "ministries": [
+        "railways",
+        "food-processing"
+      ]
+    },
+    {
+      "id": "mos-shobha-karandlaje",
+      "name": "Shobha Karandlaje",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Shobha Karandlaje",
+      "description": "Minister of State",
+      "ministries": [
+        "msme",
+        "labour"
+      ]
+    },
+    {
+      "id": "mos-savitri-thakur",
+      "name": "Savitri Thakur",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Savitri Thakur",
+      "description": "Minister of State",
+      "ministries": [
+        "women-child"
+      ]
+    },
+    {
+      "id": "mos-bhagirath-choudhary",
+      "name": "Bhagirath Choudhary",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Bhagirath Choudhary",
+      "description": "Minister of State",
+      "ministries": [
+        "agriculture"
+      ]
+    },
+    {
+      "id": "mos-ram-nath-thakur",
+      "name": "Ram Nath Thakur",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Ram Nath Thakur",
+      "description": "Minister of State",
+      "ministries": [
+        "agriculture"
+      ]
+    },
+    {
+      "id": "mos-kamlesh-paswan",
+      "name": "Kamlesh Paswan",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Kamlesh Paswan",
+      "description": "Minister of State",
+      "ministries": [
+        "rural-development"
+      ]
+    },
+    {
+      "id": "mos-chandra-sekhar-pemmasani",
+      "name": "Chandra Sekhar Pemmasani",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Chandra Sekhar Pemmasani",
+      "description": "Minister of State",
+      "ministries": [
+        "rural-development",
+        "communications"
+      ]
+    },
+    {
+      "id": "mos-raksha-nikhil-khadse",
+      "name": "Raksha Nikhil Khadse",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Raksha Nikhil Khadse",
+      "description": "Minister of State",
+      "ministries": [
+        "youth-sports"
+      ]
+    },
+    {
+      "id": "mos-murlidhar-mohol",
+      "name": "Murlidhar Mohol",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Murlidhar Mohol",
+      "description": "Minister of State",
+      "ministries": [
+        "cooperation",
+        "civil-aviation"
+      ]
+    },
+    {
+      "id": "mos-george-kurian",
+      "name": "George Kurian",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "George Kurian",
+      "description": "Minister of State",
+      "ministries": [
+        "minority-affairs",
+        "fisheries"
+      ]
+    },
+    {
+      "id": "mos-tokhan-sahu",
+      "name": "Tokhan Sahu",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Tokhan Sahu",
+      "description": "Minister of State",
+      "ministries": [
+        "housing"
+      ]
+    },
+    {
+      "id": "mos-satish-chandra-dubey",
+      "name": "Satish Chandra Dubey",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Satish Chandra Dubey",
+      "description": "Minister of State",
+      "ministries": [
+        "coal",
+        "mines"
+      ]
+    },
+    {
+      "id": "mos-ramdas-athawale",
+      "name": "Ramdas Athawale",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Ramdas Athawale",
+      "description": "Minister of State",
+      "ministries": [
+        "social-justice"
+      ]
+    },
+    {
+      "id": "mos-durgadas-uikey",
+      "name": "Durgadas Uikey",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Durgadas Uikey",
+      "description": "Minister of State",
+      "ministries": [
+        "tribal-affairs"
+      ]
+    },
+    {
+      "id": "mos-b-l-verma",
+      "name": "B L Verma",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "B L Verma",
+      "description": "Minister of State",
+      "ministries": [
+        "doner",
+        "cooperation"
+      ]
+    },
+    {
+      "id": "mos-sripad-yesso-naik",
+      "name": "Sripad Yesso Naik",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Sripad Yesso Naik",
+      "description": "Minister of State",
+      "ministries": [
+        "power",
+        "new-renewable-energy"
+      ]
+    },
+    {
+      "id": "mos-suresh-gopi",
+      "name": "Suresh Gopi",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Suresh Gopi",
+      "description": "Minister of State",
+      "ministries": [
+        "petroleum",
+        "tourism"
+      ]
+    },
+    {
+      "id": "mos-pabitra-margherita",
+      "name": "Pabitra Margherita",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Pabitra Margherita",
+      "description": "Minister of State",
+      "ministries": [
+        "external-affairs",
+        "textiles"
+      ]
+    },
+    {
+      "id": "mos-nimuben-bambhaniya",
+      "name": "Nimuben Bambhaniya",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Nimuben Bambhaniya",
+      "description": "Minister of State",
+      "ministries": [
+        "consumer-affairs"
+      ]
+    },
+    {
+      "id": "mos-jadhav-prataprao-ganpatrao",
+      "name": "Jadhav Prataprao Ganpatrao",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Jadhav Prataprao Ganpatrao",
+      "description": "Minister of State",
+      "ministries": [
+        "ayush"
+      ]
+    },
+    {
+      "id": "mos-nityanandam-srinivasa-rao",
+      "name": "Nityanandam Srinivasa Rao",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Nityanandam Srinivasa Rao",
+      "description": "Minister of State",
+      "ministries": [
+        "steel",
+        "heavy-industries"
+      ]
+    },
+    {
+      "id": "mos-jadav-arjunlal-meghwal",
+      "name": "Jadav Arjunlal Meghwal",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Jadav Arjunlal Meghwal",
+      "description": "Minister of State",
+      "ministries": [
+        "law"
+      ]
+    },
+    {
+      "id": "mos-l-murugan",
+      "name": "L Murugan",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "L Murugan",
+      "description": "Minister of State",
+      "ministries": [
+        "information-broadcasting",
+        "parliamentary-affairs"
+      ]
+    },
+    {
+      "id": "mos-munjpara-mahendrabhai",
+      "name": "Munjpara Mahendrabhai",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Munjpara Mahendrabhai",
+      "description": "Minister of State",
+      "ministries": [
+        "women-child",
+        "ayush"
+      ]
+    },
+    {
+      "id": "mos-devusinh-jesingbhai-chauhan",
+      "name": "Devusinh Jesingbhai Chauhan",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Devusinh Jesingbhai Chauhan",
+      "description": "Minister of State",
+      "ministries": [
+        "communications"
+      ]
+    },
+    {
+      "id": "mos-ravindra-shyamnarayan-shukla",
+      "name": "Ravindra Shyamnarayan Shukla",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Ravindra Shyamnarayan Shukla",
+      "description": "Minister of State",
+      "ministries": [
+        "panchayati-raj"
+      ]
+    },
+    {
+      "id": "mos-rao-uday-pratap-singh",
+      "name": "Rao Uday Pratap Singh",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Rao Uday Pratap Singh",
+      "description": "Minister of State",
+      "ministries": [
+        "environment"
+      ]
+    },
+    {
+      "id": "mos-jaya-jaitly",
+      "name": "Jaya Jaitly",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Jaya Jaitly",
+      "description": "Minister of State",
+      "ministries": [
+        "textiles"
+      ]
+    },
+    {
+      "id": "mos-ram-kripal-yadav",
+      "name": "Ram Kripal Yadav",
+      "category": "OFFICIALS",
+      "subtype": "MoS",
+      "ring": 1,
+      "holder": "Ram Kripal Yadav",
+      "description": "Minister of State",
+      "ministries": [
+        "culture"
+      ]
     }
   ],
   "edges": [
@@ -5315,11 +6174,775 @@
       "source": "supreme-court",
       "target": "trib-national-consumer-disputes-redressal-commission-ncdrc",
       "type": "supervises"
+    },
+    {
+      "source": "pm",
+      "target": "mos-pankaj-chaudhary",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-pankaj-chaudhary",
+      "target": "ministry-finance",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-bandi-sanjay-kumar",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-bandi-sanjay-kumar",
+      "target": "ministry-home-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-nityanand-rai",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-nityanand-rai",
+      "target": "ministry-home-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-sanjay-seth",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-sanjay-seth",
+      "target": "ministry-defence",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-ajay-bhatt",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-ajay-bhatt",
+      "target": "ministry-defence",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-ajay-bhatt",
+      "target": "ministry-tourism",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-jitin-prasada",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-jitin-prasada",
+      "target": "ministry-commerce",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-jitin-prasada",
+      "target": "ministry-electronics-it",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-sukanta-majumdar",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-sukanta-majumdar",
+      "target": "ministry-education",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-sukanta-majumdar",
+      "target": "ministry-electronics-it",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-rajkumar-ranjan-singh",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-rajkumar-ranjan-singh",
+      "target": "ministry-external-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-rajkumar-ranjan-singh",
+      "target": "ministry-education",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-kirti-vardhan-singh",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-kirti-vardhan-singh",
+      "target": "ministry-external-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-anupriya-patel",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-anupriya-patel",
+      "target": "ministry-health",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-anupriya-patel",
+      "target": "ministry-chemicals",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-s-p-singh-baghel",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-s-p-singh-baghel",
+      "target": "ministry-health",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-s-p-singh-baghel",
+      "target": "ministry-fisheries",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-harsh-malhotra",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-harsh-malhotra",
+      "target": "ministry-corporate-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-harsh-malhotra",
+      "target": "ministry-road-transport",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-ajay-tamta",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-ajay-tamta",
+      "target": "ministry-road-transport",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-v-somanna",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-v-somanna",
+      "target": "ministry-jal-shakti",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-v-somanna",
+      "target": "ministry-railways",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-ravneet-singh-bittu",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-ravneet-singh-bittu",
+      "target": "ministry-railways",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-ravneet-singh-bittu",
+      "target": "ministry-food-processing",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-shobha-karandlaje",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-shobha-karandlaje",
+      "target": "ministry-msme",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-shobha-karandlaje",
+      "target": "ministry-labour",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-savitri-thakur",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-savitri-thakur",
+      "target": "ministry-women-child",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-bhagirath-choudhary",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-bhagirath-choudhary",
+      "target": "ministry-agriculture",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-ram-nath-thakur",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-ram-nath-thakur",
+      "target": "ministry-agriculture",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-kamlesh-paswan",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-kamlesh-paswan",
+      "target": "ministry-rural-development",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-chandra-sekhar-pemmasani",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-chandra-sekhar-pemmasani",
+      "target": "ministry-rural-development",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-chandra-sekhar-pemmasani",
+      "target": "ministry-communications",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-raksha-nikhil-khadse",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-raksha-nikhil-khadse",
+      "target": "ministry-youth-sports",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-murlidhar-mohol",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-murlidhar-mohol",
+      "target": "ministry-cooperation",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-murlidhar-mohol",
+      "target": "ministry-civil-aviation",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-george-kurian",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-george-kurian",
+      "target": "ministry-minority-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-george-kurian",
+      "target": "ministry-fisheries",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-tokhan-sahu",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-tokhan-sahu",
+      "target": "ministry-housing",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-satish-chandra-dubey",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-satish-chandra-dubey",
+      "target": "ministry-coal",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-satish-chandra-dubey",
+      "target": "ministry-mines",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-ramdas-athawale",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-ramdas-athawale",
+      "target": "ministry-social-justice",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-durgadas-uikey",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-durgadas-uikey",
+      "target": "ministry-tribal-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-b-l-verma",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-b-l-verma",
+      "target": "ministry-doner",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-b-l-verma",
+      "target": "ministry-cooperation",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-sripad-yesso-naik",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-sripad-yesso-naik",
+      "target": "ministry-power",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-sripad-yesso-naik",
+      "target": "ministry-new-renewable-energy",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-suresh-gopi",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-suresh-gopi",
+      "target": "ministry-petroleum",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-suresh-gopi",
+      "target": "ministry-tourism",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-pabitra-margherita",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-pabitra-margherita",
+      "target": "ministry-external-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-pabitra-margherita",
+      "target": "ministry-textiles",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-nimuben-bambhaniya",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-nimuben-bambhaniya",
+      "target": "ministry-consumer-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-jadhav-prataprao-ganpatrao",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-jadhav-prataprao-ganpatrao",
+      "target": "ministry-ayush",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-nityanandam-srinivasa-rao",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-nityanandam-srinivasa-rao",
+      "target": "ministry-steel",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-nityanandam-srinivasa-rao",
+      "target": "ministry-heavy-industries",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-jadav-arjunlal-meghwal",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-jadav-arjunlal-meghwal",
+      "target": "ministry-law",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-l-murugan",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-l-murugan",
+      "target": "ministry-information-broadcasting",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-l-murugan",
+      "target": "ministry-parliamentary-affairs",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-munjpara-mahendrabhai",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-munjpara-mahendrabhai",
+      "target": "ministry-women-child",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "mos-munjpara-mahendrabhai",
+      "target": "ministry-ayush",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-devusinh-jesingbhai-chauhan",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-devusinh-jesingbhai-chauhan",
+      "target": "ministry-communications",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-ravindra-shyamnarayan-shukla",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-ravindra-shyamnarayan-shukla",
+      "target": "ministry-panchayati-raj",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-rao-uday-pratap-singh",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-rao-uday-pratap-singh",
+      "target": "ministry-environment",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-jaya-jaitly",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-jaya-jaitly",
+      "target": "ministry-textiles",
+      "type": "assists",
+      "label": "assists"
+    },
+    {
+      "source": "pm",
+      "target": "mos-ram-kripal-yadav",
+      "type": "appoints",
+      "label": "appoints"
+    },
+    {
+      "source": "mos-ram-kripal-yadav",
+      "target": "ministry-culture",
+      "type": "assists",
+      "label": "assists"
     }
   ],
   "budget": {
     "year": "2025-26",
     "totalExpenditure": 5065345,
     "unit": "Crore INR"
+  },
+  "budgetFlows": {
+    "totalExpenditure": 2753584,
+    "revenueSplit": {
+      "Revenue Expenditure": 1802250,
+      "Capital Expenditure": 951334
+    },
+    "sectors": [
+      {
+        "name": "Defence & Security",
+        "value": 841583,
+        "ministries": [
+          "ministry-defence",
+          "ministry-home-affairs"
+        ]
+      },
+      {
+        "name": "Infrastructure & Transport",
+        "value": 634145,
+        "ministries": [
+          "ministry-civil-aviation",
+          "ministry-communications",
+          "ministry-housing",
+          "ministry-ports-shipping",
+          "ministry-railways",
+          "ministry-road-transport"
+        ]
+      },
+      {
+        "name": "Agriculture & Rural",
+        "value": 564582,
+        "ministries": [
+          "ministry-agriculture",
+          "ministry-consumer-affairs",
+          "ministry-cooperation",
+          "ministry-fisheries",
+          "ministry-food-processing",
+          "ministry-jal-shakti",
+          "ministry-panchayati-raj",
+          "ministry-rural-development"
+        ]
+      },
+      {
+        "name": "Industry & Manufacturing",
+        "value": 193296,
+        "ministries": [
+          "ministry-chemicals",
+          "ministry-heavy-industries",
+          "ministry-msme",
+          "ministry-textiles"
+        ]
+      },
+      {
+        "name": "Health & Social Welfare",
+        "value": 179578,
+        "ministries": [
+          "ministry-ayush",
+          "ministry-health",
+          "ministry-labour",
+          "ministry-minority-affairs",
+          "ministry-social-justice",
+          "ministry-tribal-affairs",
+          "ministry-women-child",
+          "ministry-youth-sports"
+        ]
+      },
+      {
+        "name": "Education & Research",
+        "value": 165200,
+        "ministries": [
+          "ministry-earth-sciences",
+          "ministry-education",
+          "ministry-electronics-it",
+          "ministry-science-technology",
+          "ministry-skill-development"
+        ]
+      },
+      {
+        "name": "Finance & Economic",
+        "value": 67242,
+        "ministries": [
+          "ministry-commerce",
+          "ministry-corporate-affairs",
+          "ministry-finance",
+          "ministry-planning",
+          "ministry-statistics"
+        ]
+      },
+      {
+        "name": "Energy & Resources",
+        "value": 60595,
+        "ministries": [
+          "ministry-coal",
+          "ministry-mines",
+          "ministry-new-renewable-energy",
+          "ministry-petroleum",
+          "ministry-power",
+          "ministry-steel"
+        ]
+      },
+      {
+        "name": "Governance & Administration",
+        "value": 37044,
+        "ministries": [
+          "ministry-doner",
+          "ministry-external-affairs",
+          "ministry-information-broadcasting",
+          "ministry-law",
+          "ministry-parliamentary-affairs",
+          "ministry-personnel"
+        ]
+      },
+      {
+        "name": "Environment & Culture",
+        "value": 10319,
+        "ministries": [
+          "ministry-culture",
+          "ministry-environment",
+          "ministry-tourism"
+        ]
+      }
+    ]
   }
 }

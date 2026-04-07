@@ -88,6 +88,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .budget-bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
 .budget-bar-fill{height:100%;border-radius:4px}
 
+/* Sankey */
+#sankeyContainer{flex:1;position:relative;display:none;overflow:auto;background:var(--bg)}
+#sankeySvg{display:block;min-height:100%}
+.sankey-flow{opacity:0.5;transition:opacity 0.2s}
+.sankey-flow:hover{opacity:0.85}
+.sankey-node-rect{stroke:var(--bg);stroke-width:1;cursor:pointer;transition:opacity 0.2s}
+.sankey-node-rect:hover{opacity:0.85}
+.sankey-label{font-size:11px;fill:var(--text);pointer-events:none}
+.sankey-label-small{font-size:9px;fill:var(--text2);pointer-events:none}
+.sankey-value{font-size:10px;fill:var(--text2);pointer-events:none}
+.sankey-col-header{font-size:13px;font-weight:700;fill:var(--text);text-anchor:middle}
+
 /* Legend */
 .legend{position:absolute;bottom:0;left:0;right:0;background:var(--panel-bg);border-top:1px solid var(--border);padding:0.8rem 1.5rem;display:none;z-index:70}
 .legend.show{display:block}
@@ -129,6 +141,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 </div>
 <div class="toolbar">
   <button class="tool-btn active" id="btnRadial"><span class="tool-icon">&#8857;</span> Radial</button>
+  <button class="tool-btn" id="btnBudget"><span class="tool-icon">&#8377;</span> Budget</button>
   <button class="tool-btn" id="btnLegend"><span class="tool-icon">&#9776;</span> Legend</button>
   <button class="tool-btn" id="btnDark"><span class="tool-icon">&#9790;</span></button>
   <button class="tool-btn" id="btnFocus"><span class="tool-icon">&#9635;</span> Focus</button>
@@ -143,6 +156,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   <div id="graphContainer">
     <svg id="graphSvg"></svg>
     <div class="hint">Hover to explore &middot; Click to select &middot; Scroll to zoom</div>
+  </div>
+  <div id="sankeyContainer">
+    <svg id="sankeySvg"></svg>
   </div>
   <div class="detail-panel" id="detailPanel">
     <button class="detail-close" id="detailClose">&times;</button>
@@ -159,7 +175,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     <p><strong>Navigate:</strong> Scroll to zoom, click and drag to pan. Click any node to see details. Use Search to find entities.</p>
     <p><strong>Views:</strong> Full view shows every entity on concentric rings by constitutional distance from the PM. Focus view shows the selected entity at the centre with its parents and children.</p>
     <p><strong>Legend:</strong> Circles = Officials, Squares = Departments, Diamonds = Public Bodies, Triangles = Judiciary, Hexagons = Legislature.</p>
-    <p><strong>Data:</strong> 53 ministries, 40+ statutory bodies, 60+ autonomous bodies, 50 PSUs, 25 High Courts, 10 tribunals. Budget data from Union Budget 2025-26.</p>
+    <p><strong>Budget:</strong> Click the ₹ Budget button to see a Sankey flow diagram showing how the Union Budget flows from total expenditure through sectors to individual ministries.</p>
+    <p><strong>Data:</strong> 53 ministries, 40+ statutory bodies, 60+ autonomous bodies, 50 PSUs, 25 High Courts, 10 tribunals, 43 Ministers of State. Budget data from Union Budget 2025-26.</p>
     <p style="font-size:0.75rem;color:var(--text2);margin-top:1rem">Data reflects the Indian government structure as of early 2025. Built with vanilla JS, no external dependencies. Inspired by <a href="https://machineryofgovernment.uk" style="color:#4363d8">machineryofgovernment.uk</a>.</p>
   </div>
 </div>
@@ -190,7 +207,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       DATA.nodes.forEach(n=>{nodeMap[n.id]=n;childMap[n.id]=[];edgesByNode[n.id]=[];});
       DATA.edges.forEach(e=>{
         if(childMap[e.source])childMap[e.source].push(e.target);
-        parentMap[e.target]=e.source;
+        // For parentMap: appoints takes priority, then leads/contains/oversees. Skip assists for layout.
+        if(e.type!=='assists'){
+          if(!parentMap[e.target])parentMap[e.target]=e.source;
+        }
         if(edgesByNode[e.source])edgesByNode[e.source].push(e);
         if(edgesByNode[e.target])edgesByNode[e.target].push(e);
       });
@@ -433,6 +453,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       container.addEventListener('touchend',()=>{dragging=false;lastDist=0;});
 
       // Toolbar buttons
+      document.getElementById('btnBudget').addEventListener('click',toggleBudgetView);
+      document.getElementById('btnRadial').addEventListener('click',()=>{
+        if(budgetView)toggleBudgetView();
+      });
       document.getElementById('btnDark').addEventListener('click',()=>{
         darkMode=!darkMode;document.body.classList.toggle('dark',darkMode);
         document.getElementById('btnDark').innerHTML=darkMode?'<span class="tool-icon">&#9788;</span>':'<span class="tool-icon">&#9790;</span>';
@@ -665,7 +689,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
         const psub=pcat&&pcat.subtypes?pcat.subtypes[pn.subtype]:null;
         const pc=pn.groupColor||(psub?psub.color:'#888');
         const edgeType=DATA.edges.find(e=>e.target===n.id&&e.source===parentId);
-        const relLabel=edgeType?({'appoints':'APPOINTED BY','leads':'MINISTER','contains':'PART OF','oversees':'OVERSEEN BY','establishes':'ESTABLISHED BY','convenes':'CONVENED BY','presides':'PRESIDED BY','heads':'HEADED BY','appellate':'APPELLATE JURISDICTION','supervises':'SUPERVISED BY'}[edgeType.type]||'MEMBER OF'):'MEMBER OF';
+        const relLabel=edgeType?({'appoints':'APPOINTED BY','leads':'MINISTER','contains':'PART OF','oversees':'OVERSEEN BY','establishes':'ESTABLISHED BY','convenes':'CONVENED BY','presides':'PRESIDED BY','heads':'HEADED BY','appellate':'APPELLATE JURISDICTION','supervises':'SUPERVISED BY','assists':'ASSISTS'}[edgeType.type]||'MEMBER OF'):'MEMBER OF';
         html+=`<div class="detail-section"><h3>${relLabel}</h3>`;
         html+=`<div class="rel-card" data-id="${pn.id}" style="border-left-color:${pc}">
           <div><div class="rel-name">${pn.name}</div><div class="rel-sub">${pn.subtype||''}</div></div>
@@ -683,7 +707,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
           if(!groups[type])groups[type]=[];
           groups[type].push(cid);
         });
-        const typeLabels={'appoints':'APPOINTS','leads':'LEADS','contains':'CONTAINS','oversees':'OVERSEES','establishes':'ESTABLISHES','convenes':'CONVENES','presides':'PRESIDES','heads':'HEADS','appellate':'APPELLATE OVER','supervises':'SUPERVISES'};
+        const typeLabels={'appoints':'APPOINTS','leads':'LEADS','contains':'CONTAINS','oversees':'OVERSEES','establishes':'ESTABLISHES','convenes':'CONVENES','presides':'PRESIDES','heads':'HEADS','appellate':'APPELLATE OVER','supervises':'SUPERVISES','assists':'ASSISTS'};
         Object.keys(groups).forEach(type=>{
           html+=`<div class="detail-section"><h3>${typeLabels[type]||type} (${groups[type].length})</h3>`;
           groups[type].slice(0,15).forEach(cid=>{
@@ -706,9 +730,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       if(n.budget){
         html+=`<div id="tabBudget" style="display:none">`;
         html+=`<div style="font-size:1.5rem;font-weight:700;margin-bottom:0.5rem">${formatBudget(n.budget)}</div>`;
-        html+=`<div style="font-size:0.82rem;color:var(--text2);margin-bottom:1rem">${((n.budget/DATA.budget.totalExpenditure)*100).toFixed(2)}% of Union Budget ${DATA.budget.year}</div>`;
+        html+=`<div style="font-size:0.82rem;color:var(--text2);margin-bottom:1rem">${(n.budgetDetail?n.budgetDetail.pctOfTotal:((n.budget/(DATA.budget?DATA.budget.totalExpenditure:1))*100).toFixed(2))}% of Union Budget ${DATA.budget?DATA.budget.year:'2025-26'}</div>`;
         // Bar relative to max (Defence)
         html+=`<div class="budget-bar-h"><span>Allocation</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${Math.min(100,(n.budget/621940)*100)}%;background:${color}"></div></div><span>${formatBudget(n.budget)}</span></div>`;
+        if(n.budgetDetail){
+          html+=`<div style="margin-top:0.8rem"><h3 style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text2);margin-bottom:0.4rem">Expenditure Split</h3>`;
+          html+=`<div class="budget-bar-h"><span>Revenue</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${(n.budgetDetail.revenue/n.budget*100)}%;background:#27ae60"></div></div><span>${formatBudget(n.budgetDetail.revenue)}</span></div>`;
+          html+=`<div class="budget-bar-h"><span>Capital</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${(n.budgetDetail.capital/n.budget*100)}%;background:#2980b9"></div></div><span>${formatBudget(n.budgetDetail.capital)}</span></div>`;
+          html+=`<div class="detail-field" style="margin-top:0.5rem"><span class="detail-field-label">Sector</span><span class="detail-field-value">${n.budgetDetail.sector}</span></div>`;
+          html+=`</div>`;
+        }
         html+=`</div>`;
       }
 
@@ -768,6 +799,217 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 
       html+='</div>';
       lp.innerHTML=html;
+    }
+
+    // Budget Sankey View
+    let budgetView=false;
+
+    function toggleBudgetView(){
+      budgetView=!budgetView;
+      document.getElementById('btnBudget').classList.toggle('active',budgetView);
+      document.getElementById('btnRadial').classList.toggle('active',!budgetView);
+      document.getElementById('graphContainer').style.display=budgetView?'none':'block';
+      document.getElementById('sankeyContainer').style.display=budgetView?'block':'none';
+      if(budgetView)renderSankey();
+    }
+
+    const SANKEY_COLORS={
+      'Defence & Security':'#c0392b',
+      'Infrastructure & Transport':'#2980b9',
+      'Agriculture & Rural':'#27ae60',
+      'Industry & Manufacturing':'#8e44ad',
+      'Health & Social Welfare':'#e74c3c',
+      'Education & Research':'#f39c12',
+      'Finance & Economic':'#2c3e50',
+      'Energy & Resources':'#d35400',
+      'Governance & Administration':'#7f8c8d',
+      'Environment & Culture':'#16a085'
+    };
+
+    function renderSankey(){
+      if(!DATA||!DATA.budgetFlows)return;
+      const flows=DATA.budgetFlows;
+      const sectors=flows.sectors;
+      const total=flows.totalExpenditure;
+
+      const svg=document.getElementById('sankeySvg');
+      const container=document.getElementById('sankeyContainer');
+      const cw=container.clientWidth||window.innerWidth;
+
+      // Layout params
+      const pad={top:60,bottom:30,left:40,right:40};
+      const colW=140; // node width
+      const gap=4; // gap between nodes
+      const col0x=pad.left; // Total Budget column
+      const col1x=cw*0.3; // Sectors column
+      const col2x=cw*0.65; // Ministries column
+
+      // Calculate heights
+      const maxMinistries=sectors.reduce((s,sec)=>s+sec.ministries.length,0);
+      const totalH=Math.max(600, maxMinistries*22+pad.top+pad.bottom);
+      svg.setAttribute('width',cw);
+      svg.setAttribute('height',totalH);
+      svg.setAttribute('viewBox',`0 0 ${cw} ${totalH}`);
+      svg.innerHTML='';
+
+      // Column headers
+      const hg=document.createElementNS(NS,'g');
+      [['Total Budget',col0x+colW/2],['Sectors',col1x+colW/2],['Ministries',col2x+colW/2]].forEach(([t,x])=>{
+        const txt=document.createElementNS(NS,'text');
+        txt.setAttribute('x',x);txt.setAttribute('y',30);
+        txt.classList.add('sankey-col-header');
+        txt.textContent=t;hg.appendChild(txt);
+      });
+      svg.appendChild(hg);
+
+      const usableH=totalH-pad.top-pad.bottom;
+
+      // Col 0: single Total Budget node
+      const totalNodeY=pad.top;
+      const totalNodeH=usableH;
+      drawRect(svg,col0x,totalNodeY,colW,totalNodeH,'#34495e','Total Expenditure',formatBudget(total));
+
+      // Col 1: Sector nodes, proportional height
+      let sectorY=pad.top;
+      const sectorPositions=[];
+      sectors.forEach(sec=>{
+        const h=Math.max(20,(sec.value/total)*usableH);
+        const color=SANKEY_COLORS[sec.name]||'#888';
+        drawRect(svg,col1x,sectorY,colW,h,color,sec.name,formatBudget(sec.value));
+        sectorPositions.push({name:sec.name,y:sectorY,h:h,value:sec.value,color:color,ministries:sec.ministries});
+
+        // Flow from Total → Sector
+        drawFlow(svg,col0x+colW,totalNodeY+(sectorY-pad.top),col1x,sectorY,
+          (sec.value/total)*totalNodeH,h,'#34495e',color,
+          `${sec.name}: ${formatBudget(sec.value)} (${(sec.value/total*100).toFixed(1)}%)`);
+        sectorY+=h+gap;
+      });
+
+      // Col 2: Ministry nodes within each sector
+      let ministryY=pad.top;
+      sectors.forEach((sec,si)=>{
+        const sp=sectorPositions[si];
+        const color=sp.color;
+        // Get ministry nodes with budget
+        const mNodes=sec.ministries.map(mid=>nodeMap[mid]).filter(n=>n&&n.budget);
+        mNodes.sort((a,b)=>b.budget-a.budget);
+        if(!mNodes.length)return;
+
+        let localY=ministryY;
+        const sectorMinH=mNodes.length*18;
+        mNodes.forEach(mn=>{
+          const mh=Math.max(14,(mn.budget/total)*usableH);
+          drawRect(svg,col2x,localY,colW,mh,color,mn.name.replace('Ministry of ','').replace('Ministry of\n',''),formatBudget(mn.budget),mn.id);
+
+          // Flow from Sector → Ministry
+          const flowSrcY=sp.y+((localY-ministryY)/(sectorMinH||1))*sp.h;
+          const flowSrcH=Math.max(2,(mn.budget/sp.value)*sp.h);
+          drawFlow(svg,col1x+colW,flowSrcY,col2x,localY,
+            flowSrcH,mh,color,color,
+            `${mn.name}: ${formatBudget(mn.budget)}`);
+
+          localY+=mh+gap;
+        });
+        ministryY=localY+gap*2;
+      });
+
+      // Resize SVG to actual content
+      const actualH=Math.max(totalH,ministryY+pad.bottom);
+      svg.setAttribute('height',actualH);
+      svg.setAttribute('viewBox',`0 0 ${cw} ${actualH}`);
+    }
+
+    function drawRect(svg,x,y,w,h,color,label,valueText,nodeId){
+      const g=document.createElementNS(NS,'g');
+      const r=document.createElementNS(NS,'rect');
+      r.setAttribute('x',x);r.setAttribute('y',y);
+      r.setAttribute('width',w);r.setAttribute('height',h);
+      r.setAttribute('fill',color);r.setAttribute('rx',3);
+      r.classList.add('sankey-node-rect');
+      if(nodeId)r.dataset.id=nodeId;
+      g.appendChild(r);
+
+      if(h>12&&label){
+        const t=document.createElementNS(NS,'text');
+        t.setAttribute('x',x+5);t.setAttribute('y',y+h/2+1);
+        t.setAttribute('dominant-baseline','middle');
+        t.classList.add('sankey-label');
+        // Truncate label to fit
+        const maxChars=Math.floor(w/6.5);
+        t.textContent=label.length>maxChars?label.substring(0,maxChars-1)+'…':label;
+        t.style.fill='#fff';t.style.fontWeight='600';
+        g.appendChild(t);
+      }
+      if(h>24&&valueText){
+        const v=document.createElementNS(NS,'text');
+        v.setAttribute('x',x+5);v.setAttribute('y',y+h/2+13);
+        v.setAttribute('dominant-baseline','middle');
+        v.classList.add('sankey-value');
+        v.textContent=valueText;v.style.fill='rgba(255,255,255,0.8)';
+        g.appendChild(v);
+      }
+
+      // Click handler for ministry nodes
+      if(nodeId){
+        g.style.cursor='pointer';
+        g.addEventListener('click',()=>{
+          selectNode(nodeId);
+          document.getElementById('detailPanel').classList.add('show');
+        });
+      }
+
+      // Tooltip on hover
+      const tooltip=document.getElementById('tooltip');
+      g.addEventListener('mouseenter',e=>{
+        tooltip.textContent=`${label}: ${valueText}`;
+        tooltip.style.display='block';
+        tooltip.style.left=(e.clientX+14)+'px';
+        tooltip.style.top=(e.clientY+14)+'px';
+      });
+      g.addEventListener('mousemove',e=>{
+        tooltip.style.left=(e.clientX+14)+'px';
+        tooltip.style.top=(e.clientY+14)+'px';
+      });
+      g.addEventListener('mouseleave',()=>{tooltip.style.display='none';});
+
+      svg.appendChild(g);
+    }
+
+    function drawFlow(svg,x0,y0,x1,y1,h0,h1,c0,c1,tip){
+      const midX=(x0+x1)/2;
+      const d=`M${x0},${y0} C${midX},${y0} ${midX},${y1} ${x1},${y1}
+               L${x1},${y1+h1} C${midX},${y1+h1} ${midX},${y0+h0} ${x0},${y0+h0} Z`;
+      const path=document.createElementNS(NS,'path');
+      path.setAttribute('d',d);
+      path.classList.add('sankey-flow');
+
+      // Gradient
+      const gradId='sg'+Math.random().toString(36).substr(2,6);
+      const defs=svg.querySelector('defs')||document.createElementNS(NS,'defs');
+      if(!svg.querySelector('defs'))svg.insertBefore(defs,svg.firstChild);
+      const grad=document.createElementNS(NS,'linearGradient');
+      grad.id=gradId;
+      const s1=document.createElementNS(NS,'stop');s1.setAttribute('offset','0%');s1.setAttribute('stop-color',c0);
+      const s2=document.createElementNS(NS,'stop');s2.setAttribute('offset','100%');s2.setAttribute('stop-color',c1);
+      grad.appendChild(s1);grad.appendChild(s2);
+      defs.appendChild(grad);
+
+      path.setAttribute('fill',`url(#${gradId})`);
+
+      const tooltip=document.getElementById('tooltip');
+      path.addEventListener('mouseenter',e=>{
+        tooltip.textContent=tip;tooltip.style.display='block';
+        tooltip.style.left=(e.clientX+14)+'px';tooltip.style.top=(e.clientY+14)+'px';
+      });
+      path.addEventListener('mousemove',e=>{
+        tooltip.style.left=(e.clientX+14)+'px';tooltip.style.top=(e.clientY+14)+'px';
+      });
+      path.addEventListener('mouseleave',()=>{tooltip.style.display='none';});
+
+      // Insert flows before nodes (so nodes are on top)
+      const firstG=svg.querySelector('g');
+      if(firstG)svg.insertBefore(path,firstG);
+      else svg.appendChild(path);
     }
 
     document.addEventListener('DOMContentLoaded',init);
