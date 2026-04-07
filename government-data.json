@@ -1,0 +1,5325 @@
+{
+  "metadata": {
+    "title": "Machinery of Government - India",
+    "lastUpdated": "2025-04-01",
+    "version": "2.0",
+    "description": "Interactive network graph of India's government structure",
+    "sources": [
+      "india.gov.in",
+      "goidirectory.nic.in",
+      "indiabudget.gov.in",
+      "prsindia.org",
+      "dpe.gov.in"
+    ]
+  },
+  "categories": {
+    "OFFICIALS": {
+      "shape": "circle",
+      "subtypes": {
+        "Prime Minister": {
+          "color": "#8B0000",
+          "ring": 0
+        },
+        "President": {
+          "color": "#4B0082",
+          "ring": 1
+        },
+        "Vice President": {
+          "color": "#6A0DAD",
+          "ring": 1
+        },
+        "Cabinet Minister": {
+          "color": "#c0392b",
+          "ring": 1
+        },
+        "MoS (Independent)": {
+          "color": "#e74c3c",
+          "ring": 1
+        },
+        "Chief Justice": {
+          "color": "#2F4F4F",
+          "ring": 1
+        },
+        "Speaker": {
+          "color": "#556B2F",
+          "ring": 1
+        },
+        "Chairman RS": {
+          "color": "#4a6741",
+          "ring": 1
+        }
+      }
+    },
+    "DEPARTMENTS": {
+      "shape": "square",
+      "subtypes": {
+        "Ministry (Cabinet)": {
+          "color": "#CC0000",
+          "ring": 2
+        },
+        "Ministry (MoS I/C)": {
+          "color": "#E55555",
+          "ring": 2
+        },
+        "Department": {
+          "color": "#3366CC",
+          "ring": 3
+        }
+      }
+    },
+    "JUDICIARY": {
+      "shape": "triangle",
+      "subtypes": {
+        "Supreme Court": {
+          "color": "#2F4F4F",
+          "ring": 2
+        },
+        "High Court": {
+          "color": "#5F9EA0",
+          "ring": 3
+        },
+        "Tribunal": {
+          "color": "#708090",
+          "ring": 4
+        }
+      }
+    },
+    "LEGISLATURES": {
+      "shape": "hexagon",
+      "subtypes": {
+        "House of Parliament": {
+          "color": "#228B22",
+          "ring": 2
+        }
+      }
+    },
+    "PUBLIC BODIES": {
+      "shape": "diamond",
+      "subtypes": {
+        "Constitutional Body": {
+          "color": "#FF8C00",
+          "ring": 3
+        },
+        "Statutory Body": {
+          "color": "#32CD32",
+          "ring": 4
+        },
+        "Autonomous Body": {
+          "color": "#9370DB",
+          "ring": 4
+        },
+        "PSU (Maharatna)": {
+          "color": "#B8860B",
+          "ring": 5
+        },
+        "PSU (Navratna)": {
+          "color": "#DAA520",
+          "ring": 5
+        },
+        "PSU (Miniratna)": {
+          "color": "#CD853F",
+          "ring": 5
+        },
+        "PSU (Other)": {
+          "color": "#D2B48C",
+          "ring": 5
+        }
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "pm",
+      "name": "Prime Minister",
+      "category": "OFFICIALS",
+      "subtype": "Prime Minister",
+      "ring": 0,
+      "holder": "Narendra Modi",
+      "since": "2014",
+      "description": "Head of Government of India",
+      "party": "BJP",
+      "constituency": "Varanasi"
+    },
+    {
+      "id": "president",
+      "name": "President of India",
+      "category": "OFFICIALS",
+      "subtype": "President",
+      "ring": 1,
+      "holder": "Droupadi Murmu",
+      "since": "2022",
+      "description": "Head of State, Supreme Commander of Armed Forces",
+      "residence": "Rashtrapati Bhavan"
+    },
+    {
+      "id": "vp",
+      "name": "Vice President of India",
+      "category": "OFFICIALS",
+      "subtype": "Vice President",
+      "ring": 1,
+      "holder": "Jagdeep Dhankhar",
+      "since": "2022",
+      "description": "Ex-officio Chairman of Rajya Sabha"
+    },
+    {
+      "id": "min-shivraj-singh-chouhan",
+      "name": "Shivraj Singh Chouhan",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Shivraj Singh Chouhan",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-prataprao-jadhav",
+      "name": "Prataprao Jadhav",
+      "category": "OFFICIALS",
+      "subtype": "MoS (Independent)",
+      "ring": 1,
+      "holder": "Prataprao Jadhav",
+      "description": "MoS (Independent)"
+    },
+    {
+      "id": "min-jagat-prakash-nadda",
+      "name": "Jagat Prakash Nadda",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Jagat Prakash Nadda",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-k-ram-mohan-naidu",
+      "name": "K Ram Mohan Naidu",
+      "category": "OFFICIALS",
+      "subtype": "MoS (Independent)",
+      "ring": 1,
+      "holder": "K Ram Mohan Naidu",
+      "description": "MoS (Independent)"
+    },
+    {
+      "id": "min-g-kishan-reddy",
+      "name": "G Kishan Reddy",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "G Kishan Reddy",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-piyush-goyal",
+      "name": "Piyush Goyal",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Piyush Goyal",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-jyotiraditya-scindia",
+      "name": "Jyotiraditya Scindia",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Jyotiraditya Scindia",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-pralhad-joshi",
+      "name": "Pralhad Joshi",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Pralhad Joshi",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-amit-shah",
+      "name": "Amit Shah",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Amit Shah",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-nirmala-sitharaman",
+      "name": "Nirmala Sitharaman",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Nirmala Sitharaman",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-gajendra-singh-shekhawat",
+      "name": "Gajendra Singh Shekhawat",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Gajendra Singh Shekhawat",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-rajnath-singh",
+      "name": "Rajnath Singh",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Rajnath Singh",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-jitendra-singh",
+      "name": "Jitendra Singh",
+      "category": "OFFICIALS",
+      "subtype": "MoS (Independent)",
+      "ring": 1,
+      "holder": "Jitendra Singh",
+      "description": "MoS (Independent)"
+    },
+    {
+      "id": "min-dharmendra-pradhan",
+      "name": "Dharmendra Pradhan",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Dharmendra Pradhan",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-ashwini-vaishnaw",
+      "name": "Ashwini Vaishnaw",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Ashwini Vaishnaw",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-bhupender-yadav",
+      "name": "Bhupender Yadav",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Bhupender Yadav",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-s-jaishankar",
+      "name": "S Jaishankar",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "S Jaishankar",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-rajiv-ranjan-singh",
+      "name": "Rajiv Ranjan Singh",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Rajiv Ranjan Singh",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-chirag-paswan",
+      "name": "Chirag Paswan",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Chirag Paswan",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-h-d-kumaraswamy",
+      "name": "H D Kumaraswamy",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "H D Kumaraswamy",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-manohar-lal-khattar",
+      "name": "Manohar Lal Khattar",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Manohar Lal Khattar",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-c-r-patil",
+      "name": "C R Patil",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "C R Patil",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-mansukh-mandaviya",
+      "name": "Mansukh Mandaviya",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Mansukh Mandaviya",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-arjun-ram-meghwal",
+      "name": "Arjun Ram Meghwal",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Arjun Ram Meghwal",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-jitan-ram-manjhi",
+      "name": "Jitan Ram Manjhi",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Jitan Ram Manjhi",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-kiren-rijiju",
+      "name": "Kiren Rijiju",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Kiren Rijiju",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-hardeep-singh-puri",
+      "name": "Hardeep Singh Puri",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Hardeep Singh Puri",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-rao-inderjit-singh",
+      "name": "Rao Inderjit Singh",
+      "category": "OFFICIALS",
+      "subtype": "MoS (Independent)",
+      "ring": 1,
+      "holder": "Rao Inderjit Singh",
+      "description": "MoS (Independent)"
+    },
+    {
+      "id": "min-sarbananda-sonowal",
+      "name": "Sarbananda Sonowal",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Sarbananda Sonowal",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-nitin-gadkari",
+      "name": "Nitin Gadkari",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Nitin Gadkari",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-jayant-chaudhary",
+      "name": "Jayant Chaudhary",
+      "category": "OFFICIALS",
+      "subtype": "MoS (Independent)",
+      "ring": 1,
+      "holder": "Jayant Chaudhary",
+      "description": "MoS (Independent)"
+    },
+    {
+      "id": "min-virendra-kumar",
+      "name": "Virendra Kumar",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Virendra Kumar",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-giriraj-singh",
+      "name": "Giriraj Singh",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Giriraj Singh",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-jual-oram",
+      "name": "Jual Oram",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Jual Oram",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "min-annapurna-devi",
+      "name": "Annapurna Devi",
+      "category": "OFFICIALS",
+      "subtype": "Cabinet Minister",
+      "ring": 1,
+      "holder": "Annapurna Devi",
+      "description": "Cabinet Minister"
+    },
+    {
+      "id": "ministry-agriculture",
+      "name": "Ministry of Agriculture & Farmers Welfare",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 122528,
+      "groupColor": "#e6194b"
+    },
+    {
+      "id": "dept-department-of-agriculture-farmers-welfare",
+      "name": "Department of Agriculture & Farmers Welfare",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#e6194b",
+      "parentMinistry": "Ministry of Agriculture & Farmers Welfare"
+    },
+    {
+      "id": "dept-department-of-agricultural-research-education",
+      "name": "Department of Agricultural Research & Education",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#e6194b",
+      "parentMinistry": "Ministry of Agriculture & Farmers Welfare"
+    },
+    {
+      "id": "dept-department-of-animal-husbandry-dairying",
+      "name": "Department of Animal Husbandry & Dairying",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#e6194b",
+      "parentMinistry": "Ministry of Agriculture & Farmers Welfare"
+    },
+    {
+      "id": "ministry-ayush",
+      "name": "Ministry of AYUSH",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (MoS I/C)",
+      "ring": 2,
+      "budget": 3712,
+      "groupColor": "#3cb44b"
+    },
+    {
+      "id": "ministry-chemicals",
+      "name": "Ministry of Chemicals & Fertilizers",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 178351,
+      "groupColor": "#4363d8"
+    },
+    {
+      "id": "dept-department-of-chemicals-petrochemicals",
+      "name": "Department of Chemicals & Petrochemicals",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#4363d8",
+      "parentMinistry": "Ministry of Chemicals & Fertilizers"
+    },
+    {
+      "id": "dept-department-of-fertilizers",
+      "name": "Department of Fertilizers",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#4363d8",
+      "parentMinistry": "Ministry of Chemicals & Fertilizers"
+    },
+    {
+      "id": "dept-department-of-pharmaceuticals",
+      "name": "Department of Pharmaceuticals",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#4363d8",
+      "parentMinistry": "Ministry of Chemicals & Fertilizers"
+    },
+    {
+      "id": "ministry-civil-aviation",
+      "name": "Ministry of Civil Aviation",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (MoS I/C)",
+      "ring": 2,
+      "budget": 2666,
+      "groupColor": "#f58231"
+    },
+    {
+      "id": "ministry-coal",
+      "name": "Ministry of Coal",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 821,
+      "groupColor": "#911eb4"
+    },
+    {
+      "id": "ministry-commerce",
+      "name": "Ministry of Commerce & Industry",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 12456,
+      "groupColor": "#42d4f4"
+    },
+    {
+      "id": "dept-department-of-commerce",
+      "name": "Department of Commerce",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#42d4f4",
+      "parentMinistry": "Ministry of Commerce & Industry"
+    },
+    {
+      "id": "dept-department-for-promotion-of-industry-internal-trade-dpiit",
+      "name": "Department for Promotion of Industry & Internal Trade (DPIIT)",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#42d4f4",
+      "parentMinistry": "Ministry of Commerce & Industry"
+    },
+    {
+      "id": "ministry-communications",
+      "name": "Ministry of Communications",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 12000,
+      "groupColor": "#f032e6"
+    },
+    {
+      "id": "dept-department-of-telecommunications",
+      "name": "Department of Telecommunications",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#f032e6",
+      "parentMinistry": "Ministry of Communications"
+    },
+    {
+      "id": "dept-department-of-posts",
+      "name": "Department of Posts",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#f032e6",
+      "parentMinistry": "Ministry of Communications"
+    },
+    {
+      "id": "ministry-consumer-affairs",
+      "name": "Ministry of Consumer Affairs, Food & Public Distribution",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 217684,
+      "groupColor": "#bfef45"
+    },
+    {
+      "id": "dept-department-of-consumer-affairs",
+      "name": "Department of Consumer Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#bfef45",
+      "parentMinistry": "Ministry of Consumer Affairs, Food & Public Distribution"
+    },
+    {
+      "id": "dept-department-of-food-public-distribution",
+      "name": "Department of Food & Public Distribution",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#bfef45",
+      "parentMinistry": "Ministry of Consumer Affairs, Food & Public Distribution"
+    },
+    {
+      "id": "ministry-cooperation",
+      "name": "Ministry of Cooperation",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 1308,
+      "groupColor": "#fabed4"
+    },
+    {
+      "id": "ministry-corporate-affairs",
+      "name": "Ministry of Corporate Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 898,
+      "groupColor": "#469990"
+    },
+    {
+      "id": "ministry-culture",
+      "name": "Ministry of Culture",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 3680,
+      "groupColor": "#dcbeff"
+    },
+    {
+      "id": "ministry-defence",
+      "name": "Ministry of Defence",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 621940,
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "dept-department-of-defence",
+      "name": "Department of Defence",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9A6324",
+      "parentMinistry": "Ministry of Defence"
+    },
+    {
+      "id": "dept-department-of-military-affairs",
+      "name": "Department of Military Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9A6324",
+      "parentMinistry": "Ministry of Defence"
+    },
+    {
+      "id": "dept-department-of-defence-production",
+      "name": "Department of Defence Production",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9A6324",
+      "parentMinistry": "Ministry of Defence"
+    },
+    {
+      "id": "dept-department-of-ex-servicemen-welfare",
+      "name": "Department of Ex-Servicemen Welfare",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9A6324",
+      "parentMinistry": "Ministry of Defence"
+    },
+    {
+      "id": "dept-department-of-defence-research-development",
+      "name": "Department of Defence Research & Development",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9A6324",
+      "parentMinistry": "Ministry of Defence"
+    },
+    {
+      "id": "ministry-doner",
+      "name": "Ministry of Development of North Eastern Region",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 5892,
+      "groupColor": "#fffac8"
+    },
+    {
+      "id": "ministry-earth-sciences",
+      "name": "Ministry of Earth Sciences",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (MoS I/C)",
+      "ring": 2,
+      "budget": 3410,
+      "groupColor": "#800000"
+    },
+    {
+      "id": "ministry-education",
+      "name": "Ministry of Education",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 120628,
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "dept-department-of-school-education-literacy",
+      "name": "Department of School Education & Literacy",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#aaffc3",
+      "parentMinistry": "Ministry of Education"
+    },
+    {
+      "id": "dept-department-of-higher-education",
+      "name": "Department of Higher Education",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#aaffc3",
+      "parentMinistry": "Ministry of Education"
+    },
+    {
+      "id": "ministry-electronics-it",
+      "name": "Ministry of Electronics & Information Technology",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 21936,
+      "groupColor": "#808000"
+    },
+    {
+      "id": "ministry-environment",
+      "name": "Ministry of Environment, Forest & Climate Change",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 3418,
+      "groupColor": "#ffd8b1"
+    },
+    {
+      "id": "ministry-external-affairs",
+      "name": "Ministry of External Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 22154,
+      "groupColor": "#000075"
+    },
+    {
+      "id": "ministry-finance",
+      "name": "Ministry of Finance",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 47820,
+      "groupColor": "#a9a9a9"
+    },
+    {
+      "id": "dept-department-of-economic-affairs",
+      "name": "Department of Economic Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#a9a9a9",
+      "parentMinistry": "Ministry of Finance"
+    },
+    {
+      "id": "dept-department-of-expenditure",
+      "name": "Department of Expenditure",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#a9a9a9",
+      "parentMinistry": "Ministry of Finance"
+    },
+    {
+      "id": "dept-department-of-revenue",
+      "name": "Department of Revenue",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#a9a9a9",
+      "parentMinistry": "Ministry of Finance"
+    },
+    {
+      "id": "dept-department-of-investment-public-asset-management-dipam",
+      "name": "Department of Investment & Public Asset Management (DIPAM)",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#a9a9a9",
+      "parentMinistry": "Ministry of Finance"
+    },
+    {
+      "id": "dept-department-of-financial-services",
+      "name": "Department of Financial Services",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#a9a9a9",
+      "parentMinistry": "Ministry of Finance"
+    },
+    {
+      "id": "ministry-fisheries",
+      "name": "Ministry of Fisheries, Animal Husbandry & Dairying",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 2702,
+      "groupColor": "#e6beff"
+    },
+    {
+      "id": "dept-department-of-fisheries",
+      "name": "Department of Fisheries",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#e6beff",
+      "parentMinistry": "Ministry of Fisheries, Animal Husbandry & Dairying"
+    },
+    {
+      "id": "ministry-food-processing",
+      "name": "Ministry of Food Processing Industries",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 3974,
+      "groupColor": "#1abc9c"
+    },
+    {
+      "id": "ministry-health",
+      "name": "Ministry of Health & Family Welfare",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 99858,
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "dept-department-of-health-family-welfare",
+      "name": "Department of Health & Family Welfare",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#e74c3c",
+      "parentMinistry": "Ministry of Health & Family Welfare"
+    },
+    {
+      "id": "dept-department-of-health-research",
+      "name": "Department of Health Research",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#e74c3c",
+      "parentMinistry": "Ministry of Health & Family Welfare"
+    },
+    {
+      "id": "ministry-heavy-industries",
+      "name": "Ministry of Heavy Industries",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 4788,
+      "groupColor": "#3498db"
+    },
+    {
+      "id": "ministry-home-affairs",
+      "name": "Ministry of Home Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 219643,
+      "groupColor": "#9b59b6"
+    },
+    {
+      "id": "dept-department-of-internal-security",
+      "name": "Department of Internal Security",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9b59b6",
+      "parentMinistry": "Ministry of Home Affairs"
+    },
+    {
+      "id": "dept-department-of-states",
+      "name": "Department of States",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9b59b6",
+      "parentMinistry": "Ministry of Home Affairs"
+    },
+    {
+      "id": "dept-department-of-official-language",
+      "name": "Department of Official Language",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9b59b6",
+      "parentMinistry": "Ministry of Home Affairs"
+    },
+    {
+      "id": "dept-department-of-home",
+      "name": "Department of Home",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9b59b6",
+      "parentMinistry": "Ministry of Home Affairs"
+    },
+    {
+      "id": "dept-department-of-jammu-kashmir-affairs",
+      "name": "Department of Jammu & Kashmir Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9b59b6",
+      "parentMinistry": "Ministry of Home Affairs"
+    },
+    {
+      "id": "dept-department-of-border-management",
+      "name": "Department of Border Management",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#9b59b6",
+      "parentMinistry": "Ministry of Home Affairs"
+    },
+    {
+      "id": "ministry-housing",
+      "name": "Ministry of Housing & Urban Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 86735,
+      "groupColor": "#f39c12"
+    },
+    {
+      "id": "ministry-information-broadcasting",
+      "name": "Ministry of Information & Broadcasting",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 4550,
+      "groupColor": "#2ecc71"
+    },
+    {
+      "id": "ministry-jal-shakti",
+      "name": "Ministry of Jal Shakti",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 28862,
+      "groupColor": "#e67e22"
+    },
+    {
+      "id": "dept-department-of-water-resources-river-development-ganga-rejuvenation",
+      "name": "Department of Water Resources, River Development & Ganga Rejuvenation",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#e67e22",
+      "parentMinistry": "Ministry of Jal Shakti"
+    },
+    {
+      "id": "dept-department-of-drinking-water-sanitation",
+      "name": "Department of Drinking Water & Sanitation",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#e67e22",
+      "parentMinistry": "Ministry of Jal Shakti"
+    },
+    {
+      "id": "ministry-labour",
+      "name": "Ministry of Labour & Employment",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 13436,
+      "groupColor": "#1f77b4"
+    },
+    {
+      "id": "ministry-law",
+      "name": "Ministry of Law & Justice",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 2121,
+      "groupColor": "#ff7f0e"
+    },
+    {
+      "id": "dept-department-of-legal-affairs",
+      "name": "Department of Legal Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#ff7f0e",
+      "parentMinistry": "Ministry of Law & Justice"
+    },
+    {
+      "id": "dept-legislative-department",
+      "name": "Legislative Department",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#ff7f0e",
+      "parentMinistry": "Ministry of Law & Justice"
+    },
+    {
+      "id": "dept-department-of-justice",
+      "name": "Department of Justice",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#ff7f0e",
+      "parentMinistry": "Ministry of Law & Justice"
+    },
+    {
+      "id": "ministry-msme",
+      "name": "Ministry of Micro, Small & Medium Enterprises",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 5740,
+      "groupColor": "#2ca02c"
+    },
+    {
+      "id": "ministry-mines",
+      "name": "Ministry of Mines",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 3573,
+      "groupColor": "#d62728"
+    },
+    {
+      "id": "ministry-minority-affairs",
+      "name": "Ministry of Minority Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 3536,
+      "groupColor": "#9467bd"
+    },
+    {
+      "id": "ministry-new-renewable-energy",
+      "name": "Ministry of New & Renewable Energy",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 20953,
+      "groupColor": "#8c564b"
+    },
+    {
+      "id": "ministry-panchayati-raj",
+      "name": "Ministry of Panchayati Raj",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 9524,
+      "groupColor": "#e377c2"
+    },
+    {
+      "id": "ministry-parliamentary-affairs",
+      "name": "Ministry of Parliamentary Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 148,
+      "groupColor": "#7f7f7f"
+    },
+    {
+      "id": "ministry-personnel",
+      "name": "Ministry of Personnel, Public Grievances & Pensions",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 2179,
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "dept-department-of-personnel-training-dopt",
+      "name": "Department of Personnel & Training (DoPT)",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#bcbd22",
+      "parentMinistry": "Ministry of Personnel, Public Grievances & Pensions"
+    },
+    {
+      "id": "dept-department-of-administrative-reforms-public-grievances",
+      "name": "Department of Administrative Reforms & Public Grievances",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#bcbd22",
+      "parentMinistry": "Ministry of Personnel, Public Grievances & Pensions"
+    },
+    {
+      "id": "dept-department-of-pensions-pensioners-welfare",
+      "name": "Department of Pensions & Pensioners Welfare",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#bcbd22",
+      "parentMinistry": "Ministry of Personnel, Public Grievances & Pensions"
+    },
+    {
+      "id": "ministry-petroleum",
+      "name": "Ministry of Petroleum & Natural Gas",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 14646,
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "ministry-planning",
+      "name": "Ministry of Planning",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (MoS I/C)",
+      "ring": 2,
+      "budget": 250,
+      "groupColor": "#aec7e8"
+    },
+    {
+      "id": "ministry-ports-shipping",
+      "name": "Ministry of Ports, Shipping & Waterways",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 2744,
+      "groupColor": "#ffbb78"
+    },
+    {
+      "id": "ministry-power",
+      "name": "Ministry of Power",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 20502,
+      "groupColor": "#98df8a"
+    },
+    {
+      "id": "ministry-railways",
+      "name": "Ministry of Railways",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 252000,
+      "groupColor": "#ff9896"
+    },
+    {
+      "id": "dept-ministry-of-railways-railway-board",
+      "name": "Ministry of Railways (Railway Board)",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#ff9896",
+      "parentMinistry": "Ministry of Railways"
+    },
+    {
+      "id": "ministry-road-transport",
+      "name": "Ministry of Road Transport & Highways",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 278000,
+      "groupColor": "#c5b0d5"
+    },
+    {
+      "id": "ministry-rural-development",
+      "name": "Ministry of Rural Development",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 178000,
+      "groupColor": "#c49c94"
+    },
+    {
+      "id": "dept-department-of-rural-development",
+      "name": "Department of Rural Development",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#c49c94",
+      "parentMinistry": "Ministry of Rural Development"
+    },
+    {
+      "id": "dept-department-of-land-resources",
+      "name": "Department of Land Resources",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#c49c94",
+      "parentMinistry": "Ministry of Rural Development"
+    },
+    {
+      "id": "ministry-science-technology",
+      "name": "Ministry of Science & Technology",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (MoS I/C)",
+      "ring": 2,
+      "budget": 16727,
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "dept-department-of-science-technology",
+      "name": "Department of Science & Technology",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#f7b6d2",
+      "parentMinistry": "Ministry of Science & Technology"
+    },
+    {
+      "id": "dept-department-of-scientific-industrial-research",
+      "name": "Department of Scientific & Industrial Research",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#f7b6d2",
+      "parentMinistry": "Ministry of Science & Technology"
+    },
+    {
+      "id": "dept-department-of-biotechnology",
+      "name": "Department of Biotechnology",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#f7b6d2",
+      "parentMinistry": "Ministry of Science & Technology"
+    },
+    {
+      "id": "ministry-skill-development",
+      "name": "Ministry of Skill Development & Entrepreneurship",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (MoS I/C)",
+      "ring": 2,
+      "budget": 2499,
+      "groupColor": "#c7c7c7"
+    },
+    {
+      "id": "ministry-social-justice",
+      "name": "Ministry of Social Justice & Empowerment",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 16150,
+      "groupColor": "#dbdb8d"
+    },
+    {
+      "id": "dept-department-of-social-justice-empowerment",
+      "name": "Department of Social Justice & Empowerment",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#dbdb8d",
+      "parentMinistry": "Ministry of Social Justice & Empowerment"
+    },
+    {
+      "id": "dept-department-of-empowerment-of-persons-with-disabilities",
+      "name": "Department of Empowerment of Persons with Disabilities",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#dbdb8d",
+      "parentMinistry": "Ministry of Social Justice & Empowerment"
+    },
+    {
+      "id": "ministry-statistics",
+      "name": "Ministry of Statistics & Programme Implementation",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (MoS I/C)",
+      "ring": 2,
+      "budget": 5818,
+      "groupColor": "#9edae5"
+    },
+    {
+      "id": "ministry-steel",
+      "name": "Ministry of Steel",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 100,
+      "groupColor": "#393b79"
+    },
+    {
+      "id": "ministry-textiles",
+      "name": "Ministry of Textiles",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 4417,
+      "groupColor": "#637939"
+    },
+    {
+      "id": "ministry-tourism",
+      "name": "Ministry of Tourism",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 3221,
+      "groupColor": "#8c6d31"
+    },
+    {
+      "id": "ministry-tribal-affairs",
+      "name": "Ministry of Tribal Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 13000,
+      "groupColor": "#843c39"
+    },
+    {
+      "id": "ministry-women-child",
+      "name": "Ministry of Women & Child Development",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 26092,
+      "groupColor": "#7b4173"
+    },
+    {
+      "id": "ministry-youth-sports",
+      "name": "Ministry of Youth Affairs & Sports",
+      "category": "DEPARTMENTS",
+      "subtype": "Ministry (Cabinet)",
+      "ring": 2,
+      "budget": 3794,
+      "groupColor": "#5254a3"
+    },
+    {
+      "id": "dept-department-of-youth-affairs",
+      "name": "Department of Youth Affairs",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#5254a3",
+      "parentMinistry": "Ministry of Youth Affairs & Sports"
+    },
+    {
+      "id": "dept-department-of-sports",
+      "name": "Department of Sports",
+      "category": "DEPARTMENTS",
+      "subtype": "Department",
+      "ring": 3,
+      "groupColor": "#5254a3",
+      "parentMinistry": "Ministry of Youth Affairs & Sports"
+    },
+    {
+      "id": "const-election-commission",
+      "name": "Election Commission of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Rajiv Kumar (Chief Election Commissioner)",
+      "est": 1950,
+      "mandate": "Conduct free and fair elections",
+      "article": "Article 324"
+    },
+    {
+      "id": "const-cag",
+      "name": "Comptroller & Auditor General of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Girish Chandra Murmu",
+      "est": 1950,
+      "mandate": "Audit all government expenditure",
+      "article": "Article 148"
+    },
+    {
+      "id": "const-upsc",
+      "name": "Union Public Service Commission",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Preeti Sudan (Chairman)",
+      "est": 1926,
+      "mandate": "Recruit civil servants for GoI",
+      "article": "Article 315"
+    },
+    {
+      "id": "const-finance-commission",
+      "name": "Finance Commission of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Arvind Panagariya (16th FC Chairman)",
+      "est": 1951,
+      "mandate": "Recommend distribution of tax revenues between Centre and States",
+      "article": "Article 280"
+    },
+    {
+      "id": "const-nsc",
+      "name": "National Commission for Scheduled Castes",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Kishor Makwana",
+      "est": 2004,
+      "mandate": "Safeguard interests of Scheduled Castes",
+      "article": "Article 338"
+    },
+    {
+      "id": "const-nsct",
+      "name": "National Commission for Scheduled Tribes",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Harsh Chouhan",
+      "est": 2004,
+      "mandate": "Safeguard interests of Scheduled Tribes",
+      "article": "Article 338A"
+    },
+    {
+      "id": "const-attorney-general",
+      "name": "Attorney General of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "R Venkataramani",
+      "est": 1950,
+      "mandate": "Chief legal adviser to Government of India",
+      "article": "Article 76"
+    },
+    {
+      "id": "const-niti-aayog",
+      "name": "NITI Aayog",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Suman Bery (Vice Chairman)",
+      "est": 2015,
+      "mandate": "Policy think tank replacing Planning Commission",
+      "article": "Executive Resolution"
+    },
+    {
+      "id": "const-gst-council",
+      "name": "GST Council",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Nirmala Sitharaman (Chairperson)",
+      "est": 2016,
+      "mandate": "Make recommendations on GST rates and policies",
+      "article": "Article 279A"
+    },
+    {
+      "id": "const-nbc",
+      "name": "National Commission for Backward Classes",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Hansraj Gangaram Ahir",
+      "est": 2018,
+      "mandate": "Safeguard interests of socially and educationally backward classes",
+      "article": "Article 338B"
+    },
+    {
+      "id": "const-inter-state-council",
+      "name": "Inter-State Council",
+      "category": "PUBLIC BODIES",
+      "subtype": "Constitutional Body",
+      "ring": 3,
+      "holder": "Prime Minister (Chairman)",
+      "est": 1990,
+      "mandate": "Coordination between Centre and States",
+      "article": "Article 263"
+    },
+    {
+      "id": "stat-rbi",
+      "name": "Reserve Bank of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Sanjay Malhotra (Governor)",
+      "est": 1935,
+      "mandate": "Central banking, monetary policy",
+      "act": "RBI Act, 1934",
+      "groupColor": "#a9a9a9"
+    },
+    {
+      "id": "stat-sebi",
+      "name": "Securities & Exchange Board of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Tuhin Kanta Pandey",
+      "est": 1992,
+      "mandate": "Regulate securities market",
+      "act": "SEBI Act, 1992",
+      "groupColor": "#a9a9a9"
+    },
+    {
+      "id": "stat-trai",
+      "name": "Telecom Regulatory Authority of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Anil Kumar Lahoti",
+      "est": 1997,
+      "mandate": "Regulate telecom sector",
+      "act": "TRAI Act, 1997",
+      "groupColor": "#f032e6"
+    },
+    {
+      "id": "stat-fssai",
+      "name": "Food Safety & Standards Authority of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "G Kamala Vardhana Rao",
+      "est": 2011,
+      "mandate": "Food safety regulation",
+      "act": "FSS Act, 2006",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "stat-irdai",
+      "name": "Insurance Regulatory & Development Authority of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Debasish Panda",
+      "est": 2000,
+      "mandate": "Regulate insurance sector",
+      "act": "IRDA Act, 1999",
+      "groupColor": "#a9a9a9"
+    },
+    {
+      "id": "stat-cci",
+      "name": "Competition Commission of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Ravneet Kaur",
+      "est": 2009,
+      "mandate": "Prevent anti-competitive practices",
+      "act": "Competition Act, 2002",
+      "groupColor": "#469990"
+    },
+    {
+      "id": "stat-nhrc",
+      "name": "National Human Rights Commission",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Justice V Ramasubramanian",
+      "est": 1993,
+      "mandate": "Protect human rights",
+      "act": "Protection of Human Rights Act, 1993",
+      "groupColor": "#9b59b6"
+    },
+    {
+      "id": "stat-cbi",
+      "name": "Central Bureau of Investigation",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Director",
+      "est": 1963,
+      "mandate": "Premier investigating agency",
+      "act": "DSPE Act, 1946",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "stat-ncw",
+      "name": "National Commission for Women",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Rekha Sharma",
+      "est": 1992,
+      "mandate": "Review safeguards for women",
+      "act": "NCW Act, 1990",
+      "groupColor": "#7b4173"
+    },
+    {
+      "id": "stat-ncpcr",
+      "name": "National Commission for Protection of Child Rights",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Priyank Kanoongo",
+      "est": 2007,
+      "mandate": "Protect child rights",
+      "act": "CPCR Act, 2005",
+      "groupColor": "#7b4173"
+    },
+    {
+      "id": "stat-ngt",
+      "name": "National Green Tribunal",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Justice Prakash Shrivastava",
+      "est": 2010,
+      "mandate": "Environmental protection",
+      "act": "NGT Act, 2010",
+      "groupColor": "#ffd8b1"
+    },
+    {
+      "id": "stat-cic",
+      "name": "Central Information Commission",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Heeralal Samariya",
+      "est": 2005,
+      "mandate": "Enforce Right to Information",
+      "act": "RTI Act, 2005",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "stat-ncdrc",
+      "name": "National Consumer Disputes Redressal Commission",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Justice A P Sahi (retd)",
+      "est": 1988,
+      "mandate": "Consumer protection",
+      "act": "Consumer Protection Act, 2019",
+      "groupColor": "#bfef45"
+    },
+    {
+      "id": "stat-ncte",
+      "name": "National Council for Teacher Education",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Prof. Yogesh Singh",
+      "est": 1995,
+      "mandate": "Teacher education standards",
+      "act": "NCTE Act, 1993",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "stat-cvc",
+      "name": "Central Vigilance Commission",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Praveen Kumar Srivastava",
+      "est": 1964,
+      "mandate": "Supervise vigilance activity",
+      "act": "CVC Act, 2003",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "stat-ncbc",
+      "name": "National Commission for Backward Classes",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Hansraj Gangaram Ahir",
+      "est": 1993,
+      "mandate": "Inclusion criteria for backward classes",
+      "act": "NCBC Act, 1993",
+      "groupColor": "#dbdb8d"
+    },
+    {
+      "id": "stat-cat",
+      "name": "Central Administrative Tribunal",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Justice Ranjit More",
+      "est": 1985,
+      "mandate": "Adjudicate service matters",
+      "act": "Administrative Tribunals Act, 1985",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "stat-nbfc",
+      "name": "National Bank for Agriculture & Rural Development (NABARD)",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Shaji K V",
+      "est": 1982,
+      "mandate": "Agricultural & rural credit",
+      "act": "NABARD Act, 1981",
+      "groupColor": "#a9a9a9"
+    },
+    {
+      "id": "stat-epfo",
+      "name": "Employees Provident Fund Organisation",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "CPFC",
+      "est": 1952,
+      "mandate": "Provident fund for employees",
+      "act": "EPF & MP Act, 1952",
+      "groupColor": "#1f77b4"
+    },
+    {
+      "id": "stat-esic",
+      "name": "Employees State Insurance Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Director General",
+      "est": 1948,
+      "mandate": "Social security for workers",
+      "act": "ESI Act, 1948",
+      "groupColor": "#1f77b4"
+    },
+    {
+      "id": "stat-pfrda",
+      "name": "Pension Fund Regulatory & Development Authority",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Deepak Mohanty",
+      "est": 2014,
+      "mandate": "Regulate pension sector",
+      "act": "PFRDA Act, 2013",
+      "groupColor": "#a9a9a9"
+    },
+    {
+      "id": "stat-ibbi",
+      "name": "Insolvency & Bankruptcy Board of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Ravi Mital",
+      "est": 2016,
+      "mandate": "Insolvency resolution",
+      "act": "IBC, 2016",
+      "groupColor": "#469990"
+    },
+    {
+      "id": "stat-nha",
+      "name": "National Health Authority",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "CEO",
+      "est": 2019,
+      "mandate": "Implement Ayushman Bharat",
+      "act": "Government Order",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "stat-rera",
+      "name": "Real Estate Regulatory Authority",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Varies by state",
+      "est": 2016,
+      "mandate": "Regulate real estate",
+      "act": "RERA Act, 2016",
+      "groupColor": "#f39c12"
+    },
+    {
+      "id": "stat-dgca",
+      "name": "Directorate General of Civil Aviation",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Director General",
+      "est": 1927,
+      "mandate": "Regulate civil aviation",
+      "act": "Aircraft Act, 1934",
+      "groupColor": "#f58231"
+    },
+    {
+      "id": "stat-aai",
+      "name": "Airports Authority of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Chairman",
+      "est": 1995,
+      "mandate": "Airport management",
+      "act": "AAI Act, 1994",
+      "groupColor": "#f58231"
+    },
+    {
+      "id": "stat-nma",
+      "name": "National Monuments Authority",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Chairman",
+      "est": 2011,
+      "mandate": "Protect monuments",
+      "act": "AMASR Act",
+      "groupColor": "#dcbeff"
+    },
+    {
+      "id": "stat-bci",
+      "name": "Bar Council of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Chairman",
+      "est": 1961,
+      "mandate": "Regulate legal profession",
+      "act": "Advocates Act, 1961",
+      "groupColor": "#ff7f0e"
+    },
+    {
+      "id": "stat-mci",
+      "name": "National Medical Commission",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Dr. B N Gangadhar",
+      "est": 2020,
+      "mandate": "Regulate medical education & practice",
+      "act": "NMC Act, 2019",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "stat-pci",
+      "name": "Pharmacy Council of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "President",
+      "est": 1948,
+      "mandate": "Regulate pharmacy profession",
+      "act": "Pharmacy Act, 1948",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "stat-dci",
+      "name": "Dental Council of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "President",
+      "est": 1948,
+      "mandate": "Regulate dental education",
+      "act": "Dentists Act, 1948",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "stat-inc",
+      "name": "Indian Nursing Council",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "President",
+      "est": 1947,
+      "mandate": "Regulate nursing education",
+      "act": "INC Act, 1947",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "stat-aicte",
+      "name": "All India Council for Technical Education",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Chairman",
+      "est": 1945,
+      "mandate": "Regulate technical education",
+      "act": "AICTE Act, 1987",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "stat-ugc",
+      "name": "University Grants Commission",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Prof. M Jagadesh Kumar",
+      "est": 1956,
+      "mandate": "Coordinate & fund universities",
+      "act": "UGC Act, 1956",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "stat-naac",
+      "name": "National Assessment & Accreditation Council",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Director",
+      "est": 1994,
+      "mandate": "Accredit higher education institutions",
+      "act": "UGC Establishment",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "stat-cpcb",
+      "name": "Central Pollution Control Board",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Chairman",
+      "est": 1974,
+      "mandate": "Prevent pollution",
+      "act": "Water Act, 1974",
+      "groupColor": "#ffd8b1"
+    },
+    {
+      "id": "stat-nia",
+      "name": "National Investigation Agency",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Director General",
+      "est": 2009,
+      "mandate": "Counter-terrorism investigation",
+      "act": "NIA Act, 2008",
+      "groupColor": "#9b59b6"
+    },
+    {
+      "id": "stat-ncert",
+      "name": "National Council of Educational Research & Training",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Director",
+      "est": 1961,
+      "mandate": "Educational research & curriculum",
+      "act": "Societies Registration Act",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "stat-nta",
+      "name": "National Testing Agency",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Director General",
+      "est": 2017,
+      "mandate": "Conduct entrance examinations",
+      "act": "Societies Registration Act",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "stat-cbse",
+      "name": "Central Board of Secondary Education",
+      "category": "PUBLIC BODIES",
+      "subtype": "Statutory Body",
+      "ring": 4,
+      "holder": "Chairman",
+      "est": 1962,
+      "mandate": "School education board",
+      "act": "Societies Registration Act",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iit-bombay",
+      "name": "IIT Bombay",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1958,
+      "location": "Mumbai",
+      "bodyCategory": "IIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iit-delhi",
+      "name": "IIT Delhi",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1961,
+      "location": "New Delhi",
+      "bodyCategory": "IIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iit-madras",
+      "name": "IIT Madras",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1959,
+      "location": "Chennai",
+      "bodyCategory": "IIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iit-kanpur",
+      "name": "IIT Kanpur",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1959,
+      "location": "Kanpur",
+      "bodyCategory": "IIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iit-kharagpur",
+      "name": "IIT Kharagpur",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1951,
+      "location": "Kharagpur",
+      "bodyCategory": "IIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iit-roorkee",
+      "name": "IIT Roorkee",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1847,
+      "location": "Roorkee",
+      "bodyCategory": "IIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iit-guwahati",
+      "name": "IIT Guwahati",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1994,
+      "location": "Guwahati",
+      "bodyCategory": "IIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iit-hyderabad",
+      "name": "IIT Hyderabad",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2008,
+      "location": "Hyderabad",
+      "bodyCategory": "IIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iim-ahmedabad",
+      "name": "IIM Ahmedabad",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1961,
+      "location": "Ahmedabad",
+      "bodyCategory": "IIM",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iim-bangalore",
+      "name": "IIM Bangalore",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1973,
+      "location": "Bangalore",
+      "bodyCategory": "IIM",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iim-calcutta",
+      "name": "IIM Calcutta",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1961,
+      "location": "Kolkata",
+      "bodyCategory": "IIM",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iim-lucknow",
+      "name": "IIM Lucknow",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1984,
+      "location": "Lucknow",
+      "bodyCategory": "IIM",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iim-kozhikode",
+      "name": "IIM Kozhikode",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1996,
+      "location": "Kozhikode",
+      "bodyCategory": "IIM",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iim-indore",
+      "name": "IIM Indore",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1996,
+      "location": "Indore",
+      "bodyCategory": "IIM",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-aiims-delhi",
+      "name": "AIIMS New Delhi",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1956,
+      "location": "New Delhi",
+      "bodyCategory": "AIIMS",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-aiims-bhopal",
+      "name": "AIIMS Bhopal",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2012,
+      "location": "Bhopal",
+      "bodyCategory": "AIIMS",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-aiims-jodhpur",
+      "name": "AIIMS Jodhpur",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2012,
+      "location": "Jodhpur",
+      "bodyCategory": "AIIMS",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-aiims-patna",
+      "name": "AIIMS Patna",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2012,
+      "location": "Patna",
+      "bodyCategory": "AIIMS",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-aiims-rishikesh",
+      "name": "AIIMS Rishikesh",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2012,
+      "location": "Rishikesh",
+      "bodyCategory": "AIIMS",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-aiims-raipur",
+      "name": "AIIMS Raipur",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2012,
+      "location": "Raipur",
+      "bodyCategory": "AIIMS",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-isro",
+      "name": "Indian Space Research Organisation",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1969,
+      "location": "Bangalore",
+      "bodyCategory": "Space",
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "auto-drdo",
+      "name": "Defence Research & Development Organisation",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1958,
+      "location": "New Delhi",
+      "bodyCategory": "Defence Research",
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "auto-csir",
+      "name": "Council of Scientific & Industrial Research",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1942,
+      "location": "New Delhi",
+      "bodyCategory": "Research",
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "auto-icar",
+      "name": "Indian Council of Agricultural Research",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1929,
+      "location": "New Delhi",
+      "bodyCategory": "Research",
+      "groupColor": "#e6194b"
+    },
+    {
+      "id": "auto-icmr",
+      "name": "Indian Council of Medical Research",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1911,
+      "location": "New Delhi",
+      "bodyCategory": "Research",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-ichr",
+      "name": "Indian Council of Historical Research",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1972,
+      "location": "New Delhi",
+      "bodyCategory": "Research",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-icssr",
+      "name": "Indian Council of Social Science Research",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1969,
+      "location": "New Delhi",
+      "bodyCategory": "Research",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-dae",
+      "name": "Department of Atomic Energy",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1954,
+      "location": "Mumbai",
+      "bodyCategory": "Nuclear",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "auto-barc",
+      "name": "Bhabha Atomic Research Centre",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1954,
+      "location": "Mumbai",
+      "bodyCategory": "Nuclear",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "auto-npcil",
+      "name": "Nuclear Power Corporation of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1987,
+      "location": "Mumbai",
+      "bodyCategory": "Nuclear",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "auto-igcar",
+      "name": "Indira Gandhi Centre for Atomic Research",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1971,
+      "location": "Kalpakkam",
+      "bodyCategory": "Nuclear",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "auto-iiser-pune",
+      "name": "IISER Pune",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2006,
+      "location": "Pune",
+      "bodyCategory": "IISER",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-iiser-kolkata",
+      "name": "IISER Kolkata",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2006,
+      "location": "Kolkata",
+      "bodyCategory": "IISER",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-nit-trichy",
+      "name": "NIT Tiruchirappalli",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1964,
+      "location": "Tiruchirappalli",
+      "bodyCategory": "NIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-nit-warangal",
+      "name": "NIT Warangal",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1959,
+      "location": "Warangal",
+      "bodyCategory": "NIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-nit-surathkal",
+      "name": "NIT Karnataka (Surathkal)",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1960,
+      "location": "Surathkal",
+      "bodyCategory": "NIT",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-nift",
+      "name": "National Institute of Fashion Technology",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1986,
+      "location": "New Delhi",
+      "bodyCategory": "Design",
+      "groupColor": "#637939"
+    },
+    {
+      "id": "auto-nid",
+      "name": "National Institute of Design",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1961,
+      "location": "Ahmedabad",
+      "bodyCategory": "Design",
+      "groupColor": "#42d4f4"
+    },
+    {
+      "id": "auto-nimhans",
+      "name": "NIMHANS",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1974,
+      "location": "Bangalore",
+      "bodyCategory": "Medical",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-pgimer",
+      "name": "PGIMER Chandigarh",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1962,
+      "location": "Chandigarh",
+      "bodyCategory": "Medical",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-jipmer",
+      "name": "JIPMER Puducherry",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1823,
+      "location": "Puducherry",
+      "bodyCategory": "Medical",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "auto-iisc",
+      "name": "Indian Institute of Science",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1909,
+      "location": "Bangalore",
+      "bodyCategory": "Research",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-tifr",
+      "name": "Tata Institute of Fundamental Research",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1945,
+      "location": "Mumbai",
+      "bodyCategory": "Research",
+      "groupColor": "#bcbd22"
+    },
+    {
+      "id": "auto-iari",
+      "name": "Indian Agricultural Research Institute",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1905,
+      "location": "New Delhi",
+      "bodyCategory": "Agriculture",
+      "groupColor": "#e6194b"
+    },
+    {
+      "id": "auto-ivri",
+      "name": "Indian Veterinary Research Institute",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1889,
+      "location": "Bareilly",
+      "bodyCategory": "Agriculture",
+      "groupColor": "#e6194b"
+    },
+    {
+      "id": "auto-ndri",
+      "name": "National Dairy Research Institute",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1923,
+      "location": "Karnal",
+      "bodyCategory": "Agriculture",
+      "groupColor": "#e6194b"
+    },
+    {
+      "id": "auto-niper",
+      "name": "National Institute of Pharmaceutical Education & Research",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1998,
+      "location": "Mohali",
+      "bodyCategory": "Pharma",
+      "groupColor": "#4363d8"
+    },
+    {
+      "id": "auto-iia",
+      "name": "Indian Institute of Astrophysics",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1786,
+      "location": "Bangalore",
+      "bodyCategory": "Research",
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "auto-npl",
+      "name": "National Physical Laboratory",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1947,
+      "location": "New Delhi",
+      "bodyCategory": "CSIR Lab",
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "auto-ncl",
+      "name": "National Chemical Laboratory",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1950,
+      "location": "Pune",
+      "bodyCategory": "CSIR Lab",
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "auto-cdri",
+      "name": "Central Drug Research Institute",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1951,
+      "location": "Lucknow",
+      "bodyCategory": "CSIR Lab",
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "auto-nal",
+      "name": "National Aerospace Laboratories",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1959,
+      "location": "Bangalore",
+      "bodyCategory": "CSIR Lab",
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "auto-nio",
+      "name": "National Institute of Oceanography",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1966,
+      "location": "Goa",
+      "bodyCategory": "CSIR Lab",
+      "groupColor": "#f7b6d2"
+    },
+    {
+      "id": "auto-sail-rdcis",
+      "name": "SAIL R&D Centre",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1972,
+      "location": "Ranchi",
+      "bodyCategory": "Industrial",
+      "groupColor": "#393b79"
+    },
+    {
+      "id": "auto-kvs",
+      "name": "Kendriya Vidyalaya Sangathan",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1963,
+      "location": "New Delhi",
+      "bodyCategory": "Schools",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-nvs",
+      "name": "Navodaya Vidyalaya Samiti",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1986,
+      "location": "New Delhi",
+      "bodyCategory": "Schools",
+      "groupColor": "#aaffc3"
+    },
+    {
+      "id": "auto-ignca",
+      "name": "Indira Gandhi National Centre for the Arts",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1987,
+      "location": "New Delhi",
+      "bodyCategory": "Arts",
+      "groupColor": "#dcbeff"
+    },
+    {
+      "id": "auto-nsd",
+      "name": "National School of Drama",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1959,
+      "location": "New Delhi",
+      "bodyCategory": "Arts",
+      "groupColor": "#dcbeff"
+    },
+    {
+      "id": "auto-sai",
+      "name": "Sports Authority of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 1984,
+      "location": "New Delhi",
+      "bodyCategory": "Sports",
+      "groupColor": "#5254a3"
+    },
+    {
+      "id": "auto-nada",
+      "name": "National Anti-Doping Agency",
+      "category": "PUBLIC BODIES",
+      "subtype": "Autonomous Body",
+      "ring": 4,
+      "est": 2009,
+      "location": "New Delhi",
+      "bodyCategory": "Sports",
+      "groupColor": "#5254a3"
+    },
+    {
+      "id": "psu-ongc",
+      "name": "Oil & Natural Gas Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Oil & Gas",
+      "revenue": "₹6,45,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-iocl",
+      "name": "Indian Oil Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Oil & Gas",
+      "revenue": "₹9,35,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-ntpc",
+      "name": "NTPC Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Power",
+      "revenue": "₹1,78,000 Cr",
+      "groupColor": "#98df8a"
+    },
+    {
+      "id": "psu-coal-india",
+      "name": "Coal India Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Mining",
+      "revenue": "₹1,44,000 Cr",
+      "groupColor": "#911eb4"
+    },
+    {
+      "id": "psu-sail",
+      "name": "Steel Authority of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Steel",
+      "revenue": "₹1,03,000 Cr",
+      "groupColor": "#393b79"
+    },
+    {
+      "id": "psu-bhel",
+      "name": "Bharat Heavy Electricals",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Capital Goods",
+      "revenue": "₹27,000 Cr",
+      "groupColor": "#3498db"
+    },
+    {
+      "id": "psu-gail",
+      "name": "GAIL (India) Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Gas",
+      "revenue": "₹1,42,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-bpcl",
+      "name": "Bharat Petroleum Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Oil & Gas",
+      "revenue": "₹5,25,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-hpcl",
+      "name": "Hindustan Petroleum Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Oil & Gas",
+      "revenue": "₹4,64,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-pgcil",
+      "name": "Power Grid Corporation of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Power Transmission",
+      "revenue": "₹46,000 Cr",
+      "groupColor": "#98df8a"
+    },
+    {
+      "id": "psu-oil",
+      "name": "Oil India Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Oil & Gas",
+      "revenue": "₹38,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-nhpc",
+      "name": "NHPC Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Hydropower",
+      "revenue": "₹11,000 Cr",
+      "groupColor": "#98df8a"
+    },
+    {
+      "id": "psu-rec",
+      "name": "REC Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Finance",
+      "revenue": "₹44,000 Cr",
+      "groupColor": "#98df8a"
+    },
+    {
+      "id": "psu-pfc",
+      "name": "Power Finance Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna",
+      "sector": "Finance",
+      "revenue": "₹90,000 Cr",
+      "groupColor": "#98df8a"
+    },
+    {
+      "id": "psu-hal",
+      "name": "Hindustan Aeronautics Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Aerospace & Defence",
+      "revenue": "₹29,000 Cr",
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "psu-bel",
+      "name": "Bharat Electronics Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Defence Electronics",
+      "revenue": "₹20,000 Cr",
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "psu-mdl",
+      "name": "Mazagon Dock Shipbuilders",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Shipbuilding",
+      "revenue": "₹9,500 Cr",
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "psu-nfl",
+      "name": "National Fertilizers Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Fertilizers",
+      "revenue": "₹20,000 Cr",
+      "groupColor": "#4363d8"
+    },
+    {
+      "id": "psu-nmdc",
+      "name": "NMDC Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Mining",
+      "revenue": "₹19,000 Cr",
+      "groupColor": "#d62728"
+    },
+    {
+      "id": "psu-nalco",
+      "name": "National Aluminium Company",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Metals",
+      "revenue": "₹14,000 Cr",
+      "groupColor": "#d62728"
+    },
+    {
+      "id": "psu-eil",
+      "name": "Engineers India Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Consultancy",
+      "revenue": "₹3,600 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-mtnl",
+      "name": "Mahanagar Telephone Nigam",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Telecom",
+      "revenue": "₹2,800 Cr",
+      "groupColor": "#f032e6"
+    },
+    {
+      "id": "psu-rvnl",
+      "name": "Rail Vikas Nigam Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Infrastructure",
+      "revenue": "₹22,000 Cr",
+      "groupColor": "#ff9896"
+    },
+    {
+      "id": "psu-concor",
+      "name": "Container Corporation of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Logistics",
+      "revenue": "₹8,500 Cr",
+      "groupColor": "#ff9896"
+    },
+    {
+      "id": "psu-ircon",
+      "name": "IRCON International",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Construction",
+      "revenue": "₹13,000 Cr",
+      "groupColor": "#ff9896"
+    },
+    {
+      "id": "psu-nbcc",
+      "name": "NBCC (India) Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Construction",
+      "revenue": "₹8,000 Cr",
+      "groupColor": "#f39c12"
+    },
+    {
+      "id": "psu-beml",
+      "name": "BEML Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Heavy Equipment",
+      "revenue": "₹5,000 Cr",
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "psu-bharat-dynamics",
+      "name": "Bharat Dynamics Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Missiles",
+      "revenue": "₹3,100 Cr",
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "psu-grse",
+      "name": "Garden Reach Shipbuilders",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Shipbuilding",
+      "revenue": "₹4,300 Cr",
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "psu-gsl",
+      "name": "Goa Shipyard Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Shipbuilding",
+      "revenue": "₹4,000 Cr",
+      "groupColor": "#9A6324"
+    },
+    {
+      "id": "psu-nrl",
+      "name": "Numaligarh Refinery",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Refining",
+      "revenue": "₹21,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-mrpl",
+      "name": "Mangalore Refinery & Petrochemicals",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Refining",
+      "revenue": "₹93,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-cpcl",
+      "name": "Chennai Petroleum Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Refining",
+      "revenue": "₹72,000 Cr",
+      "groupColor": "#17becf"
+    },
+    {
+      "id": "psu-irctc",
+      "name": "IRCTC",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Tourism & Catering",
+      "revenue": "₹4,000 Cr",
+      "groupColor": "#ff9896"
+    },
+    {
+      "id": "psu-rites",
+      "name": "RITES Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Consultancy",
+      "revenue": "₹2,000 Cr",
+      "groupColor": "#ff9896"
+    },
+    {
+      "id": "psu-rcf",
+      "name": "Rashtriya Chemicals & Fertilizers",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Chemicals",
+      "revenue": "₹15,000 Cr",
+      "groupColor": "#4363d8"
+    },
+    {
+      "id": "psu-sjvn",
+      "name": "SJVN Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Hydropower",
+      "revenue": "₹3,200 Cr",
+      "groupColor": "#98df8a"
+    },
+    {
+      "id": "psu-thdc",
+      "name": "THDC India Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Hydropower",
+      "revenue": "₹6,500 Cr",
+      "groupColor": "#98df8a"
+    },
+    {
+      "id": "psu-nlc",
+      "name": "NLC India Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Mining & Power",
+      "revenue": "₹15,000 Cr",
+      "groupColor": "#911eb4"
+    },
+    {
+      "id": "psu-ecl",
+      "name": "Eastern Coalfields",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Mining",
+      "revenue": "₹14,000 Cr",
+      "groupColor": "#911eb4"
+    },
+    {
+      "id": "psu-secl",
+      "name": "South Eastern Coalfields",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Mining",
+      "revenue": "₹28,000 Cr",
+      "groupColor": "#911eb4"
+    },
+    {
+      "id": "psu-wapcos",
+      "name": "WAPCOS Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Consultancy",
+      "revenue": "₹2,200 Cr",
+      "groupColor": "#e67e22"
+    },
+    {
+      "id": "psu-hll",
+      "name": "HLL Lifecare Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Healthcare",
+      "revenue": "₹1,100 Cr",
+      "groupColor": "#e74c3c"
+    },
+    {
+      "id": "psu-itdc",
+      "name": "India Tourism Development Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Tourism",
+      "revenue": "₹500 Cr",
+      "groupColor": "#8c6d31"
+    },
+    {
+      "id": "psu-bsnl",
+      "name": "Bharat Sanchar Nigam Limited",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Navratna)",
+      "ring": 5,
+      "psuCategory": "Navratna",
+      "sector": "Telecom",
+      "revenue": "₹19,000 Cr",
+      "groupColor": "#f032e6"
+    },
+    {
+      "id": "psu-sbi",
+      "name": "State Bank of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna-equivalent",
+      "sector": "Banking",
+      "revenue": "₹6,10,000 Cr",
+      "groupColor": "#a9a9a9"
+    },
+    {
+      "id": "psu-lic",
+      "name": "Life Insurance Corporation",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Maharatna)",
+      "ring": 5,
+      "psuCategory": "Maharatna-equivalent",
+      "sector": "Insurance",
+      "revenue": "₹8,50,000 Cr",
+      "groupColor": "#a9a9a9"
+    },
+    {
+      "id": "psu-fci",
+      "name": "Food Corporation of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Other)",
+      "ring": 5,
+      "psuCategory": "Public Sector",
+      "sector": "Food Storage",
+      "revenue": "₹2,30,000 Cr",
+      "groupColor": "#bfef45"
+    },
+    {
+      "id": "psu-aai-psu",
+      "name": "Airports Authority of India",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Miniratna)",
+      "ring": 5,
+      "psuCategory": "Miniratna-I",
+      "sector": "Aviation",
+      "revenue": "₹14,000 Cr",
+      "groupColor": "#f58231"
+    },
+    {
+      "id": "psu-india-post-payments-bank",
+      "name": "India Post Payments Bank",
+      "category": "PUBLIC BODIES",
+      "subtype": "PSU (Other)",
+      "ring": 5,
+      "psuCategory": "Public Sector",
+      "sector": "Banking",
+      "revenue": "₹1,200 Cr",
+      "groupColor": "#f032e6"
+    },
+    {
+      "id": "lok-sabha",
+      "name": "Lok Sabha",
+      "category": "LEGISLATURES",
+      "subtype": "House of Parliament",
+      "ring": 2,
+      "holder": "Om Birla (Speaker)",
+      "totalSeats": 543,
+      "description": "House of the People, 18th Lok Sabha (2024-2029)"
+    },
+    {
+      "id": "rajya-sabha",
+      "name": "Rajya Sabha",
+      "category": "LEGISLATURES",
+      "subtype": "House of Parliament",
+      "ring": 2,
+      "holder": "Jagdeep Dhankhar (Chairman)",
+      "totalSeats": 245,
+      "description": "Council of States"
+    },
+    {
+      "id": "speaker",
+      "name": "Speaker of Lok Sabha",
+      "category": "OFFICIALS",
+      "subtype": "Speaker",
+      "ring": 1,
+      "holder": "Om Birla",
+      "since": "2019",
+      "description": "Presiding officer of Lok Sabha"
+    },
+    {
+      "id": "chairman-rs",
+      "name": "Chairman of Rajya Sabha",
+      "category": "OFFICIALS",
+      "subtype": "Chairman RS",
+      "ring": 1,
+      "holder": "Jagdeep Dhankhar",
+      "since": "2022",
+      "description": "Ex-officio Vice President"
+    },
+    {
+      "id": "supreme-court",
+      "name": "Supreme Court of India",
+      "category": "JUDICIARY",
+      "subtype": "Supreme Court",
+      "ring": 2,
+      "holder": "CJI Sanjiv Khanna",
+      "totalJudges": 34,
+      "location": "New Delhi",
+      "description": "Apex court of India"
+    },
+    {
+      "id": "cji",
+      "name": "Chief Justice of India",
+      "category": "OFFICIALS",
+      "subtype": "Chief Justice",
+      "ring": 1,
+      "holder": "Sanjiv Khanna",
+      "since": "2024",
+      "description": "Head of the Indian judiciary"
+    },
+    {
+      "id": "hc-allahabad-high-court",
+      "name": "Allahabad High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Uttar Pradesh",
+      "bench": "Lucknow"
+    },
+    {
+      "id": "hc-bombay-high-court",
+      "name": "Bombay High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Maharashtra, Goa, Dadra & Nagar Haveli, Daman & Diu",
+      "bench": "Nagpur, Aurangabad, Panaji"
+    },
+    {
+      "id": "hc-calcutta-high-court",
+      "name": "Calcutta High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "West Bengal, Andaman & Nicobar Islands",
+      "bench": "Port Blair"
+    },
+    {
+      "id": "hc-madras-high-court",
+      "name": "Madras High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Tamil Nadu, Puducherry",
+      "bench": "Madurai"
+    },
+    {
+      "id": "hc-karnataka-high-court",
+      "name": "Karnataka High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Karnataka",
+      "bench": "Dharwad, Kalaburagi"
+    },
+    {
+      "id": "hc-delhi-high-court",
+      "name": "Delhi High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "NCT of Delhi",
+      "bench": null
+    },
+    {
+      "id": "hc-gujarat-high-court",
+      "name": "Gujarat High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Gujarat",
+      "bench": null
+    },
+    {
+      "id": "hc-kerala-high-court",
+      "name": "Kerala High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Kerala, Lakshadweep",
+      "bench": null
+    },
+    {
+      "id": "hc-madhya-pradesh-high-court",
+      "name": "Madhya Pradesh High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Madhya Pradesh",
+      "bench": "Gwalior, Indore"
+    },
+    {
+      "id": "hc-patna-high-court",
+      "name": "Patna High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Bihar",
+      "bench": null
+    },
+    {
+      "id": "hc-punjab-haryana-high-court",
+      "name": "Punjab & Haryana High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Punjab, Haryana, Chandigarh",
+      "bench": null
+    },
+    {
+      "id": "hc-rajasthan-high-court",
+      "name": "Rajasthan High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Rajasthan",
+      "bench": "Jaipur"
+    },
+    {
+      "id": "hc-chhattisgarh-high-court",
+      "name": "Chhattisgarh High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Chhattisgarh",
+      "bench": null
+    },
+    {
+      "id": "hc-gauhati-high-court",
+      "name": "Gauhati High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Assam, Nagaland, Mizoram, Arunachal Pradesh",
+      "bench": null
+    },
+    {
+      "id": "hc-himachal-pradesh-high-court",
+      "name": "Himachal Pradesh High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Himachal Pradesh",
+      "bench": null
+    },
+    {
+      "id": "hc-jharkhand-high-court",
+      "name": "Jharkhand High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Jharkhand",
+      "bench": null
+    },
+    {
+      "id": "hc-jammu-kashmir-and-ladakh-high-court",
+      "name": "Jammu & Kashmir and Ladakh High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "J&K, Ladakh",
+      "bench": null
+    },
+    {
+      "id": "hc-manipur-high-court",
+      "name": "Manipur High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Manipur",
+      "bench": null
+    },
+    {
+      "id": "hc-meghalaya-high-court",
+      "name": "Meghalaya High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Meghalaya",
+      "bench": null
+    },
+    {
+      "id": "hc-orissa-high-court",
+      "name": "Orissa High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Odisha",
+      "bench": null
+    },
+    {
+      "id": "hc-sikkim-high-court",
+      "name": "Sikkim High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Sikkim",
+      "bench": null
+    },
+    {
+      "id": "hc-telangana-high-court",
+      "name": "Telangana High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Telangana",
+      "bench": null
+    },
+    {
+      "id": "hc-andhra-pradesh-high-court",
+      "name": "Andhra Pradesh High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Andhra Pradesh",
+      "bench": null
+    },
+    {
+      "id": "hc-tripura-high-court",
+      "name": "Tripura High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Tripura",
+      "bench": null
+    },
+    {
+      "id": "hc-uttarakhand-high-court",
+      "name": "Uttarakhand High Court",
+      "category": "JUDICIARY",
+      "subtype": "High Court",
+      "ring": 3,
+      "jurisdiction": "Uttarakhand",
+      "bench": null
+    },
+    {
+      "id": "trib-national-green-tribunal-ngt",
+      "name": "National Green Tribunal (NGT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 2010,
+      "purpose": "Environmental disputes"
+    },
+    {
+      "id": "trib-national-company-law-tribunal-nclt",
+      "name": "National Company Law Tribunal (NCLT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 2016,
+      "purpose": "Company law matters"
+    },
+    {
+      "id": "trib-national-company-law-appellate-tribunal-nclat",
+      "name": "National Company Law Appellate Tribunal (NCLAT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 2016,
+      "purpose": "Appeals from NCLT"
+    },
+    {
+      "id": "trib-income-tax-appellate-tribunal-itat",
+      "name": "Income Tax Appellate Tribunal (ITAT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 1941,
+      "purpose": "Income tax appeals"
+    },
+    {
+      "id": "trib-customs-excise-service-tax-appellate-tribunal-cestat",
+      "name": "Customs, Excise & Service Tax Appellate Tribunal (CESTAT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 1982,
+      "purpose": "Indirect tax appeals"
+    },
+    {
+      "id": "trib-debt-recovery-tribunal-drt",
+      "name": "Debt Recovery Tribunal (DRT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 1993,
+      "purpose": "Bank debt recovery"
+    },
+    {
+      "id": "trib-armed-forces-tribunal-aft",
+      "name": "Armed Forces Tribunal (AFT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 2009,
+      "purpose": "Armed forces disputes"
+    },
+    {
+      "id": "trib-central-administrative-tribunal-cat",
+      "name": "Central Administrative Tribunal (CAT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 1985,
+      "purpose": "Service matters of central govt employees"
+    },
+    {
+      "id": "trib-telecom-disputes-settlement-and-appellate-tribunal-tdsat",
+      "name": "Telecom Disputes Settlement and Appellate Tribunal (TDSAT)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 2000,
+      "purpose": "Telecom disputes"
+    },
+    {
+      "id": "trib-national-consumer-disputes-redressal-commission-ncdrc",
+      "name": "National Consumer Disputes Redressal Commission (NCDRC)",
+      "category": "JUDICIARY",
+      "subtype": "Tribunal",
+      "ring": 4,
+      "est": 1988,
+      "purpose": "Consumer disputes"
+    }
+  ],
+  "edges": [
+    {
+      "source": "president",
+      "target": "pm",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-shivraj-singh-chouhan",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-prataprao-jadhav",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-jagat-prakash-nadda",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-k-ram-mohan-naidu",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-g-kishan-reddy",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-piyush-goyal",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-jyotiraditya-scindia",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-pralhad-joshi",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-amit-shah",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-nirmala-sitharaman",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-gajendra-singh-shekhawat",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-rajnath-singh",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-jitendra-singh",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-dharmendra-pradhan",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-ashwini-vaishnaw",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-bhupender-yadav",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-s-jaishankar",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-rajiv-ranjan-singh",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-chirag-paswan",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-h-d-kumaraswamy",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-manohar-lal-khattar",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-c-r-patil",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-mansukh-mandaviya",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-arjun-ram-meghwal",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-jitan-ram-manjhi",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-kiren-rijiju",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-hardeep-singh-puri",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-rao-inderjit-singh",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-sarbananda-sonowal",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-nitin-gadkari",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-jayant-chaudhary",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-virendra-kumar",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-giriraj-singh",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-jual-oram",
+      "type": "appoints"
+    },
+    {
+      "source": "pm",
+      "target": "min-annapurna-devi",
+      "type": "appoints"
+    },
+    {
+      "source": "min-shivraj-singh-chouhan",
+      "target": "ministry-agriculture",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-agriculture",
+      "target": "dept-department-of-agriculture-farmers-welfare",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-agriculture",
+      "target": "dept-department-of-agricultural-research-education",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-agriculture",
+      "target": "dept-department-of-animal-husbandry-dairying",
+      "type": "contains"
+    },
+    {
+      "source": "min-prataprao-jadhav",
+      "target": "ministry-ayush",
+      "type": "leads"
+    },
+    {
+      "source": "min-jagat-prakash-nadda",
+      "target": "ministry-chemicals",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-chemicals",
+      "target": "dept-department-of-chemicals-petrochemicals",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-chemicals",
+      "target": "dept-department-of-fertilizers",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-chemicals",
+      "target": "dept-department-of-pharmaceuticals",
+      "type": "contains"
+    },
+    {
+      "source": "min-k-ram-mohan-naidu",
+      "target": "ministry-civil-aviation",
+      "type": "leads"
+    },
+    {
+      "source": "min-g-kishan-reddy",
+      "target": "ministry-coal",
+      "type": "leads"
+    },
+    {
+      "source": "min-piyush-goyal",
+      "target": "ministry-commerce",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-commerce",
+      "target": "dept-department-of-commerce",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-commerce",
+      "target": "dept-department-for-promotion-of-industry-internal-trade-dpiit",
+      "type": "contains"
+    },
+    {
+      "source": "min-jyotiraditya-scindia",
+      "target": "ministry-communications",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-communications",
+      "target": "dept-department-of-telecommunications",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-communications",
+      "target": "dept-department-of-posts",
+      "type": "contains"
+    },
+    {
+      "source": "min-pralhad-joshi",
+      "target": "ministry-consumer-affairs",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-consumer-affairs",
+      "target": "dept-department-of-consumer-affairs",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-consumer-affairs",
+      "target": "dept-department-of-food-public-distribution",
+      "type": "contains"
+    },
+    {
+      "source": "min-amit-shah",
+      "target": "ministry-cooperation",
+      "type": "leads"
+    },
+    {
+      "source": "min-nirmala-sitharaman",
+      "target": "ministry-corporate-affairs",
+      "type": "leads"
+    },
+    {
+      "source": "min-gajendra-singh-shekhawat",
+      "target": "ministry-culture",
+      "type": "leads"
+    },
+    {
+      "source": "min-rajnath-singh",
+      "target": "ministry-defence",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "dept-department-of-defence",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "dept-department-of-military-affairs",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "dept-department-of-defence-production",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "dept-department-of-ex-servicemen-welfare",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "dept-department-of-defence-research-development",
+      "type": "contains"
+    },
+    {
+      "source": "min-jyotiraditya-scindia",
+      "target": "ministry-doner",
+      "type": "leads"
+    },
+    {
+      "source": "min-jitendra-singh",
+      "target": "ministry-earth-sciences",
+      "type": "leads"
+    },
+    {
+      "source": "min-dharmendra-pradhan",
+      "target": "ministry-education",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-education",
+      "target": "dept-department-of-school-education-literacy",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-education",
+      "target": "dept-department-of-higher-education",
+      "type": "contains"
+    },
+    {
+      "source": "min-ashwini-vaishnaw",
+      "target": "ministry-electronics-it",
+      "type": "leads"
+    },
+    {
+      "source": "min-bhupender-yadav",
+      "target": "ministry-environment",
+      "type": "leads"
+    },
+    {
+      "source": "min-s-jaishankar",
+      "target": "ministry-external-affairs",
+      "type": "leads"
+    },
+    {
+      "source": "min-nirmala-sitharaman",
+      "target": "ministry-finance",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "dept-department-of-economic-affairs",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "dept-department-of-expenditure",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "dept-department-of-revenue",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "dept-department-of-investment-public-asset-management-dipam",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "dept-department-of-financial-services",
+      "type": "contains"
+    },
+    {
+      "source": "min-rajiv-ranjan-singh",
+      "target": "ministry-fisheries",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-fisheries",
+      "target": "dept-department-of-fisheries",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-fisheries",
+      "target": "dept-department-of-animal-husbandry-dairying",
+      "type": "contains"
+    },
+    {
+      "source": "min-chirag-paswan",
+      "target": "ministry-food-processing",
+      "type": "leads"
+    },
+    {
+      "source": "min-jagat-prakash-nadda",
+      "target": "ministry-health",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-health",
+      "target": "dept-department-of-health-family-welfare",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-health",
+      "target": "dept-department-of-health-research",
+      "type": "contains"
+    },
+    {
+      "source": "min-h-d-kumaraswamy",
+      "target": "ministry-heavy-industries",
+      "type": "leads"
+    },
+    {
+      "source": "min-amit-shah",
+      "target": "ministry-home-affairs",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-home-affairs",
+      "target": "dept-department-of-internal-security",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-home-affairs",
+      "target": "dept-department-of-states",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-home-affairs",
+      "target": "dept-department-of-official-language",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-home-affairs",
+      "target": "dept-department-of-home",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-home-affairs",
+      "target": "dept-department-of-jammu-kashmir-affairs",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-home-affairs",
+      "target": "dept-department-of-border-management",
+      "type": "contains"
+    },
+    {
+      "source": "min-manohar-lal-khattar",
+      "target": "ministry-housing",
+      "type": "leads"
+    },
+    {
+      "source": "min-ashwini-vaishnaw",
+      "target": "ministry-information-broadcasting",
+      "type": "leads"
+    },
+    {
+      "source": "min-c-r-patil",
+      "target": "ministry-jal-shakti",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-jal-shakti",
+      "target": "dept-department-of-water-resources-river-development-ganga-rejuvenation",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-jal-shakti",
+      "target": "dept-department-of-drinking-water-sanitation",
+      "type": "contains"
+    },
+    {
+      "source": "min-mansukh-mandaviya",
+      "target": "ministry-labour",
+      "type": "leads"
+    },
+    {
+      "source": "min-arjun-ram-meghwal",
+      "target": "ministry-law",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-law",
+      "target": "dept-department-of-legal-affairs",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-law",
+      "target": "dept-legislative-department",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-law",
+      "target": "dept-department-of-justice",
+      "type": "contains"
+    },
+    {
+      "source": "min-jitan-ram-manjhi",
+      "target": "ministry-msme",
+      "type": "leads"
+    },
+    {
+      "source": "min-g-kishan-reddy",
+      "target": "ministry-mines",
+      "type": "leads"
+    },
+    {
+      "source": "min-kiren-rijiju",
+      "target": "ministry-minority-affairs",
+      "type": "leads"
+    },
+    {
+      "source": "min-pralhad-joshi",
+      "target": "ministry-new-renewable-energy",
+      "type": "leads"
+    },
+    {
+      "source": "min-rajiv-ranjan-singh",
+      "target": "ministry-panchayati-raj",
+      "type": "leads"
+    },
+    {
+      "source": "min-kiren-rijiju",
+      "target": "ministry-parliamentary-affairs",
+      "type": "leads"
+    },
+    {
+      "source": "pm",
+      "target": "ministry-personnel",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "dept-department-of-personnel-training-dopt",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "dept-department-of-administrative-reforms-public-grievances",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "dept-department-of-pensions-pensioners-welfare",
+      "type": "contains"
+    },
+    {
+      "source": "min-hardeep-singh-puri",
+      "target": "ministry-petroleum",
+      "type": "leads"
+    },
+    {
+      "source": "min-rao-inderjit-singh",
+      "target": "ministry-planning",
+      "type": "leads"
+    },
+    {
+      "source": "min-sarbananda-sonowal",
+      "target": "ministry-ports-shipping",
+      "type": "leads"
+    },
+    {
+      "source": "min-manohar-lal-khattar",
+      "target": "ministry-power",
+      "type": "leads"
+    },
+    {
+      "source": "min-ashwini-vaishnaw",
+      "target": "ministry-railways",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-railways",
+      "target": "dept-ministry-of-railways-railway-board",
+      "type": "contains"
+    },
+    {
+      "source": "min-nitin-gadkari",
+      "target": "ministry-road-transport",
+      "type": "leads"
+    },
+    {
+      "source": "min-shivraj-singh-chouhan",
+      "target": "ministry-rural-development",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-rural-development",
+      "target": "dept-department-of-rural-development",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-rural-development",
+      "target": "dept-department-of-land-resources",
+      "type": "contains"
+    },
+    {
+      "source": "min-jitendra-singh",
+      "target": "ministry-science-technology",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "dept-department-of-science-technology",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "dept-department-of-scientific-industrial-research",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "dept-department-of-biotechnology",
+      "type": "contains"
+    },
+    {
+      "source": "min-jayant-chaudhary",
+      "target": "ministry-skill-development",
+      "type": "leads"
+    },
+    {
+      "source": "min-virendra-kumar",
+      "target": "ministry-social-justice",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-social-justice",
+      "target": "dept-department-of-social-justice-empowerment",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-social-justice",
+      "target": "dept-department-of-empowerment-of-persons-with-disabilities",
+      "type": "contains"
+    },
+    {
+      "source": "min-rao-inderjit-singh",
+      "target": "ministry-statistics",
+      "type": "leads"
+    },
+    {
+      "source": "min-h-d-kumaraswamy",
+      "target": "ministry-steel",
+      "type": "leads"
+    },
+    {
+      "source": "min-giriraj-singh",
+      "target": "ministry-textiles",
+      "type": "leads"
+    },
+    {
+      "source": "min-gajendra-singh-shekhawat",
+      "target": "ministry-tourism",
+      "type": "leads"
+    },
+    {
+      "source": "min-jual-oram",
+      "target": "ministry-tribal-affairs",
+      "type": "leads"
+    },
+    {
+      "source": "min-annapurna-devi",
+      "target": "ministry-women-child",
+      "type": "leads"
+    },
+    {
+      "source": "min-mansukh-mandaviya",
+      "target": "ministry-youth-sports",
+      "type": "leads"
+    },
+    {
+      "source": "ministry-youth-sports",
+      "target": "dept-department-of-youth-affairs",
+      "type": "contains"
+    },
+    {
+      "source": "ministry-youth-sports",
+      "target": "dept-department-of-sports",
+      "type": "contains"
+    },
+    {
+      "source": "president",
+      "target": "const-election-commission",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-cag",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-upsc",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-finance-commission",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-nsc",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-nsct",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-attorney-general",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-niti-aayog",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-gst-council",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-nbc",
+      "type": "establishes"
+    },
+    {
+      "source": "president",
+      "target": "const-inter-state-council",
+      "type": "establishes"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "stat-rbi",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "stat-sebi",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-communications",
+      "target": "stat-trai",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "stat-fssai",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "stat-irdai",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-corporate-affairs",
+      "target": "stat-cci",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-home-affairs",
+      "target": "stat-nhrc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "stat-cbi",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-women-child",
+      "target": "stat-ncw",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-women-child",
+      "target": "stat-ncpcr",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-environment",
+      "target": "stat-ngt",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "stat-cic",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-consumer-affairs",
+      "target": "stat-ncdrc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "stat-ncte",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "stat-cvc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-social-justice",
+      "target": "stat-ncbc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "stat-cat",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "stat-nbfc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-labour",
+      "target": "stat-epfo",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-labour",
+      "target": "stat-esic",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "stat-pfrda",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-corporate-affairs",
+      "target": "stat-ibbi",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "stat-nha",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-housing",
+      "target": "stat-rera",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-civil-aviation",
+      "target": "stat-dgca",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-civil-aviation",
+      "target": "stat-aai",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-culture",
+      "target": "stat-nma",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-law",
+      "target": "stat-bci",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "stat-mci",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "stat-pci",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "stat-dci",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "stat-inc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "stat-aicte",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "stat-ugc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "stat-naac",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-environment",
+      "target": "stat-cpcb",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-home-affairs",
+      "target": "stat-nia",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "stat-ncert",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "stat-nta",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "stat-cbse",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iit-bombay",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iit-delhi",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iit-madras",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iit-kanpur",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iit-kharagpur",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iit-roorkee",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iit-guwahati",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iit-hyderabad",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iim-ahmedabad",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iim-bangalore",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iim-calcutta",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iim-lucknow",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iim-kozhikode",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iim-indore",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-aiims-delhi",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-aiims-bhopal",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-aiims-jodhpur",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-aiims-patna",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-aiims-rishikesh",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-aiims-raipur",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "auto-isro",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "auto-drdo",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "auto-csir",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-agriculture",
+      "target": "auto-icar",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-icmr",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-ichr",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-icssr",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "auto-dae",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "auto-barc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "auto-npcil",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "auto-igcar",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iiser-pune",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iiser-kolkata",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-nit-trichy",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-nit-warangal",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-nit-surathkal",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-textiles",
+      "target": "auto-nift",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-commerce",
+      "target": "auto-nid",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-nimhans",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-pgimer",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "auto-jipmer",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-iisc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-personnel",
+      "target": "auto-tifr",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-agriculture",
+      "target": "auto-iari",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-agriculture",
+      "target": "auto-ivri",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-agriculture",
+      "target": "auto-ndri",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-chemicals",
+      "target": "auto-niper",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "auto-iia",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "auto-npl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "auto-ncl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "auto-cdri",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "auto-nal",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-science-technology",
+      "target": "auto-nio",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-steel",
+      "target": "auto-sail-rdcis",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-kvs",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-education",
+      "target": "auto-nvs",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-culture",
+      "target": "auto-ignca",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-culture",
+      "target": "auto-nsd",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-youth-sports",
+      "target": "auto-sai",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-youth-sports",
+      "target": "auto-nada",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-ongc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-iocl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-power",
+      "target": "psu-ntpc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-coal",
+      "target": "psu-coal-india",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-steel",
+      "target": "psu-sail",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-heavy-industries",
+      "target": "psu-bhel",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-gail",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-bpcl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-hpcl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-power",
+      "target": "psu-pgcil",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-oil",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-power",
+      "target": "psu-nhpc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-power",
+      "target": "psu-rec",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-power",
+      "target": "psu-pfc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "psu-hal",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "psu-bel",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "psu-mdl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-chemicals",
+      "target": "psu-nfl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-mines",
+      "target": "psu-nmdc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-mines",
+      "target": "psu-nalco",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-eil",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-communications",
+      "target": "psu-mtnl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-railways",
+      "target": "psu-rvnl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-railways",
+      "target": "psu-concor",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-railways",
+      "target": "psu-ircon",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-housing",
+      "target": "psu-nbcc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "psu-beml",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "psu-bharat-dynamics",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "psu-grse",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-defence",
+      "target": "psu-gsl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-nrl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-mrpl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-petroleum",
+      "target": "psu-cpcl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-railways",
+      "target": "psu-irctc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-railways",
+      "target": "psu-rites",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-chemicals",
+      "target": "psu-rcf",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-power",
+      "target": "psu-sjvn",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-power",
+      "target": "psu-thdc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-coal",
+      "target": "psu-nlc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-coal",
+      "target": "psu-ecl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-coal",
+      "target": "psu-secl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-jal-shakti",
+      "target": "psu-wapcos",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-health",
+      "target": "psu-hll",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-tourism",
+      "target": "psu-itdc",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-communications",
+      "target": "psu-bsnl",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "psu-sbi",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-finance",
+      "target": "psu-lic",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-consumer-affairs",
+      "target": "psu-fci",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-civil-aviation",
+      "target": "psu-aai-psu",
+      "type": "oversees"
+    },
+    {
+      "source": "ministry-communications",
+      "target": "psu-india-post-payments-bank",
+      "type": "oversees"
+    },
+    {
+      "source": "president",
+      "target": "lok-sabha",
+      "type": "convenes"
+    },
+    {
+      "source": "president",
+      "target": "rajya-sabha",
+      "type": "convenes"
+    },
+    {
+      "source": "speaker",
+      "target": "lok-sabha",
+      "type": "presides"
+    },
+    {
+      "source": "chairman-rs",
+      "target": "rajya-sabha",
+      "type": "presides"
+    },
+    {
+      "source": "president",
+      "target": "cji",
+      "type": "appoints"
+    },
+    {
+      "source": "cji",
+      "target": "supreme-court",
+      "type": "heads"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-allahabad-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-bombay-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-calcutta-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-madras-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-karnataka-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-delhi-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-gujarat-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-kerala-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-madhya-pradesh-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-patna-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-punjab-haryana-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-rajasthan-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-chhattisgarh-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-gauhati-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-himachal-pradesh-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-jharkhand-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-jammu-kashmir-and-ladakh-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-manipur-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-meghalaya-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-orissa-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-sikkim-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-telangana-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-andhra-pradesh-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-tripura-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "hc-uttarakhand-high-court",
+      "type": "appellate"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-national-green-tribunal-ngt",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-national-company-law-tribunal-nclt",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-national-company-law-appellate-tribunal-nclat",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-income-tax-appellate-tribunal-itat",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-customs-excise-service-tax-appellate-tribunal-cestat",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-debt-recovery-tribunal-drt",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-armed-forces-tribunal-aft",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-central-administrative-tribunal-cat",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-telecom-disputes-settlement-and-appellate-tribunal-tdsat",
+      "type": "supervises"
+    },
+    {
+      "source": "supreme-court",
+      "target": "trib-national-consumer-disputes-redressal-commission-ncdrc",
+      "type": "supervises"
+    }
+  ],
+  "budget": {
+    "year": "2025-26",
+    "totalExpenditure": 5065345,
+    "unit": "Crore INR"
+  }
+}
