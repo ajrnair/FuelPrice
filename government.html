@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Interactive network graph of India's complete government structure">
+<title>Machinery of Government - India</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f8f9fa;--bg2:#ffffff;--text:#1a1a2e;--text2:#6c757d;--border:#dee2e6;
+  --header-bg:#ffffff;--panel-bg:#ffffff;--tooltip-bg:#333;--tooltip-fg:#fff;
+  --ring-stroke:#e9ecef;--edge-stroke:#d0d0d0;--highlight:#d4a017;
+  --shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+body.dark{
+  --bg:#0d1117;--bg2:#161b22;--text:#e6edf3;--text2:#8b949e;--border:#30363d;
+  --header-bg:#161b22;--panel-bg:#1c2128;--tooltip-bg:#e6edf3;--tooltip-fg:#0d1117;
+  --ring-stroke:#21262d;--edge-stroke:#30363d;--shadow:0 2px 8px rgba(0,0,0,0.4);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh;display:flex;flex-direction:column}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.2rem;background:var(--header-bg);border-bottom:1px solid var(--border);z-index:100;flex-shrink:0}
+.header-left h1{font-size:1.15rem;font-weight:700;line-height:1.2}
+.header-left p{font-size:0.75rem;color:var(--text2)}
+.header-right{display:flex;gap:0.5rem}
+.pill{padding:0.35rem 0.8rem;border-radius:16px;border:none;font-size:0.78rem;font-weight:600;cursor:pointer;color:#fff;transition:opacity 0.2s}
+.pill:hover{opacity:0.85}
+.pill-blue{background:#4363d8}.pill-green{background:#3cb44b}.pill-orange{background:#f58231}
+
+/* Toolbar */
+.toolbar{display:flex;align-items:center;justify-content:flex-end;gap:0.4rem;padding:0.4rem 1.2rem;background:var(--header-bg);border-bottom:1px solid var(--border);flex-shrink:0}
+.tool-btn{padding:0.3rem 0.7rem;border-radius:14px;border:1px solid var(--border);background:var(--bg2);color:var(--text);font-size:0.75rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.3rem}
+.tool-btn:hover{border-color:var(--text2)}.tool-btn.active{background:var(--text);color:var(--bg2)}
+.tool-icon{font-size:0.85rem}
+
+/* Main */
+.main{flex:1;display:flex;position:relative;overflow:hidden}
+#graphContainer{flex:1;position:relative;cursor:grab}
+#graphContainer.grabbing{cursor:grabbing}
+#graphSvg{width:100%;height:100%;display:block}
+.ring-circle{fill:none;stroke:var(--ring-stroke);stroke-width:1}
+.edge-line{stroke:var(--edge-stroke);stroke-width:0.5;pointer-events:none}
+.edge-line.highlighted{stroke:var(--highlight);stroke-width:1.5;opacity:0.8}
+.node-shape{cursor:pointer;stroke:var(--bg);stroke-width:1;transition:stroke 0.15s,stroke-width 0.15s}
+.node-shape:hover{stroke:var(--highlight);stroke-width:2}
+.node-shape.selected{stroke:var(--highlight);stroke-width:2.5}
+.outer-arc{stroke:var(--bg);stroke-width:1.5;opacity:0.9}
+
+/* Hint */
+.hint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);font-size:0.78rem;color:var(--text2);pointer-events:none;opacity:0.7}
+
+/* Tooltip */
+#tooltip{position:fixed;pointer-events:none;display:none;background:var(--tooltip-bg);color:var(--tooltip-fg);padding:4px 10px;border-radius:6px;font-size:0.78rem;font-weight:500;z-index:9999;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+
+/* Search */
+.search-overlay{position:absolute;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:0.8rem 1.2rem;z-index:90;display:none;box-shadow:var(--shadow)}
+.search-overlay.show{display:block}
+.search-input{width:100%;padding:0.5rem 0.8rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;background:var(--bg);color:var(--text);outline:none}
+.search-input:focus{border-color:#4363d8}
+.search-results{max-height:280px;overflow-y:auto;margin-top:0.5rem}
+.search-item{padding:0.4rem 0.6rem;cursor:pointer;border-radius:6px;font-size:0.82rem;display:flex;align-items:center;gap:0.5rem}
+.search-item:hover{background:var(--bg)}
+.search-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.search-name{font-weight:500}.search-sub{color:var(--text2);font-size:0.72rem;margin-left:auto}
+
+/* Detail Panel */
+.detail-panel{position:absolute;top:0;right:-400px;width:400px;max-width:90vw;height:100%;background:var(--panel-bg);border-left:1px solid var(--border);z-index:80;overflow-y:auto;transition:right 0.3s ease;box-shadow:-2px 0 12px rgba(0,0,0,0.1);padding:1.2rem}
+.detail-panel.show{right:0}
+.detail-close{position:absolute;top:0.8rem;right:0.8rem;width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--bg2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text2)}
+.detail-close:hover{background:var(--bg);color:var(--text)}
+.detail-badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:12px;font-size:0.72rem;color:#fff;font-weight:600;margin-bottom:0.5rem}
+.detail-title{font-size:1.2rem;font-weight:700;margin-bottom:0.3rem;padding-right:2rem}
+.detail-tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin:0.8rem 0}
+.detail-tab{padding:0.4rem 0.8rem;font-size:0.82rem;cursor:pointer;color:var(--text2);border-bottom:2px solid transparent;margin-bottom:-2px;font-weight:500}
+.detail-tab.active{color:#4363d8;border-bottom-color:#4363d8}
+.detail-tab:hover:not(.active){color:var(--text)}
+.detail-section{margin-top:1rem}
+.detail-section h3{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text2);margin-bottom:0.4rem}
+.detail-field{display:flex;justify-content:space-between;padding:0.35rem 0;border-bottom:1px solid var(--border);font-size:0.82rem}
+.detail-field-label{color:var(--text2)}.detail-field-value{font-weight:500;text-align:right;max-width:60%}
+.rel-card{display:flex;align-items:center;gap:0.5rem;padding:0.5rem;margin-bottom:0.3rem;border-radius:8px;background:var(--bg);cursor:pointer;transition:background 0.2s;border-left:3px solid var(--border)}
+.rel-card:hover{background:var(--border)}
+.rel-icon{font-size:1rem}.rel-name{font-weight:500;font-size:0.85rem;line-height:1.2}
+.rel-sub{font-size:0.72rem;color:var(--text2)}
+.budget-bar-h{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;font-size:0.78rem}
+.budget-bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.budget-bar-fill{height:100%;border-radius:4px}
+
+/* Sankey */
+#sankeyContainer{flex:1;position:relative;display:none;overflow:auto;background:var(--bg)}
+#sankeySvg{display:block;min-height:100%}
+.sankey-flow{opacity:0.5;transition:opacity 0.2s}
+.sankey-flow:hover{opacity:0.85}
+.sankey-node-rect{stroke:var(--bg);stroke-width:1;cursor:pointer;transition:opacity 0.2s}
+.sankey-node-rect:hover{opacity:0.85}
+.sankey-label{font-size:11px;fill:var(--text);pointer-events:none}
+.sankey-label-small{font-size:9px;fill:var(--text2);pointer-events:none}
+.sankey-value{font-size:10px;fill:var(--text2);pointer-events:none}
+.sankey-col-header{font-size:13px;font-weight:700;fill:var(--text);text-anchor:middle}
+
+/* Legend */
+.legend{position:absolute;bottom:0;left:0;right:0;background:var(--panel-bg);border-top:1px solid var(--border);padding:0.8rem 1.5rem;display:none;z-index:70}
+.legend.show{display:block}
+.legend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.3rem 2rem}
+.legend-col h4{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text2);margin-bottom:0.3rem}
+.legend-item{display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;padding:0.15rem 0;cursor:pointer}
+.legend-item:hover{color:var(--highlight)}
+.legend-shape{width:14px;height:14px;display:flex;align-items:center;justify-content:center}
+.legend-shape svg{width:14px;height:14px}
+
+/* Help Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:none;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:var(--panel-bg);border-radius:12px;padding:1.5rem;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 10px 40px rgba(0,0,0,0.2)}
+.modal h2{font-size:1.1rem;margin-bottom:0.8rem}.modal p{font-size:0.85rem;color:var(--text2);margin-bottom:0.5rem;line-height:1.5}
+.modal-close{float:right;cursor:pointer;font-size:1.2rem;color:var(--text2)}
+.modal-close:hover{color:var(--text)}
+
+@media(max-width:768px){
+  .header-left h1{font-size:0.95rem}
+  .header-left p{display:none}
+  .detail-panel{width:100%;max-width:100%;right:-100%}
+  .legend-grid{grid-template-columns:1fr 1fr}
+  .toolbar{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-left">
+    <h1>Machinery of Government &mdash; India</h1>
+    <p>Explore the organisation and relationships within the Indian Government</p>
+  </div>
+  <div class="header-right">
+    <button class="pill pill-blue" id="btnHelp">? Help</button>
+    <button class="pill pill-green" id="btnCategories">&#128451; Categories</button>
+    <button class="pill pill-orange" id="btnSearch">&#128269; Search</button>
+  </div>
+</div>
+<div class="toolbar">
+  <button class="tool-btn active" id="btnRadial"><span class="tool-icon">&#8857;</span> Radial</button>
+  <button class="tool-btn" id="btnBudget"><span class="tool-icon">&#8377;</span> Budget</button>
+  <button class="tool-btn" id="btnLegend"><span class="tool-icon">&#9776;</span> Legend</button>
+  <button class="tool-btn" id="btnDark"><span class="tool-icon">&#9790;</span></button>
+  <button class="tool-btn" id="btnFocus"><span class="tool-icon">&#9635;</span> Focus</button>
+  <button class="tool-btn" id="btnRandom"><span class="tool-icon">&#9860;</span></button>
+  <button class="tool-btn" id="btnReset"><span class="tool-icon">&#8634;</span></button>
+</div>
+<div class="main">
+  <div class="search-overlay" id="searchOverlay">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search ministries, bodies, ministers, PSUs...">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <div id="graphContainer">
+    <svg id="graphSvg"></svg>
+    <div class="hint">Hover to explore &middot; Click to select &middot; Scroll to zoom</div>
+  </div>
+  <div id="sankeyContainer">
+    <svg id="sankeySvg"></svg>
+  </div>
+  <div class="detail-panel" id="detailPanel">
+    <button class="detail-close" id="detailClose">&times;</button>
+    <div id="detailContent"></div>
+  </div>
+  <div class="legend" id="legendPanel"></div>
+</div>
+<div id="tooltip"></div>
+<div class="modal-overlay" id="helpModal">
+  <div class="modal">
+    <span class="modal-close" id="helpClose">&times;</span>
+    <h2>Machinery of Government &mdash; India</h2>
+    <p>An interactive map of Indian central government &mdash; showing how ministries, ministers, departments, agencies, public bodies, and other organisations relate to one another.</p>
+    <p><strong>Navigate:</strong> Scroll to zoom, click and drag to pan. Click any node to see details. Use Search to find entities.</p>
+    <p><strong>Views:</strong> Full view shows every entity on concentric rings by constitutional distance from the PM. Focus view shows the selected entity at the centre with its parents and children.</p>
+    <p><strong>Legend:</strong> Circles = Officials, Squares = Departments, Diamonds = Public Bodies, Triangles = Judiciary, Hexagons = Legislature.</p>
+    <p><strong>Budget:</strong> Click the ₹ Budget button to see a Sankey flow diagram showing how the Union Budget flows from total expenditure through sectors to individual ministries.</p>
+    <p><strong>Data:</strong> 53 ministries, 40+ statutory bodies, 60+ autonomous bodies, 50 PSUs, 25 High Courts, 10 tribunals, 43 Ministers of State. Budget data from Union Budget 2025-26.</p>
+    <p style="font-size:0.75rem;color:var(--text2);margin-top:1rem">Data reflects the Indian government structure as of early 2025. Built with vanilla JS, no external dependencies. Inspired by <a href="https://machineryofgovernment.uk" style="color:#4363d8">machineryofgovernment.uk</a>.</p>
+  </div>
+</div>
+    <script>
+    (function(){
+    'use strict';
+    let DATA=null,nodeMap={},childMap={},parentMap={},edgesByNode={};
+    let selected=null,transform={x:0,y:0,k:1},focusMode=false,darkMode=false;
+    let legendVisible=false,searchVisible=false;
+    const RING_R=[0,120,220,340,460,560];
+    const ARC_R0=590,ARC_R1=620;
+    const NS='http://www.w3.org/2000/svg';
+
+    async function init(){
+      try{
+        const r=await fetch('government-data.json');
+        DATA=await r.json();
+        buildLookups();
+        computeLayout();
+        renderGraph();
+        renderLegend();
+        bindEvents();
+      }catch(e){document.getElementById('graphContainer').innerHTML='<div style="padding:2rem;text-align:center;color:var(--text2)">Failed to load: '+e.message+'</div>';}
+    }
+
+    function buildLookups(){
+      nodeMap={};childMap={};parentMap={};edgesByNode={};
+      DATA.nodes.forEach(n=>{nodeMap[n.id]=n;childMap[n.id]=[];edgesByNode[n.id]=[];});
+      DATA.edges.forEach(e=>{
+        if(childMap[e.source])childMap[e.source].push(e.target);
+        // For parentMap: appoints takes priority, then leads/contains/oversees. Skip assists for layout.
+        if(e.type!=='assists'){
+          if(!parentMap[e.target])parentMap[e.target]=e.source;
+        }
+        if(edgesByNode[e.source])edgesByNode[e.source].push(e);
+        if(edgesByNode[e.target])edgesByNode[e.target].push(e);
+      });
+    }
+
+    function computeLayout(){
+      // Group nodes by ring
+      const rings={};
+      DATA.nodes.forEach(n=>{if(!rings[n.ring])rings[n.ring]=[];rings[n.ring].push(n);});
+
+      // Ring 0: PM at center
+      if(rings[0])rings[0].forEach(n=>{n._x=0;n._y=0;});
+
+      // Ring 1: officials - spread evenly
+      if(rings[1]){
+        const count=rings[1].length;
+        rings[1].forEach((n,i)=>{
+          const a=(i/count)*Math.PI*2-Math.PI/2;
+          n._x=Math.cos(a)*RING_R[1];n._y=Math.sin(a)*RING_R[1];n._angle=a;
+        });
+      }
+
+      // Ring 2+: group under parent, allocate angular space by descendant count
+      for(let ring=2;ring<=5;ring++){
+        if(!rings[ring])continue;
+        // Group by parent
+        const groups={};
+        rings[ring].forEach(n=>{
+          const pid=parentMap[n.id]||'_orphan';
+          if(!groups[pid])groups[pid]=[];
+          groups[pid].push(n);
+        });
+
+        // Sort parents by their angle
+        const parentIds=Object.keys(groups).sort((a,b)=>{
+          const na=nodeMap[a],nb=nodeMap[b];
+          return (na?na._angle||0:0)-(nb?nb._angle||0:0);
+        });
+
+        // Count total children at this ring
+        const totalNodes=rings[ring].length;
+        const r=RING_R[ring];
+
+        // Allocate angular spans proportional to group size
+        let angleOffset=-Math.PI;
+        const totalAngle=Math.PI*2;
+        parentIds.forEach(pid=>{
+          const group=groups[pid];
+          const span=(group.length/totalNodes)*totalAngle;
+          const parentNode=nodeMap[pid];
+          
+          // Sort group to cluster near parent angle
+          group.sort((a,b)=>(a.name||'').localeCompare(b.name||''));
+          
+          group.forEach((n,i)=>{
+            const a=angleOffset+(i+0.5)/group.length*span;
+            n._x=Math.cos(a)*r;n._y=Math.sin(a)*r;n._angle=a;
+          });
+          angleOffset+=span;
+        });
+      }
+    }
+
+    function renderGraph(){
+      const svg=document.getElementById('graphSvg');
+      const rect=svg.getBoundingClientRect();
+      const w=rect.width||window.innerWidth,h=rect.height||window.innerHeight-100;
+      svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+      svg.innerHTML='';
+
+      const vp=el('g','viewport');
+      vp.setAttribute('transform',`translate(${w/2+transform.x},${h/2+transform.y}) scale(${transform.k})`);
+
+      // Rings
+      const rg=el('g','rings');
+      RING_R.forEach((r,i)=>{if(r>0){const c=el('circle');c.setAttribute('cx',0);c.setAttribute('cy',0);c.setAttribute('r',r);c.classList.add('ring-circle');rg.appendChild(c);}});
+      vp.appendChild(rg);
+
+      // Outer arcs
+      const ag=el('g','arcs');
+      const ministries=DATA.nodes.filter(n=>n.category==='DEPARTMENTS'&&n.subtype&&n.subtype.startsWith('Ministry'));
+      ministries.sort((a,b)=>(a._angle||0)-(b._angle||0));
+      ministries.forEach((m,i)=>{
+        if(!m.groupColor||m._angle===undefined)return;
+        const span=Math.PI*2/ministries.length;
+        const sa=m._angle-span/2,ea=m._angle+span/2;
+        const d=describeArc(0,0,ARC_R0,ARC_R1,sa,ea);
+        if(!d)return;
+        const p=el('path');p.setAttribute('d',d);p.setAttribute('fill',m.groupColor);p.classList.add('outer-arc');
+        p.dataset.id=m.id;
+        ag.appendChild(p);
+      });
+      vp.appendChild(ag);
+
+      // Edges
+      const eg=el('g','edges');
+      DATA.edges.forEach(e=>{
+        const s=nodeMap[e.source],t=nodeMap[e.target];
+        if(!s||!t||s._x===undefined||t._x===undefined)return;
+        const line=el('line');
+        line.setAttribute('x1',s._x);line.setAttribute('y1',s._y);
+        line.setAttribute('x2',t._x);line.setAttribute('y2',t._y);
+        line.classList.add('edge-line');
+        line.dataset.source=e.source;line.dataset.target=e.target;
+        eg.appendChild(line);
+      });
+      vp.appendChild(eg);
+
+      // Nodes
+      const ng=el('g','nodes');
+      DATA.nodes.forEach(n=>{
+        if(n._x===undefined)return;
+        const cat=DATA.categories[n.category];
+        const sub=cat&&cat.subtypes?cat.subtypes[n.subtype]:null;
+        const color=n.groupColor||( sub?sub.color:'#888');
+        const size=n.ring===0?12:n.ring===1?7:n.ring===2?6:4;
+        const shape=createShape(cat?cat.shape:'circle',n._x,n._y,size,color);
+        shape.classList.add('node-shape');
+        shape.dataset.id=n.id;
+        if(selected===n.id)shape.classList.add('selected');
+        ng.appendChild(shape);
+      });
+      vp.appendChild(ng);
+      svg.appendChild(vp);
+    }
+
+    function createShape(shape,x,y,size,color){
+      let el_;
+      switch(shape){
+        case 'square':
+          el_=el('rect');el_.setAttribute('x',x-size);el_.setAttribute('y',y-size);
+          el_.setAttribute('width',size*2);el_.setAttribute('height',size*2);
+          el_.setAttribute('fill',color);el_.setAttribute('rx',1);break;
+        case 'diamond':
+          el_=el('rect');el_.setAttribute('x',x-size);el_.setAttribute('y',y-size);
+          el_.setAttribute('width',size*2);el_.setAttribute('height',size*2);
+          el_.setAttribute('fill',color);el_.setAttribute('rx',1);
+          el_.setAttribute('transform',`rotate(45,${x},${y})`);break;
+        case 'triangle':
+          const pts=`${x},${y-size} ${x-size},${y+size*0.7} ${x+size},${y+size*0.7}`;
+          el_=el('polygon');el_.setAttribute('points',pts);el_.setAttribute('fill',color);break;
+        case 'hexagon':
+          let hp='';for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/6;hp+=`${x+size*Math.cos(a)},${y+size*Math.sin(a)} `;}
+          el_=el('polygon');el_.setAttribute('points',hp.trim());el_.setAttribute('fill',color);break;
+        default:
+          el_=el('circle');el_.setAttribute('cx',x);el_.setAttribute('cy',y);
+          el_.setAttribute('r',size);el_.setAttribute('fill',color);
+      }
+      return el_;
+    }
+
+    function el(tag,id){const e=document.createElementNS(NS,tag);if(id)e.id=id;return e;}
+
+    function describeArc(cx,cy,r0,r1,sa,ea){
+      const gap=0.005;sa+=gap;ea-=gap;if(ea<=sa)return'';
+      const c1=Math.cos(sa),s1=Math.sin(sa),c2=Math.cos(ea),s2=Math.sin(ea);
+      const lg=(ea-sa>Math.PI)?1:0;
+      return`M${cx+r0*c1},${cy+r0*s1}L${cx+r1*c1},${cy+r1*s1}A${r1},${r1},0,${lg},1,${cx+r1*c2},${cy+r1*s2}L${cx+r0*c2},${cy+r0*s2}A${r0},${r0},0,${lg},0,${cx+r0*c1},${cy+r0*s1}Z`;
+    }
+
+    function bindEvents(){
+      const svg=document.getElementById('graphSvg');
+      const container=document.getElementById('graphContainer');
+      const tooltip=document.getElementById('tooltip');
+
+      // Node hover + click
+      svg.addEventListener('mousemove',e=>{
+        const t=e.target.closest('.node-shape');
+        if(t){
+          const n=nodeMap[t.dataset.id];
+          if(n){
+            tooltip.textContent=n.holder?`${n.name} (${n.holder})`:n.name;
+            tooltip.style.display='block';
+            tooltip.style.left=(e.clientX+14)+'px';
+            tooltip.style.top=(e.clientY+14)+'px';
+            highlightEdges(n.id,true);
+          }
+        }else{
+          tooltip.style.display='none';
+          highlightEdges(null,false);
+        }
+      });
+
+      svg.addEventListener('click',e=>{
+        const t=e.target.closest('.node-shape');
+        if(t){
+          selectNode(t.dataset.id);
+          e.stopPropagation();
+        }else if(!e.target.closest('.outer-arc')){
+          deselectNode();
+        }
+        const arc=e.target.closest('.outer-arc');
+        if(arc){selectNode(arc.dataset.id);e.stopPropagation();}
+      });
+
+      // Zoom
+      container.addEventListener('wheel',e=>{
+        e.preventDefault();
+        const factor=e.deltaY>0?0.92:1.08;
+        const rect=svg.getBoundingClientRect();
+        const mx=e.clientX-rect.left-rect.width/2;
+        const my=e.clientY-rect.top-rect.height/2;
+        transform.k=Math.max(0.2,Math.min(8,transform.k*factor));
+        transform.x=mx-(mx-transform.x)*factor;
+        transform.y=my-(my-transform.y)*factor;
+        applyTransform();
+      },{passive:false});
+
+      // Pan
+      let dragging=false,dragStart={x:0,y:0};
+      container.addEventListener('mousedown',e=>{
+        if(e.target.closest('.node-shape,.outer-arc'))return;
+        dragging=true;dragStart={x:e.clientX-transform.x,y:e.clientY-transform.y};
+        container.classList.add('grabbing');
+      });
+      window.addEventListener('mousemove',e=>{
+        if(!dragging)return;
+        transform.x=e.clientX-dragStart.x;transform.y=e.clientY-dragStart.y;
+        applyTransform();
+      });
+      window.addEventListener('mouseup',()=>{dragging=false;container.classList.remove('grabbing');});
+
+      // Touch
+      let lastTouch=null,lastDist=0;
+      container.addEventListener('touchstart',e=>{
+        if(e.touches.length===1){dragging=true;dragStart={x:e.touches[0].clientX-transform.x,y:e.touches[0].clientY-transform.y};}
+        if(e.touches.length===2){lastDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
+      },{passive:true});
+      container.addEventListener('touchmove',e=>{
+        if(e.touches.length===1&&dragging){
+          transform.x=e.touches[0].clientX-dragStart.x;transform.y=e.touches[0].clientY-dragStart.y;applyTransform();
+        }
+        if(e.touches.length===2){
+          const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+          if(lastDist){transform.k=Math.max(0.2,Math.min(8,transform.k*(d/lastDist)));}
+          lastDist=d;applyTransform();
+        }
+        e.preventDefault();
+      },{passive:false});
+      container.addEventListener('touchend',()=>{dragging=false;lastDist=0;});
+
+      // Toolbar buttons
+      document.getElementById('btnBudget').addEventListener('click',toggleBudgetView);
+      document.getElementById('btnRadial').addEventListener('click',()=>{
+        if(budgetView)toggleBudgetView();
+      });
+      document.getElementById('btnDark').addEventListener('click',()=>{
+        darkMode=!darkMode;document.body.classList.toggle('dark',darkMode);
+        document.getElementById('btnDark').innerHTML=darkMode?'<span class="tool-icon">&#9788;</span>':'<span class="tool-icon">&#9790;</span>';
+      });
+      document.getElementById('btnReset').addEventListener('click',resetView);
+      document.getElementById('btnRandom').addEventListener('click',()=>{
+        const idx=Math.floor(Math.random()*DATA.nodes.length);
+        navigateToNode(DATA.nodes[idx].id);
+      });
+      document.getElementById('btnLegend').addEventListener('click',()=>{
+        legendVisible=!legendVisible;
+        document.getElementById('legendPanel').classList.toggle('show',legendVisible);
+        document.getElementById('btnLegend').classList.toggle('active',legendVisible);
+      });
+      document.getElementById('btnCategories').addEventListener('click',()=>{
+        legendVisible=!legendVisible;
+        document.getElementById('legendPanel').classList.toggle('show',legendVisible);
+        document.getElementById('btnLegend').classList.toggle('active',legendVisible);
+      });
+      document.getElementById('btnFocus').addEventListener('click',()=>{
+        focusMode=!focusMode;
+        document.getElementById('btnFocus').classList.toggle('active',focusMode);
+        document.getElementById('btnFocus').innerHTML=focusMode?'<span class="tool-icon">&#9641;</span> Full':'<span class="tool-icon">&#9635;</span> Focus';
+        if(focusMode&&selected){computeFocusLayout(selected);}else{computeLayout();}
+        renderGraph();
+      });
+
+      // Search
+      document.getElementById('btnSearch').addEventListener('click',toggleSearch);
+      document.getElementById('searchInput').addEventListener('input',e=>handleSearch(e.target.value));
+      document.addEventListener('keydown',e=>{
+        if(e.key==='Escape'){deselectNode();document.getElementById('searchOverlay').classList.remove('show');searchVisible=false;}
+        if((e.key==='/'||e.key==='f')&&!e.ctrlKey&&!e.metaKey&&document.activeElement.tagName!=='INPUT'){e.preventDefault();toggleSearch();}
+      });
+
+      // Help
+      document.getElementById('btnHelp').addEventListener('click',()=>document.getElementById('helpModal').classList.add('show'));
+      document.getElementById('helpClose').addEventListener('click',()=>document.getElementById('helpModal').classList.remove('show'));
+      document.getElementById('helpModal').addEventListener('click',e=>{if(e.target===document.getElementById('helpModal'))e.target.classList.remove('show');});
+
+      // Detail panel close
+      document.getElementById('detailClose').addEventListener('click',deselectNode);
+
+      // Resize
+      window.addEventListener('resize',()=>renderGraph());
+    }
+
+    function applyTransform(){
+      const vp=document.getElementById('viewport');
+      if(!vp)return;
+      const svg=document.getElementById('graphSvg');
+      const rect=svg.getBoundingClientRect();
+      const w=rect.width||window.innerWidth,h=rect.height||window.innerHeight-100;
+      vp.setAttribute('transform',`translate(${w/2+transform.x},${h/2+transform.y}) scale(${transform.k})`);
+    }
+
+    function highlightEdges(nodeId,on){
+      const lines=document.querySelectorAll('.edge-line');
+      if(!on||!nodeId){lines.forEach(l=>l.classList.remove('highlighted'));return;}
+      const ancestors=getAncestors(nodeId);
+      const descendants=getDescendants(nodeId);
+      const related=new Set([...ancestors,...descendants,nodeId]);
+      lines.forEach(l=>{
+        const match=related.has(l.dataset.source)&&related.has(l.dataset.target);
+        l.classList.toggle('highlighted',match);
+      });
+    }
+
+    function getAncestors(id){
+      const result=[];let cur=id;
+      while(parentMap[cur]){cur=parentMap[cur];result.push(cur);}
+      return result;
+    }
+
+    function getDescendants(id){
+      const result=[];const queue=[id];
+      while(queue.length){const cur=queue.shift();(childMap[cur]||[]).forEach(c=>{result.push(c);queue.push(c);});}
+      return result;
+    }
+
+    function selectNode(id){
+      selected=id;
+      document.querySelectorAll('.node-shape').forEach(s=>s.classList.toggle('selected',s.dataset.id===id));
+      highlightEdges(id,true);
+      renderDetailPanel(id);
+      document.getElementById('detailPanel').classList.add('show');
+      if(focusMode){computeFocusLayout(id);renderGraph();}
+    }
+
+    function deselectNode(){
+      selected=null;
+      document.querySelectorAll('.node-shape').forEach(s=>s.classList.remove('selected'));
+      highlightEdges(null,false);
+      document.getElementById('detailPanel').classList.remove('show');
+    }
+
+    function navigateToNode(id){
+      const n=nodeMap[id];if(!n||n._x===undefined)return;
+      transform.x=-n._x*transform.k;transform.y=-n._y*transform.k;
+      applyTransform();
+      selectNode(id);
+    }
+
+    function resetView(){
+      transform={x:0,y:0,k:1};
+      deselectNode();
+      if(focusMode){focusMode=false;document.getElementById('btnFocus').classList.remove('active');document.getElementById('btnFocus').innerHTML='<span class="tool-icon">&#9635;</span> Focus';computeLayout();renderGraph();}
+      applyTransform();
+    }
+
+    function computeFocusLayout(centerId){
+      const n=nodeMap[centerId];if(!n)return;
+      // Place selected at center, parents above, children below
+      n._x=0;n._y=0;n._angle=0;
+      const parents=[];let cur=centerId;
+      while(parentMap[cur]){cur=parentMap[cur];parents.push(cur);}
+      parents.forEach((pid,i)=>{
+        const pn=nodeMap[pid];if(!pn)return;
+        pn._x=0;pn._y=-(i+1)*100;pn._angle=-Math.PI/2;
+      });
+      const children=childMap[centerId]||[];
+      children.forEach((cid,i)=>{
+        const cn=nodeMap[cid];if(!cn)return;
+        const a=(i/(children.length||1))*Math.PI*2-Math.PI/2;
+        cn._x=Math.cos(a)*160;cn._y=Math.sin(a)*160;cn._angle=a;
+        // Grandchildren
+        const gc=childMap[cid]||[];
+        gc.forEach((gcid,j)=>{
+          const gcn=nodeMap[gcid];if(!gcn)return;
+          const ga=a+(j-(gc.length-1)/2)*0.15;
+          gcn._x=Math.cos(ga)*300;gcn._y=Math.sin(ga)*300;gcn._angle=ga;
+        });
+      });
+      // Hide all others
+      DATA.nodes.forEach(nd=>{
+        if(nd.id!==centerId&&!parents.includes(nd.id)&&
+           !children.includes(nd.id)&&
+           !children.some(c=>(childMap[c]||[]).includes(nd.id))){
+          nd._x=undefined;nd._y=undefined;
+        }
+      });
+    }
+
+    function toggleSearch(){
+      searchVisible=!searchVisible;
+      document.getElementById('searchOverlay').classList.toggle('show',searchVisible);
+      if(searchVisible){document.getElementById('searchInput').focus();document.getElementById('searchInput').value='';document.getElementById('searchResults').innerHTML='';}
+    }
+
+    function handleSearch(term){
+      const results=document.getElementById('searchResults');
+      if(!term||term.length<2){results.innerHTML='';return;}
+      term=term.toLowerCase();
+      const matches=DATA.nodes.filter(n=>
+        n.name.toLowerCase().includes(term)||
+        (n.holder||'').toLowerCase().includes(term)||
+        (n.description||'').toLowerCase().includes(term)||
+        (n.subtype||'').toLowerCase().includes(term)
+      ).slice(0,10);
+      results.innerHTML=matches.map(n=>{
+        const cat=DATA.categories[n.category];
+        const sub=cat&&cat.subtypes?cat.subtypes[n.subtype]:null;
+        const color=n.groupColor||(sub?sub.color:'#888');
+        return`<div class="search-item" data-id="${n.id}">
+          <span class="search-dot" style="background:${color}"></span>
+          <span class="search-name">${n.name}</span>
+          <span class="search-sub">${n.subtype||''}</span>
+        </div>`;
+      }).join('');
+      results.querySelectorAll('.search-item').forEach(item=>{
+        item.addEventListener('click',()=>{
+          navigateToNode(item.dataset.id);
+          document.getElementById('searchOverlay').classList.remove('show');
+          searchVisible=false;
+        });
+      });
+    }
+
+    function formatBudget(cr){
+      if(!cr)return'';
+      if(cr>=100000)return'\u20B9'+(cr/100000).toFixed(1)+'L Cr';
+      if(cr>=1000)return'\u20B9'+(cr/1000).toFixed(1)+'K Cr';
+      return'\u20B9'+cr+' Cr';
+    }
+
+    function renderDetailPanel(id){
+      const n=nodeMap[id];if(!n)return;
+      const cat=DATA.categories[n.category];
+      const sub=cat&&cat.subtypes?cat.subtypes[n.subtype]:null;
+      const color=n.groupColor||(sub?sub.color:'#888');
+      const dc=document.getElementById('detailContent');
+
+      let html=`<span class="detail-badge" style="background:${color}">${n.subtype||n.category}</span>`;
+      html+=`<div class="detail-title">${n.name}</div>`;
+      html+=`<div class="detail-tabs"><span class="detail-tab active" data-tab="info">Info</span>`;
+      if(n.budget)html+=`<span class="detail-tab" data-tab="budget">Budget</span>`;
+      html+=`</div>`;
+      html+=`<div id="tabInfo">`;
+
+      if(n.description)html+=`<p style="font-size:0.85rem;color:var(--text2);margin-bottom:0.8rem">${n.description}</p>`;
+
+      // Fields
+      const fields=[];
+      if(n.holder)fields.push(['Current Holder',n.holder]);
+      if(n.since)fields.push(['Since',n.since]);
+      if(n.est)fields.push(['Established',n.est]);
+      if(n.mandate)fields.push(['Mandate',n.mandate]);
+      if(n.act)fields.push(['Act',n.act]);
+      if(n.article)fields.push(['Article',n.article]);
+      if(n.jurisdiction)fields.push(['Jurisdiction',n.jurisdiction]);
+      if(n.location)fields.push(['Location',n.location]);
+      if(n.sector)fields.push(['Sector',n.sector]);
+      if(n.revenue)fields.push(['Revenue',n.revenue]);
+      if(n.psuCategory)fields.push(['Category',n.psuCategory]);
+      if(n.totalSeats)fields.push(['Total Seats',n.totalSeats]);
+      if(n.totalJudges)fields.push(['Judges',n.totalJudges]);
+      if(n.party)fields.push(['Party',n.party]);
+      if(n.constituency)fields.push(['Constituency',n.constituency]);
+      if(n.budget)fields.push(['Budget 2025-26',formatBudget(n.budget)]);
+
+      if(fields.length){
+        fields.forEach(([k,v])=>{html+=`<div class="detail-field"><span class="detail-field-label">${k}</span><span class="detail-field-value">${v}</span></div>`;});
+      }
+
+      // Parent relationships (Member Of / Appointed By)
+      const parentId=parentMap[n.id];
+      if(parentId&&nodeMap[parentId]){
+        const pn=nodeMap[parentId];
+        const pcat=DATA.categories[pn.category];
+        const psub=pcat&&pcat.subtypes?pcat.subtypes[pn.subtype]:null;
+        const pc=pn.groupColor||(psub?psub.color:'#888');
+        const edgeType=DATA.edges.find(e=>e.target===n.id&&e.source===parentId);
+        const relLabel=edgeType?({'appoints':'APPOINTED BY','leads':'MINISTER','contains':'PART OF','oversees':'OVERSEEN BY','establishes':'ESTABLISHED BY','convenes':'CONVENED BY','presides':'PRESIDED BY','heads':'HEADED BY','appellate':'APPELLATE JURISDICTION','supervises':'SUPERVISED BY','assists':'ASSISTS'}[edgeType.type]||'MEMBER OF'):'MEMBER OF';
+        html+=`<div class="detail-section"><h3>${relLabel}</h3>`;
+        html+=`<div class="rel-card" data-id="${pn.id}" style="border-left-color:${pc}">
+          <div><div class="rel-name">${pn.name}</div><div class="rel-sub">${pn.subtype||''}</div></div>
+        </div></div>`;
+      }
+
+      // Children (Leads / Oversees / Contains)
+      const children=childMap[n.id]||[];
+      if(children.length){
+        // Group by edge type
+        const groups={};
+        children.forEach(cid=>{
+          const edge=DATA.edges.find(e=>e.source===n.id&&e.target===cid);
+          const type=edge?edge.type:'related';
+          if(!groups[type])groups[type]=[];
+          groups[type].push(cid);
+        });
+        const typeLabels={'appoints':'APPOINTS','leads':'LEADS','contains':'CONTAINS','oversees':'OVERSEES','establishes':'ESTABLISHES','convenes':'CONVENES','presides':'PRESIDES','heads':'HEADS','appellate':'APPELLATE OVER','supervises':'SUPERVISES','assists':'ASSISTS'};
+        Object.keys(groups).forEach(type=>{
+          html+=`<div class="detail-section"><h3>${typeLabels[type]||type} (${groups[type].length})</h3>`;
+          groups[type].slice(0,15).forEach(cid=>{
+            const cn=nodeMap[cid];if(!cn)return;
+            const ccat=DATA.categories[cn.category];
+            const csub=ccat&&ccat.subtypes?ccat.subtypes[cn.subtype]:null;
+            const cc=cn.groupColor||(csub?csub.color:'#888');
+            html+=`<div class="rel-card" data-id="${cn.id}" style="border-left-color:${cc}">
+              <div><div class="rel-name">${cn.name}</div><div class="rel-sub">${cn.holder||cn.subtype||''}</div></div>
+            </div>`;
+          });
+          if(groups[type].length>15)html+=`<div style="font-size:0.78rem;color:var(--text2);padding:0.3rem">...and ${groups[type].length-15} more</div>`;
+          html+=`</div>`;
+        });
+      }
+
+      html+=`</div>`;
+
+      // Budget tab
+      if(n.budget){
+        html+=`<div id="tabBudget" style="display:none">`;
+        html+=`<div style="font-size:1.5rem;font-weight:700;margin-bottom:0.5rem">${formatBudget(n.budget)}</div>`;
+        html+=`<div style="font-size:0.82rem;color:var(--text2);margin-bottom:1rem">${(n.budgetDetail?n.budgetDetail.pctOfTotal:((n.budget/(DATA.budget?DATA.budget.totalExpenditure:1))*100).toFixed(2))}% of Union Budget ${DATA.budget?DATA.budget.year:'2025-26'}</div>`;
+        // Bar relative to max (Defence)
+        html+=`<div class="budget-bar-h"><span>Allocation</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${Math.min(100,(n.budget/621940)*100)}%;background:${color}"></div></div><span>${formatBudget(n.budget)}</span></div>`;
+        if(n.budgetDetail){
+          html+=`<div style="margin-top:0.8rem"><h3 style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text2);margin-bottom:0.4rem">Expenditure Split</h3>`;
+          html+=`<div class="budget-bar-h"><span>Revenue</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${(n.budgetDetail.revenue/n.budget*100)}%;background:#27ae60"></div></div><span>${formatBudget(n.budgetDetail.revenue)}</span></div>`;
+          html+=`<div class="budget-bar-h"><span>Capital</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${(n.budgetDetail.capital/n.budget*100)}%;background:#2980b9"></div></div><span>${formatBudget(n.budgetDetail.capital)}</span></div>`;
+          html+=`<div class="detail-field" style="margin-top:0.5rem"><span class="detail-field-label">Sector</span><span class="detail-field-value">${n.budgetDetail.sector}</span></div>`;
+          html+=`</div>`;
+        }
+        html+=`</div>`;
+      }
+
+      dc.innerHTML=html;
+
+      // Tab switching
+      dc.querySelectorAll('.detail-tab').forEach(tab=>{
+        tab.addEventListener('click',()=>{
+          dc.querySelectorAll('.detail-tab').forEach(t=>t.classList.remove('active'));
+          tab.classList.add('active');
+          const tabName=tab.dataset.tab;
+          if(document.getElementById('tabInfo'))document.getElementById('tabInfo').style.display=tabName==='info'?'block':'none';
+          if(document.getElementById('tabBudget'))document.getElementById('tabBudget').style.display=tabName==='budget'?'block':'none';
+        });
+      });
+
+      // Clickable relationship cards
+      dc.querySelectorAll('.rel-card').forEach(card=>{
+        card.addEventListener('click',()=>navigateToNode(card.dataset.id));
+      });
+    }
+
+    function renderLegend(){
+      const lp=document.getElementById('legendPanel');
+      let html='<div class="legend-grid">';
+
+      // Officials column
+      html+='<div class="legend-col"><h4>Officials</h4>';
+      Object.entries(DATA.categories.OFFICIALS.subtypes).forEach(([name,cfg])=>{
+        html+=`<div class="legend-item"><span class="legend-shape"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="${cfg.color}" stroke="#fff" stroke-width="1"/></svg></span>${name}</div>`;
+      });
+      html+='</div>';
+
+      // Departments column
+      html+='<div class="legend-col"><h4>Departments</h4>';
+      Object.entries(DATA.categories.DEPARTMENTS.subtypes).forEach(([name,cfg])=>{
+        html+=`<div class="legend-item"><span class="legend-shape"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" fill="${cfg.color}" stroke="#fff" stroke-width="1" rx="1"/></svg></span>${name}</div>`;
+      });
+      // Add judiciary
+      html+='<h4 style="margin-top:0.5rem">Judiciary</h4>';
+      Object.entries(DATA.categories.JUDICIARY.subtypes).forEach(([name,cfg])=>{
+        html+=`<div class="legend-item"><span class="legend-shape"><svg viewBox="0 0 14 14"><polygon points="7,2 12,12 2,12" fill="${cfg.color}" stroke="#fff" stroke-width="1"/></svg></span>${name}</div>`;
+      });
+      html+='</div>';
+
+      // Public Bodies + Legislature column
+      html+='<div class="legend-col"><h4>Public Bodies</h4>';
+      Object.entries(DATA.categories['PUBLIC BODIES'].subtypes).forEach(([name,cfg])=>{
+        html+=`<div class="legend-item"><span class="legend-shape"><svg viewBox="0 0 14 14"><rect x="3" y="3" width="8" height="8" fill="${cfg.color}" stroke="#fff" stroke-width="1" rx="1" transform="rotate(45,7,7)"/></svg></span>${name}</div>`;
+      });
+      html+='<h4 style="margin-top:0.5rem">Legislature</h4>';
+      Object.entries(DATA.categories.LEGISLATURES.subtypes).forEach(([name,cfg])=>{
+        let hp='';for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/6;hp+=`${7+5*Math.cos(a)},${7+5*Math.sin(a)} `;}
+        html+=`<div class="legend-item"><span class="legend-shape"><svg viewBox="0 0 14 14"><polygon points="${hp.trim()}" fill="${cfg.color}" stroke="#fff" stroke-width="1"/></svg></span>${name}</div>`;
+      });
+      html+='</div>';
+
+      html+='</div>';
+      lp.innerHTML=html;
+    }
+
+    // Budget Sankey View
+    let budgetView=false;
+
+    function toggleBudgetView(){
+      budgetView=!budgetView;
+      document.getElementById('btnBudget').classList.toggle('active',budgetView);
+      document.getElementById('btnRadial').classList.toggle('active',!budgetView);
+      document.getElementById('graphContainer').style.display=budgetView?'none':'block';
+      document.getElementById('sankeyContainer').style.display=budgetView?'block':'none';
+      if(budgetView)renderSankey();
+    }
+
+    const SANKEY_COLORS={
+      'Defence & External':'#c0392b',
+      'Internal Security':'#e74c3c',
+      'Infrastructure & Transport':'#2980b9',
+      'Agriculture & Rural':'#27ae60',
+      'Industry & Manufacturing':'#8e44ad',
+      'Health & Social Welfare':'#e67e22',
+      'Education & Research':'#f39c12',
+      'Finance & Economic':'#2c3e50',
+      'Energy & Resources':'#d35400',
+      'Governance & Administration':'#7f8c8d',
+      'Environment & Culture':'#16a085'
+    };
+
+    function renderSankey(){
+      if(!DATA||!DATA.budgetFlows)return;
+      const flows=DATA.budgetFlows;
+      const sectors=flows.sectors;
+      const total=flows.totalExpenditure;
+
+      const svg=document.getElementById('sankeySvg');
+      const container=document.getElementById('sankeyContainer');
+      const cw=container.clientWidth||window.innerWidth;
+
+      // Layout params
+      const pad={top:60,bottom:30,left:40,right:40};
+      const colW=140; // node width
+      const gap=4; // gap between nodes
+      const col0x=pad.left; // Total Budget column
+      const col1x=cw*0.3; // Sectors column
+      const col2x=cw*0.65; // Ministries column
+
+      // Calculate heights
+      const maxMinistries=sectors.reduce((s,sec)=>s+sec.ministries.length,0);
+      const totalH=Math.max(600, maxMinistries*22+pad.top+pad.bottom);
+      svg.setAttribute('width',cw);
+      svg.setAttribute('height',totalH);
+      svg.setAttribute('viewBox',`0 0 ${cw} ${totalH}`);
+      svg.innerHTML='';
+
+      // Column headers
+      const hg=document.createElementNS(NS,'g');
+      [['Total Budget',col0x+colW/2],['Sectors',col1x+colW/2],['Ministries',col2x+colW/2]].forEach(([t,x])=>{
+        const txt=document.createElementNS(NS,'text');
+        txt.setAttribute('x',x);txt.setAttribute('y',30);
+        txt.classList.add('sankey-col-header');
+        txt.textContent=t;hg.appendChild(txt);
+      });
+      svg.appendChild(hg);
+
+      const usableH=totalH-pad.top-pad.bottom;
+
+      // Col 0: single Total Budget node
+      const totalNodeY=pad.top;
+      const totalNodeH=usableH;
+      drawRect(svg,col0x,totalNodeY,colW,totalNodeH,'#34495e','Total Expenditure',formatBudget(total));
+
+      // Col 1: Sector nodes, proportional height
+      let sectorY=pad.top;
+      const sectorPositions=[];
+      sectors.forEach(sec=>{
+        const h=Math.max(20,(sec.value/total)*usableH);
+        const color=SANKEY_COLORS[sec.name]||'#888';
+        drawRect(svg,col1x,sectorY,colW,h,color,sec.name,formatBudget(sec.value));
+        sectorPositions.push({name:sec.name,y:sectorY,h:h,value:sec.value,color:color,ministries:sec.ministries});
+
+        // Flow from Total → Sector
+        drawFlow(svg,col0x+colW,totalNodeY+(sectorY-pad.top),col1x,sectorY,
+          (sec.value/total)*totalNodeH,h,'#34495e',color,
+          `${sec.name}: ${formatBudget(sec.value)} (${(sec.value/total*100).toFixed(1)}%)`);
+        sectorY+=h+gap;
+      });
+
+      // Col 2: Ministry nodes within each sector
+      let ministryY=pad.top;
+      sectors.forEach((sec,si)=>{
+        const sp=sectorPositions[si];
+        const color=sp.color;
+        // Get ministry nodes with budget
+        const mNodes=sec.ministries.map(mid=>nodeMap[mid]).filter(n=>n&&n.budget);
+        mNodes.sort((a,b)=>b.budget-a.budget);
+        if(!mNodes.length)return;
+
+        let localY=ministryY;
+        const sectorMinH=mNodes.length*18;
+        mNodes.forEach(mn=>{
+          const mh=Math.max(14,(mn.budget/total)*usableH);
+          drawRect(svg,col2x,localY,colW,mh,color,mn.name.replace('Ministry of ','').replace('Ministry of\n',''),formatBudget(mn.budget),mn.id);
+
+          // Flow from Sector → Ministry
+          const flowSrcY=sp.y+((localY-ministryY)/(sectorMinH||1))*sp.h;
+          const flowSrcH=Math.max(2,(mn.budget/sp.value)*sp.h);
+          drawFlow(svg,col1x+colW,flowSrcY,col2x,localY,
+            flowSrcH,mh,color,color,
+            `${mn.name}: ${formatBudget(mn.budget)}`);
+
+          localY+=mh+gap;
+        });
+        ministryY=localY+gap*2;
+      });
+
+      // Resize SVG to actual content
+      const actualH=Math.max(totalH,ministryY+pad.bottom);
+      svg.setAttribute('height',actualH);
+      svg.setAttribute('viewBox',`0 0 ${cw} ${actualH}`);
+
+      // Add comparison table below Sankey
+      let tableDiv=document.getElementById('budgetTable');
+      if(!tableDiv){
+        tableDiv=document.createElement('div');
+        tableDiv.id='budgetTable';
+        tableDiv.style.cssText='padding:1.5rem;max-width:900px;margin:0 auto;';
+        container.appendChild(tableDiv);
+      }
+      const allMin=DATA.nodes.filter(n=>n.budget&&n.subtype&&n.subtype.startsWith('Ministry')).sort((a,b)=>b.budget-a.budget);
+      const maxBudget=allMin[0]?allMin[0].budget:1;
+      let thtml='<h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.8rem;color:var(--text)">Ministry Budget Comparison</h2>';
+      thtml+='<table style="width:100%;border-collapse:collapse;font-size:0.82rem">';
+      thtml+='<tr style="border-bottom:2px solid var(--border)"><th style="text-align:left;padding:0.4rem;color:var(--text2)">#</th><th style="text-align:left;padding:0.4rem;color:var(--text2)">Ministry</th><th style="text-align:left;padding:0.4rem;color:var(--text2);width:40%">Budget</th><th style="text-align:right;padding:0.4rem;color:var(--text2)">₹ Crore</th><th style="text-align:right;padding:0.4rem;color:var(--text2)">%</th></tr>';
+      allMin.forEach((m,i)=>{
+        const sec=m.budgetDetail?m.budgetDetail.sector:'';
+        const color=SANKEY_COLORS[sec]||'#888';
+        const pct=(m.budget/total*100).toFixed(1);
+        const barW=(m.budget/maxBudget*100).toFixed(1);
+        const name=m.name.replace('Ministry of ','').replace('Ministry of\n','');
+        thtml+=`<tr style="border-bottom:1px solid var(--border);cursor:pointer" data-id="${m.id}" class="budget-row">`;
+        thtml+=`<td style="padding:0.4rem;color:var(--text2)">${i+1}</td>`;
+        thtml+=`<td style="padding:0.4rem;font-weight:500">${name}</td>`;
+        thtml+=`<td style="padding:0.4rem"><div style="background:var(--border);border-radius:4px;height:12px;overflow:hidden"><div style="width:${barW}%;height:100%;background:${color};border-radius:4px"></div></div></td>`;
+        thtml+=`<td style="padding:0.4rem;text-align:right;font-weight:600">${m.budget.toLocaleString('en-IN')}</td>`;
+        thtml+=`<td style="padding:0.4rem;text-align:right;color:var(--text2)">${pct}%</td>`;
+        thtml+=`</tr>`;
+      });
+      thtml+='</table>';
+      tableDiv.innerHTML=thtml;
+      tableDiv.querySelectorAll('.budget-row').forEach(row=>{
+        row.addEventListener('click',()=>{selectNode(row.dataset.id);document.getElementById('detailPanel').classList.add('show');});
+      });
+    }
+
+    function drawRect(svg,x,y,w,h,color,label,valueText,nodeId){
+      const g=document.createElementNS(NS,'g');
+      const r=document.createElementNS(NS,'rect');
+      r.setAttribute('x',x);r.setAttribute('y',y);
+      r.setAttribute('width',w);r.setAttribute('height',h);
+      r.setAttribute('fill',color);r.setAttribute('rx',3);
+      r.classList.add('sankey-node-rect');
+      if(nodeId)r.dataset.id=nodeId;
+      g.appendChild(r);
+
+      if(h>12&&label){
+        const t=document.createElementNS(NS,'text');
+        t.setAttribute('x',x+5);t.setAttribute('y',y+h/2+1);
+        t.setAttribute('dominant-baseline','middle');
+        t.classList.add('sankey-label');
+        // Truncate label to fit
+        const maxChars=Math.floor(w/6.5);
+        t.textContent=label.length>maxChars?label.substring(0,maxChars-1)+'…':label;
+        t.style.fill='#fff';t.style.fontWeight='600';
+        g.appendChild(t);
+      }
+      if(h>24&&valueText){
+        const v=document.createElementNS(NS,'text');
+        v.setAttribute('x',x+5);v.setAttribute('y',y+h/2+13);
+        v.setAttribute('dominant-baseline','middle');
+        v.classList.add('sankey-value');
+        v.textContent=valueText;v.style.fill='rgba(255,255,255,0.8)';
+        g.appendChild(v);
+      }
+
+      // Click handler for ministry nodes
+      if(nodeId){
+        g.style.cursor='pointer';
+        g.addEventListener('click',()=>{
+          selectNode(nodeId);
+          document.getElementById('detailPanel').classList.add('show');
+        });
+      }
+
+      // Tooltip on hover
+      const tooltip=document.getElementById('tooltip');
+      g.addEventListener('mouseenter',e=>{
+        tooltip.textContent=`${label}: ${valueText}`;
+        tooltip.style.display='block';
+        tooltip.style.left=(e.clientX+14)+'px';
+        tooltip.style.top=(e.clientY+14)+'px';
+      });
+      g.addEventListener('mousemove',e=>{
+        tooltip.style.left=(e.clientX+14)+'px';
+        tooltip.style.top=(e.clientY+14)+'px';
+      });
+      g.addEventListener('mouseleave',()=>{tooltip.style.display='none';});
+
+      svg.appendChild(g);
+    }
+
+    function drawFlow(svg,x0,y0,x1,y1,h0,h1,c0,c1,tip){
+      const midX=(x0+x1)/2;
+      const d=`M${x0},${y0} C${midX},${y0} ${midX},${y1} ${x1},${y1}
+               L${x1},${y1+h1} C${midX},${y1+h1} ${midX},${y0+h0} ${x0},${y0+h0} Z`;
+      const path=document.createElementNS(NS,'path');
+      path.setAttribute('d',d);
+      path.classList.add('sankey-flow');
+
+      // Gradient
+      const gradId='sg'+Math.random().toString(36).substr(2,6);
+      const defs=svg.querySelector('defs')||document.createElementNS(NS,'defs');
+      if(!svg.querySelector('defs'))svg.insertBefore(defs,svg.firstChild);
+      const grad=document.createElementNS(NS,'linearGradient');
+      grad.id=gradId;
+      const s1=document.createElementNS(NS,'stop');s1.setAttribute('offset','0%');s1.setAttribute('stop-color',c0);
+      const s2=document.createElementNS(NS,'stop');s2.setAttribute('offset','100%');s2.setAttribute('stop-color',c1);
+      grad.appendChild(s1);grad.appendChild(s2);
+      defs.appendChild(grad);
+
+      path.setAttribute('fill',`url(#${gradId})`);
+
+      const tooltip=document.getElementById('tooltip');
+      path.addEventListener('mouseenter',e=>{
+        tooltip.textContent=tip;tooltip.style.display='block';
+        tooltip.style.left=(e.clientX+14)+'px';tooltip.style.top=(e.clientY+14)+'px';
+      });
+      path.addEventListener('mousemove',e=>{
+        tooltip.style.left=(e.clientX+14)+'px';tooltip.style.top=(e.clientY+14)+'px';
+      });
+      path.addEventListener('mouseleave',()=>{tooltip.style.display='none';});
+
+      // Insert flows before nodes (so nodes are on top)
+      const firstG=svg.querySelector('g');
+      if(firstG)svg.insertBefore(path,firstG);
+      else svg.appendChild(path);
+    }
+
+    document.addEventListener('DOMContentLoaded',init);
+    })();
+    </script>
+</body>
+</html>

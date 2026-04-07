@@ -50,6 +50,25 @@
             border-bottom: 3px solid rgba(255,255,255,0.1);
         }
 
+        .header-nav {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.15);
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            transition: opacity 0.2s;
+        }
+
+        .header-nav a:hover { opacity: 1; }
+
         h1 {
             font-size: 2rem;
             font-weight: 700;
@@ -272,7 +291,8 @@
     </style>
 </head>
 <body>
-    <header>
+    <header style="position:relative">
+        <div class="header-nav"><a href="https://ajrnair.github.io/IndiaGovMachinery/">Govt Structure →</a></div>
         <div class="container">
             <h1>🚗 Fuel Prices India</h1>
             <p class="subtitle">Live Petrol & Diesel rates across all states and UTs</p>
