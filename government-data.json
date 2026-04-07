@@ -764,7 +764,7 @@
       "budgetDetail": {
         "revenue": 422919,
         "capital": 199021,
-        "sector": "Defence & Security",
+        "sector": "Defence & External",
         "pctOfTotal": 22.59
       }
     },
@@ -917,7 +917,7 @@
       "budgetDetail": {
         "revenue": 20382,
         "capital": 1772,
-        "sector": "Governance & Administration",
+        "sector": "Defence & External",
         "pctOfTotal": 0.8
       }
     },
@@ -1079,7 +1079,7 @@
       "budgetDetail": {
         "revenue": 149357,
         "capital": 70286,
-        "sector": "Defence & Security",
+        "sector": "Internal Security",
         "pctOfTotal": 7.98
       }
     },
@@ -6831,11 +6831,11 @@
     },
     "sectors": [
       {
-        "name": "Defence & Security",
-        "value": 841583,
+        "name": "Defence & External",
+        "value": 644094,
         "ministries": [
           "ministry-defence",
-          "ministry-home-affairs"
+          "ministry-external-affairs"
         ]
       },
       {
@@ -6862,6 +6862,13 @@
           "ministry-jal-shakti",
           "ministry-panchayati-raj",
           "ministry-rural-development"
+        ]
+      },
+      {
+        "name": "Internal Security",
+        "value": 219643,
+        "ministries": [
+          "ministry-home-affairs"
         ]
       },
       {
@@ -6924,10 +6931,9 @@
       },
       {
         "name": "Governance & Administration",
-        "value": 37044,
+        "value": 14890,
         "ministries": [
           "ministry-doner",
-          "ministry-external-affairs",
           "ministry-information-broadcasting",
           "ministry-law",
           "ministry-parliamentary-affairs",

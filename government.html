@@ -814,11 +814,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
     }
 
     const SANKEY_COLORS={
-      'Defence & Security':'#c0392b',
+      'Defence & External':'#c0392b',
+      'Internal Security':'#e74c3c',
       'Infrastructure & Transport':'#2980b9',
       'Agriculture & Rural':'#27ae60',
       'Industry & Manufacturing':'#8e44ad',
-      'Health & Social Welfare':'#e74c3c',
+      'Health & Social Welfare':'#e67e22',
       'Education & Research':'#f39c12',
       'Finance & Economic':'#2c3e50',
       'Energy & Resources':'#d35400',
@@ -917,6 +918,39 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
       const actualH=Math.max(totalH,ministryY+pad.bottom);
       svg.setAttribute('height',actualH);
       svg.setAttribute('viewBox',`0 0 ${cw} ${actualH}`);
+
+      // Add comparison table below Sankey
+      let tableDiv=document.getElementById('budgetTable');
+      if(!tableDiv){
+        tableDiv=document.createElement('div');
+        tableDiv.id='budgetTable';
+        tableDiv.style.cssText='padding:1.5rem;max-width:900px;margin:0 auto;';
+        container.appendChild(tableDiv);
+      }
+      const allMin=DATA.nodes.filter(n=>n.budget&&n.subtype&&n.subtype.startsWith('Ministry')).sort((a,b)=>b.budget-a.budget);
+      const maxBudget=allMin[0]?allMin[0].budget:1;
+      let thtml='<h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.8rem;color:var(--text)">Ministry Budget Comparison</h2>';
+      thtml+='<table style="width:100%;border-collapse:collapse;font-size:0.82rem">';
+      thtml+='<tr style="border-bottom:2px solid var(--border)"><th style="text-align:left;padding:0.4rem;color:var(--text2)">#</th><th style="text-align:left;padding:0.4rem;color:var(--text2)">Ministry</th><th style="text-align:left;padding:0.4rem;color:var(--text2);width:40%">Budget</th><th style="text-align:right;padding:0.4rem;color:var(--text2)">₹ Crore</th><th style="text-align:right;padding:0.4rem;color:var(--text2)">%</th></tr>';
+      allMin.forEach((m,i)=>{
+        const sec=m.budgetDetail?m.budgetDetail.sector:'';
+        const color=SANKEY_COLORS[sec]||'#888';
+        const pct=(m.budget/total*100).toFixed(1);
+        const barW=(m.budget/maxBudget*100).toFixed(1);
+        const name=m.name.replace('Ministry of ','').replace('Ministry of\n','');
+        thtml+=`<tr style="border-bottom:1px solid var(--border);cursor:pointer" data-id="${m.id}" class="budget-row">`;
+        thtml+=`<td style="padding:0.4rem;color:var(--text2)">${i+1}</td>`;
+        thtml+=`<td style="padding:0.4rem;font-weight:500">${name}</td>`;
+        thtml+=`<td style="padding:0.4rem"><div style="background:var(--border);border-radius:4px;height:12px;overflow:hidden"><div style="width:${barW}%;height:100%;background:${color};border-radius:4px"></div></div></td>`;
+        thtml+=`<td style="padding:0.4rem;text-align:right;font-weight:600">${m.budget.toLocaleString('en-IN')}</td>`;
+        thtml+=`<td style="padding:0.4rem;text-align:right;color:var(--text2)">${pct}%</td>`;
+        thtml+=`</tr>`;
+      });
+      thtml+='</table>';
+      tableDiv.innerHTML=thtml;
+      tableDiv.querySelectorAll('.budget-row').forEach(row=>{
+        row.addEventListener('click',()=>{selectNode(row.dataset.id);document.getElementById('detailPanel').classList.add('show');});
+      });
     }
 
     function drawRect(svg,x,y,w,h,color,label,valueText,nodeId){
