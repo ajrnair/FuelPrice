@@ -1,2 +1,10 @@
-# Ignore output of scraper
+# Python
+__pycache__/
+*.py[cod]
+
+# Scraper outputs
 data.sqlite
+scraper_output.log
+
+# OS/editor files
+.DS_Store

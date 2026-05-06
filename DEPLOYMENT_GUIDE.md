@@ -6,12 +6,12 @@ Choose any of these simple methods to deploy your Fuel Prices website:
 
 ## ⭐ Option 1: GitHub Pages (Recommended - FREE & Easy)
 
-**Your website will be live at:** `https://ajrnair.github.io/Drugs/`
+**Your website will be live at:** `https://ajrnair.github.io/FuelPrice/`
 
 ### Steps:
 
 1. **Go to your GitHub repository:**
-   - Open: https://github.com/ajrnair/Drugs
+   - Open: https://github.com/ajrnair/FuelPrice
 
 2. **Click on "Settings" tab** (top menu)
 
@@ -19,13 +19,13 @@ Choose any of these simple methods to deploy your Fuel Prices website:
 
 4. **Under "Build and deployment":**
    - Source: Select **"Deploy from a branch"**
-   - Branch: Select **"claude/fuel-prices-dashboard-idtkl"** and **"/ (root)"**
+   - Branch: Select **"master"** and **"/ (root)"**
    - Click **"Save"**
 
 5. **Wait 2-3 minutes**, then refresh the page
 
 6. **Your website URL will appear at the top!**
-   - It will say: "Your site is live at https://ajrnair.github.io/Drugs/"
+   - It will say: "Your site is live at https://ajrnair.github.io/FuelPrice/"
 
 7. **Done!** Visit the URL to see your website live.
 
@@ -61,12 +61,12 @@ Similar to Netlify, great performance:
 
 2. **Import your GitHub repository:**
    - Click "Import Git Repository"
-   - Select "ajrnair/Drugs"
-   - Branch: `claude/fuel-prices-dashboard-idtkl`
+   - Select "ajrnair/FuelPrice"
+   - Branch: `master`
 
 3. **Click "Deploy"**
 
-4. **Done!** You'll get a URL like: `https://drugs.vercel.app`
+4. **Done!** You'll get a URL like: `https://fuelprice.vercel.app`
 
 ---
 

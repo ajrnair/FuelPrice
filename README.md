@@ -61,8 +61,8 @@ npx serve
 
 1. Fork this repository
 2. Go to Settings → Pages
-3. Select branch `main` and folder `/` (root)
-4. Your site will be live at: `https://yourusername.github.io/Drugs/`
+3. Select branch `master` and folder `/` (root)
+4. Your site will be live at: `https://yourusername.github.io/FuelPrice/`
 
 ### Option 3: Deploy to Netlify/Vercel
 
