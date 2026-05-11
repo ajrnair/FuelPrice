@@ -251,6 +251,35 @@
             color: var(--text-light);
         }
 
+        .refresh-btn {
+            display: inline-block;
+            width: auto;
+            margin-top: 0.75rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .data-source {
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
         .hidden {
             display: none;
         }
@@ -277,6 +306,8 @@
             <h1>🚗 Fuel Prices India</h1>
             <p class="subtitle">Live Petrol & Diesel rates across all states and UTs</p>
             <p class="update-time">Updated: <span id="lastUpdate">Loading...</span></p>
+            <p class="data-source" id="dataSource"></p>
+            <button class="refresh-btn" onclick="refreshData()" id="refreshBtn">↻ Refresh Prices</button>
         </div>
     </header>
 
@@ -351,18 +382,33 @@
     <script>
         let fuelData = [];
 
-        // Load fuel price data
+        const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/ajrnair/FuelPrice/master/data.json';
+
+        async function fetchWithCacheBust(url) {
+            const cacheBuster = `?t=${Date.now()}`;
+            const response = await fetch(url + cacheBuster, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+        }
+
         async function loadData() {
+            const sourceEl = document.getElementById('dataSource');
             try {
-                const response = await fetch('data.json');
-                fuelData = await response.json();
-                displayData();
-                calculateStats();
-                populateDropdowns();
-            } catch (error) {
-                console.error('Error loading data:', error);
-                document.getElementById('priceGrid').innerHTML = '<p style="text-align:center;padding:2rem;">Unable to load fuel prices. Please try again later.</p>';
+                fuelData = await fetchWithCacheBust(GITHUB_RAW_URL);
+                sourceEl.textContent = 'Source: live from repository';
+            } catch (remoteErr) {
+                try {
+                    fuelData = await fetchWithCacheBust('data.json');
+                    sourceEl.textContent = 'Source: local data';
+                } catch (localErr) {
+                    console.error('Error loading data:', localErr);
+                    document.getElementById('priceGrid').innerHTML = '<p style="text-align:center;padding:2rem;">Unable to load fuel prices. Please try again later.</p>';
+                    return;
+                }
             }
+            displayData();
+            calculateStats();
+            populateDropdowns();
         }
 
         function displayData() {
@@ -423,10 +469,11 @@
         }
 
         function populateDropdowns() {
-            const options = fuelData.map(item => `<option value="${item.state}">${item.state}</option>`).join('');
-            document.getElementById('routeState').innerHTML += options;
-            document.getElementById('compareState1').innerHTML += options;
-            document.getElementById('compareState2').innerHTML += options;
+            const options = '<option value="">Select State</option>' +
+                fuelData.map(item => `<option value="${item.state}">${item.state}</option>`).join('');
+            document.getElementById('routeState').innerHTML = options;
+            document.getElementById('compareState1').innerHTML = options;
+            document.getElementById('compareState2').innerHTML = options;
         }
 
         function calculateFuelCost() {
@@ -484,6 +531,18 @@
                 const stateName = card.querySelector('.state-name').textContent.toLowerCase();
                 card.style.display = stateName.includes(searchTerm) ? 'grid' : 'none';
             });
+        }
+
+        async function refreshData() {
+            const btn = document.getElementById('refreshBtn');
+            btn.disabled = true;
+            btn.textContent = '↻ Refreshing...';
+            try {
+                await loadData();
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '↻ Refresh Prices';
+            }
         }
 
         // Load data on page load
