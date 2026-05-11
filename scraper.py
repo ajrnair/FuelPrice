@@ -237,6 +237,164 @@ def fetch_from_mypetrolprice(state, city):
     return None
 
 
+# State name mapping for DailyFuelPrice.com URL slugs
+DAILYFUELPRICE_STATES = {
+    "Andhra Pradesh": "andhra-pradesh",
+    "Arunachal Pradesh": "arunachal-pradesh",
+    "Assam": "assam",
+    "Bihar": "bihar",
+    "Chhattisgarh": "chhattisgarh",
+    "Delhi": "delhi",
+    "Goa": "goa",
+    "Gujarat": "gujarat",
+    "Haryana": "haryana",
+    "Himachal Pradesh": "himachal-pradesh",
+    "Jharkhand": "jharkhand",
+    "Karnataka": "karnataka",
+    "Kerala": "kerala",
+    "Madhya Pradesh": "madhya-pradesh",
+    "Maharashtra": "maharashtra",
+    "Manipur": "manipur",
+    "Meghalaya": "meghalaya",
+    "Mizoram": "mizoram",
+    "Nagaland": "nagaland",
+    "Odisha": "odisha",
+    "Punjab": "punjab",
+    "Rajasthan": "rajasthan",
+    "Sikkim": "sikkim",
+    "Tamil Nadu": "tamil-nadu",
+    "Telangana": "telangana",
+    "Tripura": "tripura",
+    "Uttar Pradesh": "uttar-pradesh",
+    "Uttarakhand": "uttarakhand",
+    "West Bengal": "west-bengal",
+    "Andaman and Nicobar Islands": "andaman-and-nicobar-islands",
+    "Chandigarh": "chandigarh",
+    "Dadra and Nagar Haveli and Daman and Diu": "dadra-and-nagar-haveli",
+    "Jammu and Kashmir": "jammu-and-kashmir",
+    "Ladakh": "jammu-and-kashmir",  # Ladakh data often grouped with J&K
+    "Lakshadweep": "lakshadweep",
+    "Puducherry": "puducherry",
+}
+
+
+def fetch_from_dailyfuelprice(state):
+    """
+    Fetch fuel prices from DailyFuelPrice.com
+    Covers 720+ cities with daily updates.
+    URL pattern: https://dailyfuelprice.com/fuel-price-in-{state-slug}
+    """
+    try:
+        slug = DAILYFUELPRICE_STATES.get(state)
+        if not slug:
+            return None
+
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+
+        url = f"https://dailyfuelprice.com/fuel-price-in-{slug}"
+        response = requests.get(url, headers=headers, timeout=15)
+
+        if response.status_code != 200:
+            return None
+
+        soup = BeautifulSoup(response.content, 'html.parser')
+        petrol_price = None
+        diesel_price = None
+
+        # Look for price data in tables
+        tables = soup.find_all('table')
+        for table in tables:
+            rows = table.find_all('tr')
+            for row in rows:
+                cells = row.find_all('td')
+                if len(cells) >= 2:
+                    label = cells[0].get_text().strip().lower()
+                    price_text = cells[1].get_text().strip()
+                    price_match = re.search(r'([\d.]+)', price_text)
+                    if price_match and float(price_match.group(1)) > 50:
+                        if 'petrol' in label and not petrol_price:
+                            petrol_price = price_match.group(1)
+                        elif 'diesel' in label and not diesel_price:
+                            diesel_price = price_match.group(1)
+
+        # Also try looking for price values near petrol/diesel headings
+        if not petrol_price or not diesel_price:
+            text = soup.get_text()
+            if not petrol_price:
+                match = re.search(r'[Pp]etrol\s+[Pp]rice.*?₹\s*([\d.]+)', text)
+                if match and float(match.group(1)) > 50:
+                    petrol_price = match.group(1)
+            if not diesel_price:
+                match = re.search(r'[Dd]iesel\s+[Pp]rice.*?₹\s*([\d.]+)', text)
+                if match and float(match.group(1)) > 50:
+                    diesel_price = match.group(1)
+
+        if petrol_price and diesel_price:
+            return {
+                'petrol': petrol_price,
+                'diesel': diesel_price,
+                'source': 'dailyfuelprice'
+            }
+    except Exception as e:
+        print(f"DailyFuelPrice fetch failed for {state}: {e}")
+
+    return None
+
+
+def fetch_from_ppac(state):
+    """
+    Fetch fuel prices from PPAC (Petroleum Planning & Analysis Cell, Govt of India).
+    Uses the state-wise RSP Excel files published by PPAC.
+    URL: https://ppac.gov.in/retail-selling-price-rsp-of-petrol-diesel-and-domestic-lpg/price-build-up-of-petrol-and-diesel
+    Falls back to scraping the rendered HTML tables.
+    """
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+
+        url = 'https://ppac.gov.in/retail-selling-price-rsp-of-petrol-diesel-and-domestic-lpg/price-build-up-of-petrol-and-diesel'
+        response = requests.get(url, headers=headers, timeout=15)
+
+        if response.status_code != 200:
+            return None
+
+        soup = BeautifulSoup(response.content, 'html.parser')
+        petrol_price = None
+        diesel_price = None
+
+        # PPAC pages have tables with state-wise RSP data
+        tables = soup.find_all('table')
+        for table in tables:
+            rows = table.find_all('tr')
+            for row in rows:
+                cells = row.find_all('td')
+                if len(cells) >= 2:
+                    state_cell = cells[0].get_text().strip()
+                    if state.lower() in state_cell.lower() or state_cell.lower() in state.lower():
+                        price_match = re.search(r'([\d.]+)', cells[-1].get_text())
+                        if price_match and float(price_match.group(1)) > 50:
+                            # Determine if this is petrol or diesel table
+                            table_text = table.get_text().lower()
+                            if 'petrol' in table_text and not petrol_price:
+                                petrol_price = price_match.group(1)
+                            elif 'diesel' in table_text and not diesel_price:
+                                diesel_price = price_match.group(1)
+
+        if petrol_price and diesel_price:
+            return {
+                'petrol': petrol_price,
+                'diesel': diesel_price,
+                'source': 'ppac'
+            }
+    except Exception as e:
+        print(f"PPAC fetch failed for {state}: {e}")
+
+    return None
+
+
 def fetch_state_prices(state):
     """
     Fetch prices for a state using multiple sources with fallbacks
@@ -249,6 +407,8 @@ def fetch_state_prices(state):
     sources = [
         lambda: fetch_from_ndtv(state, city),
         lambda: fetch_from_goodreturns(state),
+        lambda: fetch_from_dailyfuelprice(state),
+        lambda: fetch_from_ppac(state),
         lambda: fetch_from_mypetrolprice(state, city)
     ]
 
