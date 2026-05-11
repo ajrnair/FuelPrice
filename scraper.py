@@ -366,8 +366,28 @@ def fetch_from_ppac(state):
         diesel_price = None
 
         # PPAC pages have tables with state-wise RSP data
+        # Classify each table as petrol or diesel using headers/captions
         tables = soup.find_all('table')
         for table in tables:
+            # Determine table type from headers, caption, or preceding heading
+            header_text = ''
+            caption = table.find('caption')
+            if caption:
+                header_text = caption.get_text().lower()
+            ths = table.find_all('th')
+            if ths:
+                header_text += ' '.join(th.get_text().lower() for th in ths)
+            # Also check preceding sibling headings
+            prev = table.find_previous(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'b'])
+            if prev:
+                header_text += ' ' + prev.get_text().lower()
+
+            is_petrol_table = 'petrol' in header_text and 'diesel' not in header_text
+            is_diesel_table = 'diesel' in header_text and 'petrol' not in header_text
+
+            if not is_petrol_table and not is_diesel_table:
+                continue
+
             rows = table.find_all('tr')
             for row in rows:
                 cells = row.find_all('td')
@@ -376,11 +396,9 @@ def fetch_from_ppac(state):
                     if state.lower() in state_cell.lower() or state_cell.lower() in state.lower():
                         price_match = re.search(r'([\d.]+)', cells[-1].get_text())
                         if price_match and float(price_match.group(1)) > 50:
-                            # Determine if this is petrol or diesel table
-                            table_text = table.get_text().lower()
-                            if 'petrol' in table_text and not petrol_price:
+                            if is_petrol_table and not petrol_price:
                                 petrol_price = price_match.group(1)
-                            elif 'diesel' in table_text and not diesel_price:
+                            elif is_diesel_table and not diesel_price:
                                 diesel_price = price_match.group(1)
 
         if petrol_price and diesel_price:
