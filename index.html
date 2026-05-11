@@ -536,9 +536,12 @@
             const btn = document.getElementById('refreshBtn');
             btn.disabled = true;
             btn.textContent = '↻ Refreshing...';
-            await loadData();
-            btn.disabled = false;
-            btn.textContent = '↻ Refresh Prices';
+            try {
+                await loadData();
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '↻ Refresh Prices';
+            }
         }
 
         // Load data on page load
