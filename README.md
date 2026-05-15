@@ -33,11 +33,11 @@ Compare fuel prices between any two states:
 - Real-time filtering
 - Find your location instantly
 
-### 📈 City Diesel Comparison
-- **Bangalore**: Karnataka diesel prices
-- **Kochi**: Kerala diesel prices
-- **Coimbatore**: Tamil Nadu diesel prices
-- **Goa**: Goa diesel prices
+### 📈 Selected Location Snapshot
+- **Bangalore**: Karnataka petrol and diesel prices
+- **Kochi**: Kerala petrol and diesel prices
+- **Coimbatore**: Tamil Nadu petrol and diesel prices
+- **Goa**: Goa petrol and diesel prices
 - Perfect for South India road trippers!
 - **Last Updated**: Always know data freshness
 
@@ -124,7 +124,7 @@ Perfect for users with limited connectivity:
 ✅ **No Frameworks** - Vanilla JavaScript only
 ✅ **System Fonts** - No web font downloads
 ✅ **Minimal JS** - ~3KB uncompressed
-✅ **Total Size** - Under 15KB for entire page
+✅ **Small Static Page** - Lightweight enough for fast GitHub Pages delivery
 
 ## 🎨 Design Philosophy
 
