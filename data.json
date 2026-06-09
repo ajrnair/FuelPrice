@@ -1,218 +1,218 @@
 [
   {
     "state": "Andhra Pradesh",
-    "petrol": "117.72",
-    "diesel": "105.40",
-    "updated": "2026-06-08"
+    "petrol": "117.78",
+    "diesel": "105.45",
+    "updated": "2026-06-09"
   },
   {
     "state": "Arunachal Pradesh",
     "petrol": "98.06",
     "diesel": "87.44",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Assam",
-    "petrol": "105.74",
-    "diesel": "97.23",
-    "updated": "2026-06-08"
+    "petrol": "105.79",
+    "diesel": "97.29",
+    "updated": "2026-06-09"
   },
   {
     "state": "Bihar",
-    "petrol": "113.54",
-    "diesel": "99.54",
-    "updated": "2026-06-08"
+    "petrol": "113.35",
+    "diesel": "99.36",
+    "updated": "2026-06-09"
   },
   {
     "state": "Chhattisgarh",
-    "petrol": "91.00",
-    "diesel": "85.00",
-    "updated": "2026-06-08"
+    "petrol": "86.00",
+    "diesel": "81.00",
+    "updated": "2026-06-09"
   },
   {
     "state": "Delhi",
     "petrol": "102.12",
     "diesel": "95.20",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Goa",
-    "petrol": "104.19",
-    "diesel": "96.07",
-    "updated": "2026-06-08"
+    "petrol": "104.10",
+    "diesel": "95.98",
+    "updated": "2026-06-09"
   },
   {
     "state": "Gujarat",
-    "petrol": "102.27",
-    "diesel": "98.39",
-    "updated": "2026-06-08"
+    "petrol": "102.28",
+    "diesel": "98.40",
+    "updated": "2026-06-09"
   },
   {
     "state": "Haryana",
     "petrol": "103.28",
     "diesel": "95.94",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Himachal Pradesh",
     "petrol": "102.55",
     "diesel": "94.61",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Jharkhand",
     "petrol": "105.26",
     "diesel": "100.49",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Karnataka",
-    "petrol": "110.61",
-    "diesel": "98.54",
-    "updated": "2026-06-08"
+    "petrol": "110.89",
+    "diesel": "98.80",
+    "updated": "2026-06-09"
   },
   {
     "state": "Kerala",
     "petrol": "115.49",
     "diesel": "104.40",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Madhya Pradesh",
-    "petrol": "114.54",
-    "diesel": "99.64",
-    "updated": "2026-06-08"
+    "petrol": "114.19",
+    "diesel": "99.33",
+    "updated": "2026-06-09"
   },
   {
     "state": "Maharashtra",
-    "petrol": "111.21",
+    "petrol": "111.18",
     "diesel": "97.83",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Manipur",
-    "petrol": "106.95",
-    "diesel": "92.66",
-    "updated": "2026-06-08"
+    "petrol": "106.82",
+    "diesel": "92.55",
+    "updated": "2026-06-09"
   },
   {
     "state": "Meghalaya",
-    "petrol": "102.51",
-    "diesel": "94.33",
-    "updated": "2026-06-08"
+    "petrol": "102.70",
+    "diesel": "94.45",
+    "updated": "2026-06-09"
   },
   {
     "state": "Mizoram",
     "petrol": "106.39",
     "diesel": "95.07",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Nagaland",
-    "petrol": "104.80",
-    "diesel": "96.11",
-    "updated": "2026-06-08"
+    "petrol": "103.96",
+    "diesel": "95.49",
+    "updated": "2026-06-09"
   },
   {
     "state": "Odisha",
-    "petrol": "109.05",
-    "diesel": "100.76",
-    "updated": "2026-06-08"
+    "petrol": "108.81",
+    "diesel": "100.52",
+    "updated": "2026-06-09"
   },
   {
     "state": "Punjab",
-    "petrol": "105.49",
-    "diesel": "95.41",
-    "updated": "2026-06-08"
+    "petrol": "105.56",
+    "diesel": "95.47",
+    "updated": "2026-06-09"
   },
   {
     "state": "Rajasthan",
-    "petrol": "113.35",
-    "diesel": "98.39",
-    "updated": "2026-06-08"
+    "petrol": "112.89",
+    "diesel": "97.98",
+    "updated": "2026-06-09"
   },
   {
     "state": "Sikkim",
     "petrol": "110.95",
     "diesel": "97.75",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Tamil Nadu",
-    "petrol": "107.88",
-    "diesel": "99.65",
-    "updated": "2026-06-08"
+    "petrol": "108.01",
+    "diesel": "99.78",
+    "updated": "2026-06-09"
   },
   {
     "state": "Telangana",
-    "petrol": "115.72",
+    "petrol": "115.73",
     "diesel": "103.82",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Tripura",
-    "petrol": "104.83",
-    "diesel": "93.74",
-    "updated": "2026-06-08"
+    "petrol": "105.00",
+    "diesel": "93.90",
+    "updated": "2026-06-09"
   },
   {
     "state": "Uttar Pradesh",
-    "petrol": "101.86",
-    "diesel": "95.36",
-    "updated": "2026-06-08"
+    "petrol": "101.92",
+    "diesel": "95.41",
+    "updated": "2026-06-09"
   },
   {
     "state": "Uttarakhand",
-    "petrol": "100.50",
-    "diesel": "95.95",
-    "updated": "2026-06-08"
+    "petrol": "100.54",
+    "diesel": "96.00",
+    "updated": "2026-06-09"
   },
   {
     "state": "West Bengal",
     "petrol": "113.47",
     "diesel": "99.82",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Andaman and Nicobar Islands",
-    "petrol": "100.00",
-    "diesel": "92.20",
-    "updated": "2026-06-08"
+    "petrol": "93.00",
+    "diesel": "86.60",
+    "updated": "2026-06-09"
   },
   {
     "state": "Chandigarh",
     "petrol": "101.54",
     "diesel": "89.47",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Dadra and Nagar Haveli and Daman and Diu",
     "petrol": "99.50",
     "diesel": "95.40",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Jammu and Kashmir",
-    "petrol": "102.00",
-    "diesel": "93.80",
-    "updated": "2026-06-08"
+    "petrol": "95.00",
+    "diesel": "88.20",
+    "updated": "2026-06-09"
   },
   {
     "state": "Ladakh",
-    "petrol": "109.34",
-    "diesel": "94.24",
-    "updated": "2026-06-08"
+    "petrol": "110.23",
+    "diesel": "95.06",
+    "updated": "2026-06-09"
   },
   {
     "state": "Lakshadweep",
     "petrol": "107.50",
     "diesel": "102.80",
-    "updated": "2026-06-08"
+    "updated": "2026-06-09"
   },
   {
     "state": "Puducherry",
-    "petrol": "94.00",
-    "diesel": "87.40",
-    "updated": "2026-06-08"
+    "petrol": "90.00",
+    "diesel": "84.20",
+    "updated": "2026-06-09"
   }
 ]
